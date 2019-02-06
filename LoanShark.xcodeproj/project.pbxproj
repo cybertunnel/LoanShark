@@ -1,0 +1,717 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		81CAD2F92209D942003C5D32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD2F82209D942003C5D32 /* AppDelegate.swift */; };
+		81CAD2FB2209D942003C5D32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD2FA2209D942003C5D32 /* ViewController.swift */; };
+		81CAD2FD2209D942003C5D32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81CAD2FC2209D942003C5D32 /* Assets.xcassets */; };
+		81CAD3002209D942003C5D32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81CAD2FE2209D942003C5D32 /* Main.storyboard */; };
+		81CAD30C2209D942003C5D32 /* LoanSharkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD30B2209D942003C5D32 /* LoanSharkTests.swift */; };
+		81CAD3172209D942003C5D32 /* LoanSharkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD3162209D942003C5D32 /* LoanSharkUITests.swift */; };
+		81CAD3292209D9F1003C5D32 /* ActionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD3282209D9F1003C5D32 /* ActionOptions.swift */; };
+		81CAD32B220A0ABE003C5D32 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD32A220A0ABE003C5D32 /* Person.swift */; };
+		81CAD32D220A0C68003C5D32 /* Date_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD32C220A0C68003C5D32 /* Date_Extension.swift */; };
+		81CAD32F220A0C85003C5D32 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD32E220A0C85003C5D32 /* Token.swift */; };
+		81CAD331220A0F9E003C5D32 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD330220A0F9E003C5D32 /* Preferences.swift */; };
+		81CAD333220A0FB2003C5D32 /* UserDefaults_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD332220A0FB2003C5D32 /* UserDefaults_Extension.swift */; };
+		81CAD335220A1379003C5D32 /* LoanPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD334220A1379003C5D32 /* LoanPeriod.swift */; };
+		81CAD337220A1409003C5D32 /* NotificationName_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD336220A1409003C5D32 /* NotificationName_Extension.swift */; };
+		81CAD339220A1B50003C5D32 /* LoanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD338220A1B50003C5D32 /* LoanManager.swift */; };
+		81CAD33B220A1CB6003C5D32 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD33A220A1CB6003C5D32 /* Log.swift */; };
+		81CAD33F220A2AED003C5D32 /* StatusListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD33E220A2AED003C5D32 /* StatusListener.swift */; };
+		81CAD341220A3DB0003C5D32 /* LoanerExpiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD340220A3DB0003C5D32 /* LoanerExpiredViewController.swift */; };
+		81CAD343220A3ED4003C5D32 /* TimerTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD342220A3ED4003C5D32 /* TimerTransformer.swift */; };
+		81CAD345220B2AC3003C5D32 /* ActivationAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD344220B2AC3003C5D32 /* ActivationAuthentication.swift */; };
+		81CAD347220B3015003C5D32 /* LoanerConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD346220B3015003C5D32 /* LoanerConfigurationViewController.swift */; };
+		81CAD349220B4295003C5D32 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD348220B4295003C5D32 /* AuthenticationViewController.swift */; };
+		81CAD34B220B618D003C5D32 /* ExtensionRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD34A220B618D003C5D32 /* ExtensionRequestViewController.swift */; };
+		81CAD34D220B63DC003C5D32 /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD34C220B63DC003C5D32 /* ExtensionViewController.swift */; };
+		81CAD350220B6D7C003C5D32 /* AgentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD34F220B6D7C003C5D32 /* AgentMenu.swift */; };
+		81CAD353220B725D003C5D32 /* AgentMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD352220B725D003C5D32 /* AgentMenuSegue.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		81CAD3082209D942003C5D32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81CAD2ED2209D941003C5D32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81CAD2F42209D941003C5D32;
+			remoteInfo = LoanShark;
+		};
+		81CAD3132209D942003C5D32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81CAD2ED2209D941003C5D32 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81CAD2F42209D941003C5D32;
+			remoteInfo = LoanShark;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		81CAD2F52209D942003C5D32 /* LoanShark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoanShark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81CAD2F82209D942003C5D32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		81CAD2FA2209D942003C5D32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		81CAD2FC2209D942003C5D32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		81CAD2FF2209D942003C5D32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		81CAD3012209D942003C5D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81CAD3022209D942003C5D32 /* LoanShark.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LoanShark.entitlements; sourceTree = "<group>"; };
+		81CAD3072209D942003C5D32 /* LoanSharkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoanSharkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81CAD30B2209D942003C5D32 /* LoanSharkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSharkTests.swift; sourceTree = "<group>"; };
+		81CAD30D2209D942003C5D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81CAD3122209D942003C5D32 /* LoanSharkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoanSharkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81CAD3162209D942003C5D32 /* LoanSharkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSharkUITests.swift; sourceTree = "<group>"; };
+		81CAD3182209D942003C5D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81CAD3282209D9F1003C5D32 /* ActionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionOptions.swift; sourceTree = "<group>"; };
+		81CAD32A220A0ABE003C5D32 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		81CAD32C220A0C68003C5D32 /* Date_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date_Extension.swift; sourceTree = "<group>"; };
+		81CAD32E220A0C85003C5D32 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		81CAD330220A0F9E003C5D32 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		81CAD332220A0FB2003C5D32 /* UserDefaults_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults_Extension.swift; sourceTree = "<group>"; };
+		81CAD334220A1379003C5D32 /* LoanPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanPeriod.swift; sourceTree = "<group>"; };
+		81CAD336220A1409003C5D32 /* NotificationName_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName_Extension.swift; sourceTree = "<group>"; };
+		81CAD338220A1B50003C5D32 /* LoanManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanManager.swift; sourceTree = "<group>"; };
+		81CAD33A220A1CB6003C5D32 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		81CAD33E220A2AED003C5D32 /* StatusListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListener.swift; sourceTree = "<group>"; };
+		81CAD340220A3DB0003C5D32 /* LoanerExpiredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanerExpiredViewController.swift; sourceTree = "<group>"; };
+		81CAD342220A3ED4003C5D32 /* TimerTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTransformer.swift; sourceTree = "<group>"; };
+		81CAD344220B2AC3003C5D32 /* ActivationAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationAuthentication.swift; sourceTree = "<group>"; };
+		81CAD346220B3015003C5D32 /* LoanerConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanerConfigurationViewController.swift; sourceTree = "<group>"; };
+		81CAD348220B4295003C5D32 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		81CAD34A220B618D003C5D32 /* ExtensionRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionRequestViewController.swift; sourceTree = "<group>"; };
+		81CAD34C220B63DC003C5D32 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
+		81CAD34F220B6D7C003C5D32 /* AgentMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentMenu.swift; sourceTree = "<group>"; };
+		81CAD352220B725D003C5D32 /* AgentMenuSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentMenuSegue.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		81CAD2F22209D941003C5D32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81CAD3042209D942003C5D32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81CAD30F2209D942003C5D32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		81CAD2EC2209D941003C5D32 = {
+			isa = PBXGroup;
+			children = (
+				81CAD2F72209D942003C5D32 /* LoanShark */,
+				81CAD30A2209D942003C5D32 /* LoanSharkTests */,
+				81CAD3152209D942003C5D32 /* LoanSharkUITests */,
+				81CAD2F62209D942003C5D32 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		81CAD2F62209D942003C5D32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81CAD2F52209D942003C5D32 /* LoanShark.app */,
+				81CAD3072209D942003C5D32 /* LoanSharkTests.xctest */,
+				81CAD3122209D942003C5D32 /* LoanSharkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		81CAD2F72209D942003C5D32 /* LoanShark */ = {
+			isa = PBXGroup;
+			children = (
+				81CAD351220B7232003C5D32 /* Segues */,
+				81CAD34E220B6D64003C5D32 /* Menus */,
+				81CAD3272209D9AF003C5D32 /* Resources */,
+				81CAD3262209D9A7003C5D32 /* Tools */,
+				81CAD3252209D99B003C5D32 /* Views */,
+				81CAD3242209D990003C5D32 /* Business Objects */,
+				81CAD2F82209D942003C5D32 /* AppDelegate.swift */,
+				81CAD2FA2209D942003C5D32 /* ViewController.swift */,
+				81CAD2FC2209D942003C5D32 /* Assets.xcassets */,
+				81CAD2FE2209D942003C5D32 /* Main.storyboard */,
+				81CAD3012209D942003C5D32 /* Info.plist */,
+				81CAD3022209D942003C5D32 /* LoanShark.entitlements */,
+			);
+			path = LoanShark;
+			sourceTree = "<group>";
+		};
+		81CAD30A2209D942003C5D32 /* LoanSharkTests */ = {
+			isa = PBXGroup;
+			children = (
+				81CAD30B2209D942003C5D32 /* LoanSharkTests.swift */,
+				81CAD30D2209D942003C5D32 /* Info.plist */,
+			);
+			path = LoanSharkTests;
+			sourceTree = "<group>";
+		};
+		81CAD3152209D942003C5D32 /* LoanSharkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				81CAD3162209D942003C5D32 /* LoanSharkUITests.swift */,
+				81CAD3182209D942003C5D32 /* Info.plist */,
+			);
+			path = LoanSharkUITests;
+			sourceTree = "<group>";
+		};
+		81CAD3242209D990003C5D32 /* Business Objects */ = {
+			isa = PBXGroup;
+			children = (
+				81CAD3282209D9F1003C5D32 /* ActionOptions.swift */,
+				81CAD32A220A0ABE003C5D32 /* Person.swift */,
+				81CAD32C220A0C68003C5D32 /* Date_Extension.swift */,
+				81CAD32E220A0C85003C5D32 /* Token.swift */,
+				81CAD334220A1379003C5D32 /* LoanPeriod.swift */,
+				81CAD336220A1409003C5D32 /* NotificationName_Extension.swift */,
+			);
+			path = "Business Objects";
+			sourceTree = "<group>";
+		};
+		81CAD3252209D99B003C5D32 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				81CAD340220A3DB0003C5D32 /* LoanerExpiredViewController.swift */,
+				81CAD346220B3015003C5D32 /* LoanerConfigurationViewController.swift */,
+				81CAD348220B4295003C5D32 /* AuthenticationViewController.swift */,
+				81CAD34A220B618D003C5D32 /* ExtensionRequestViewController.swift */,
+				81CAD34C220B63DC003C5D32 /* ExtensionViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		81CAD3262209D9A7003C5D32 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				81CAD330220A0F9E003C5D32 /* Preferences.swift */,
+				81CAD332220A0FB2003C5D32 /* UserDefaults_Extension.swift */,
+				81CAD338220A1B50003C5D32 /* LoanManager.swift */,
+				81CAD33A220A1CB6003C5D32 /* Log.swift */,
+				81CAD33E220A2AED003C5D32 /* StatusListener.swift */,
+				81CAD342220A3ED4003C5D32 /* TimerTransformer.swift */,
+				81CAD344220B2AC3003C5D32 /* ActivationAuthentication.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		81CAD3272209D9AF003C5D32 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		81CAD34E220B6D64003C5D32 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				81CAD34F220B6D7C003C5D32 /* AgentMenu.swift */,
+			);
+			path = Menus;
+			sourceTree = "<group>";
+		};
+		81CAD351220B7232003C5D32 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				81CAD352220B725D003C5D32 /* AgentMenuSegue.swift */,
+			);
+			path = Segues;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		81CAD2F42209D941003C5D32 /* LoanShark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81CAD31B2209D942003C5D32 /* Build configuration list for PBXNativeTarget "LoanShark" */;
+			buildPhases = (
+				81CAD2F12209D941003C5D32 /* Sources */,
+				81CAD2F22209D941003C5D32 /* Frameworks */,
+				81CAD2F32209D941003C5D32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoanShark;
+			productName = LoanShark;
+			productReference = 81CAD2F52209D942003C5D32 /* LoanShark.app */;
+			productType = "com.apple.product-type.application";
+		};
+		81CAD3062209D942003C5D32 /* LoanSharkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81CAD31E2209D942003C5D32 /* Build configuration list for PBXNativeTarget "LoanSharkTests" */;
+			buildPhases = (
+				81CAD3032209D942003C5D32 /* Sources */,
+				81CAD3042209D942003C5D32 /* Frameworks */,
+				81CAD3052209D942003C5D32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81CAD3092209D942003C5D32 /* PBXTargetDependency */,
+			);
+			name = LoanSharkTests;
+			productName = LoanSharkTests;
+			productReference = 81CAD3072209D942003C5D32 /* LoanSharkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		81CAD3112209D942003C5D32 /* LoanSharkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81CAD3212209D942003C5D32 /* Build configuration list for PBXNativeTarget "LoanSharkUITests" */;
+			buildPhases = (
+				81CAD30E2209D942003C5D32 /* Sources */,
+				81CAD30F2209D942003C5D32 /* Frameworks */,
+				81CAD3102209D942003C5D32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81CAD3142209D942003C5D32 /* PBXTargetDependency */,
+			);
+			name = LoanSharkUITests;
+			productName = LoanSharkUITests;
+			productReference = 81CAD3122209D942003C5D32 /* LoanSharkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81CAD2ED2209D941003C5D32 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Tyler Morgan";
+				TargetAttributes = {
+					81CAD2F42209D941003C5D32 = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					81CAD3062209D942003C5D32 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 81CAD2F42209D941003C5D32;
+					};
+					81CAD3112209D942003C5D32 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 81CAD2F42209D941003C5D32;
+					};
+				};
+			};
+			buildConfigurationList = 81CAD2F02209D941003C5D32 /* Build configuration list for PBXProject "LoanShark" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 81CAD2EC2209D941003C5D32;
+			productRefGroup = 81CAD2F62209D942003C5D32 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				81CAD2F42209D941003C5D32 /* LoanShark */,
+				81CAD3062209D942003C5D32 /* LoanSharkTests */,
+				81CAD3112209D942003C5D32 /* LoanSharkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		81CAD2F32209D941003C5D32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81CAD2FD2209D942003C5D32 /* Assets.xcassets in Resources */,
+				81CAD3002209D942003C5D32 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81CAD3052209D942003C5D32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81CAD3102209D942003C5D32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		81CAD2F12209D941003C5D32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81CAD34B220B618D003C5D32 /* ExtensionRequestViewController.swift in Sources */,
+				81CAD3292209D9F1003C5D32 /* ActionOptions.swift in Sources */,
+				81CAD33F220A2AED003C5D32 /* StatusListener.swift in Sources */,
+				81CAD339220A1B50003C5D32 /* LoanManager.swift in Sources */,
+				81CAD350220B6D7C003C5D32 /* AgentMenu.swift in Sources */,
+				81CAD33B220A1CB6003C5D32 /* Log.swift in Sources */,
+				81CAD349220B4295003C5D32 /* AuthenticationViewController.swift in Sources */,
+				81CAD331220A0F9E003C5D32 /* Preferences.swift in Sources */,
+				81CAD353220B725D003C5D32 /* AgentMenuSegue.swift in Sources */,
+				81CAD347220B3015003C5D32 /* LoanerConfigurationViewController.swift in Sources */,
+				81CAD333220A0FB2003C5D32 /* UserDefaults_Extension.swift in Sources */,
+				81CAD32D220A0C68003C5D32 /* Date_Extension.swift in Sources */,
+				81CAD2FB2209D942003C5D32 /* ViewController.swift in Sources */,
+				81CAD32F220A0C85003C5D32 /* Token.swift in Sources */,
+				81CAD341220A3DB0003C5D32 /* LoanerExpiredViewController.swift in Sources */,
+				81CAD343220A3ED4003C5D32 /* TimerTransformer.swift in Sources */,
+				81CAD345220B2AC3003C5D32 /* ActivationAuthentication.swift in Sources */,
+				81CAD337220A1409003C5D32 /* NotificationName_Extension.swift in Sources */,
+				81CAD34D220B63DC003C5D32 /* ExtensionViewController.swift in Sources */,
+				81CAD335220A1379003C5D32 /* LoanPeriod.swift in Sources */,
+				81CAD32B220A0ABE003C5D32 /* Person.swift in Sources */,
+				81CAD2F92209D942003C5D32 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81CAD3032209D942003C5D32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81CAD30C2209D942003C5D32 /* LoanSharkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81CAD30E2209D942003C5D32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81CAD3172209D942003C5D32 /* LoanSharkUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		81CAD3092209D942003C5D32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81CAD2F42209D941003C5D32 /* LoanShark */;
+			targetProxy = 81CAD3082209D942003C5D32 /* PBXContainerItemProxy */;
+		};
+		81CAD3142209D942003C5D32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81CAD2F42209D941003C5D32 /* LoanShark */;
+			targetProxy = 81CAD3132209D942003C5D32 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		81CAD2FE2209D942003C5D32 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				81CAD2FF2209D942003C5D32 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		81CAD3192209D942003C5D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		81CAD31A2209D942003C5D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		81CAD31C2209D942003C5D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LoanShark/LoanShark.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DAH86Q54R2;
+				INFOPLIST_FILE = LoanShark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanShark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		81CAD31D2209D942003C5D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LoanShark/LoanShark.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DAH86Q54R2;
+				INFOPLIST_FILE = LoanShark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanShark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		81CAD31F2209D942003C5D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DAH86Q54R2;
+				INFOPLIST_FILE = LoanSharkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanSharkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoanShark.app/Contents/MacOS/LoanShark";
+			};
+			name = Debug;
+		};
+		81CAD3202209D942003C5D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DAH86Q54R2;
+				INFOPLIST_FILE = LoanSharkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanSharkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoanShark.app/Contents/MacOS/LoanShark";
+			};
+			name = Release;
+		};
+		81CAD3222209D942003C5D32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DAH86Q54R2;
+				INFOPLIST_FILE = LoanSharkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanSharkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = LoanShark;
+			};
+			name = Debug;
+		};
+		81CAD3232209D942003C5D32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = DAH86Q54R2;
+				INFOPLIST_FILE = LoanSharkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanSharkUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = LoanShark;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		81CAD2F02209D941003C5D32 /* Build configuration list for PBXProject "LoanShark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81CAD3192209D942003C5D32 /* Debug */,
+				81CAD31A2209D942003C5D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81CAD31B2209D942003C5D32 /* Build configuration list for PBXNativeTarget "LoanShark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81CAD31C2209D942003C5D32 /* Debug */,
+				81CAD31D2209D942003C5D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81CAD31E2209D942003C5D32 /* Build configuration list for PBXNativeTarget "LoanSharkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81CAD31F2209D942003C5D32 /* Debug */,
+				81CAD3202209D942003C5D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81CAD3212209D942003C5D32 /* Build configuration list for PBXNativeTarget "LoanSharkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81CAD3222209D942003C5D32 /* Debug */,
+				81CAD3232209D942003C5D32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 81CAD2ED2209D941003C5D32 /* Project object */;
+}
