@@ -18,6 +18,11 @@ class ActivationAuthentication {
      Asked #jss-api for help, waiting for response.
     */
     
+    //  MARK: Enumerations
+    enum AuthenticationError: Error {
+        case UnableToAuthenticate(String)
+    }
+    
     //  MARK: Functions
     
     
@@ -38,7 +43,54 @@ class ActivationAuthentication {
      
      - Note: This calls on a private function
     */
-    func authenticate(_ user: String, _ password: String) -> Bool {
-        return false
+    func authenticate(_ user: String, _ password: String) throws -> Bool {
+        Log.write(.info, Log.Category.authenticator, "Attempting to authenticate \(user) using the JPS")
+        
+        guard let host = Preferences.sharedInstance.jssURL else {
+            throw AuthenticationError.UnableToAuthenticate("Server host has not been configured.")
+        }
+        Log.write(.debug, Log.Category.authenticator, "The server attempting to perform authentication to is \(host)")
+        
+        //  Encodes login credentials to Base64
+        let loginData = String(format: "%@:%@", user, password).data(using: String.Encoding.utf8)
+        let base64LoginData = loginData?.base64EncodedString()
+        
+        //  Creates the request
+        let url = URL(string: host)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Basic \(base64LoginData!)", forHTTPHeaderField: "Authorization")
+        
+        //  Performs the request
+        var running = true
+        var authorized = false
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse {
+                //  Checks status code returned by the http server.
+                if httpStatus.statusCode == 200 {
+                    Log.write(.info, Log.Category.authenticator, "\(user) has been successfully authenticated.")
+                    authorized = true
+                    do {
+                        let jsonObj = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
+                        try! Token.sharedInstance.setToken(jsonObj!, user: user)
+                    }
+                    running = false
+                }
+                else {
+                    Log.write(.error, Log.Category.authenticator, "Unable to authenticate \(user), recieved status code of \(httpStatus.statusCode)")
+                    authorized = false
+                    running = false
+                }
+            }
+        }
+        task.resume()
+        while running {
+            sleep(1)
+        }
+        return authorized
     }
 }

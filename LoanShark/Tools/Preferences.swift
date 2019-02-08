@@ -125,6 +125,12 @@ class Preferences {
         }
     }
     
+    public var authorizedGroupIDs: Array<Int>? {
+        get {
+            return self.userDefaults.array(forKey: "authorizedGroupIDs") as? Array<Int>
+        }
+    }
+    
     //MARK: Initializers
     
     init(nsUserDefaults: UserDefaults = UserDefaults.standard) {

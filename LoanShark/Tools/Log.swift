@@ -19,6 +19,7 @@ class Log {
         static let view = "View"
         static let loanManager = "LoanManager"
         static let statusListener = "StatusListener"
+        static let authenticator = "Authenticator"
     }
     
     

@@ -47,6 +47,17 @@ class AuthenticationViewController: NSViewController {
     @IBAction func performAuthorization(_ sender: NSButton) {
         self.performingAuthorization = true
         
+        let authenticator = ActivationAuthentication()
+        do {
+            try authenticator.authenticate(self.username ?? "", self.password ?? "")
+        }
+        catch ActivationAuthentication.AuthenticationError.UnableToAuthenticate(let message) {
+            Log.write(.error, Log.Category.view, "Recieved \(message) from authentication attempt.")
+        }
+        catch {
+            Log.write(.error, Log.Category.view, "Recieved unknown error from authtentication attempt.")
+        }
+        
         if let dest = self.destination {
             if dest == "configure" {
                 self.view.window?.close()
