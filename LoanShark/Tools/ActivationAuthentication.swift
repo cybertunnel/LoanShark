@@ -18,9 +18,13 @@ class ActivationAuthentication {
      Asked #jss-api for help, waiting for response.
     */
     
+    
+    //  MARK: Variables
+    private var accessGroups: Array <String>?
     //  MARK: Enumerations
     enum AuthenticationError: Error {
         case UnableToAuthenticate(String)
+        case NoAccessGroups
     }
     
     //  MARK: Functions
@@ -31,8 +35,55 @@ class ActivationAuthentication {
      - Parameter user: The user who is being checked for permission as String.
      - returns: Bool
     */
-    func doesHaveAccess(_ user: String) -> Bool {
-        return false
+    func doesHaveAccess() throws -> Bool {
+        Log.write(.info, Log.Category.authenticator, "Seeing if authenticated user has access to manage this loaner device")
+        let host = try self.getURI()
+        let uri = host + "/uapi/auth/current"
+        
+        //  Creates the request
+        let url = URL(string: uri)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer " + Token.sharedInstance.token!, forHTTPHeaderField: "Authorization")
+        
+        //  Performs the request
+        var running = true
+        var hasAccess = false
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                running = false
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse {
+                //  Checks status code returned by the http server.
+                if httpStatus.statusCode == 200 {
+                    Log.write(.info, Log.Category.authenticator, "Successfully got response from server")
+                    do {
+                        let jsonObj = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
+                        let groupIDs = (jsonObj?["account"] as? [String:Any])?["groupIds"] as? Array <Int>
+                        let approved = Preferences.sharedInstance.authorizedGroupIDs ?? []
+                        for groupID in groupIDs ?? [] {
+                            if approved.contains(groupID) {
+                                Log.write(.debug, Log.Category.authenticator, "Found group authorized ID \(groupID) associated with this user.")
+                                hasAccess = true
+                                running = false
+                                return
+                            }
+                        }
+                        running = false
+                        return
+                    }
+                }
+                running = false
+            }
+        }
+        
+        task.resume()
+        while running {
+            sleep(1)
+        }
+        return hasAccess
     }
     
     /**
@@ -46,9 +97,7 @@ class ActivationAuthentication {
     func authenticate(_ user: String, _ password: String) throws -> Bool {
         Log.write(.info, Log.Category.authenticator, "Attempting to authenticate \(user) using the JPS")
         
-        guard let host = Preferences.sharedInstance.jssURL else {
-            throw AuthenticationError.UnableToAuthenticate("Server host has not been configured.")
-        }
+        let host = try self.getURI()
         Log.write(.debug, Log.Category.authenticator, "The server attempting to perform authentication to is \(host)")
         
         //  Encodes login credentials to Base64
@@ -56,7 +105,10 @@ class ActivationAuthentication {
         let base64LoginData = loginData?.base64EncodedString()
         
         //  Creates the request
-        let url = URL(string: host)!
+        
+        let uri = host + "/uapi/auth/tokens"
+        
+        let url = URL(string: uri)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Basic \(base64LoginData!)", forHTTPHeaderField: "Authorization")
@@ -92,5 +144,36 @@ class ActivationAuthentication {
             sleep(1)
         }
         return authorized
+    }
+    
+    /**
+     Generates valid URI from the host saved in preferences.
+     - returns: URI as String
+    */
+    private func getURI() throws -> String {
+        guard var host = Preferences.sharedInstance.jssURL else {
+            throw AuthenticationError.UnableToAuthenticate("Server host has not been configured.")
+        }
+        
+        Log.write(.debug, Log.Category.authenticator, "Attempting to generate URI using base host name of \(host)")
+        
+        if host.contains("http://") {
+            Log.write(.info, Log.Category.authenticator, "Provided host contains HTTP instead of HTTPS, replacing with HTTPS")
+            host = host.replacingOccurrences(of: "http://", with: "https://")
+            Log.write(.debug, Log.Category.authenticator, "Host value is now: \(host)")
+        }
+        
+        if !host.contains("https://") && !host.contains("https://") {
+            Log.write(.info, Log.Category.authenticator, "Provided host does not contain HTTPS, adding HTTPS")
+            host = "https://" + host
+            Log.write(.debug, Log.Category.authenticator, "Host value is now: \(host)")
+        }
+        
+        if !host.contains(":8443") {
+            Log.write(.info, Log.Category.authenticator, "Provided host did not include port, adding")
+            host += ":8443"
+            Log.write(.debug, Log.Category.authenticator, "Host value is now: \(host)")
+        }
+        return host
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 /**
  Loan period object, this is used to determine the loaner period duration.
  */
-class LoanPeriod {
+@objc class LoanPeriod: NSObject {
     
     
     //MARK: Variables

@@ -14,13 +14,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     //  MARK: IBOutlets
     
     //  Menu that is displayed in the top Apple Menubar
-    @IBOutlet weak var agentMenu: NSMenu!
+    @IBOutlet weak var agentMenu: AgentMenu!
 
     //  MARK: Variables
     
     let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    let listener = StatusListener()
-    let loanerManager = LoanManager.sharedInstance
+    @objc let loanerManager = LoanManager.sharedInstance
     
     
     //  MARK: Functions
@@ -45,6 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             let period = LoanPeriod(startDate: startDate, endDate: endDate)
             self.loanerManager.loanPeriod = period
         }
+        self.agentMenu.startListening()
         
     }
 

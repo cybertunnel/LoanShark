@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoanManager: NSObject {
+@objc class LoanManager: NSObject {
     
     
     //  MARK: Enumerations
@@ -63,10 +63,10 @@ class LoanManager: NSObject {
         }
     }
     
-    var loanee: Person?
-    var tech: Person?
+    @objc var loanee: Person?
+    @objc var tech: Person?
     
-    var loanPeriod: LoanPeriod?
+    @objc var loanPeriod: LoanPeriod?
     
     static let sharedInstance = LoanManager()
     

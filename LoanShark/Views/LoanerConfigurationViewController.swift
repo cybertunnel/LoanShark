@@ -80,6 +80,7 @@ class LoanerConfigurationViewController: NSViewController {
         LoanManager.sharedInstance.setPeriod(Int(self.loanPeriod ?? 0))
         LoanManager.sharedInstance.setLoanee(loanee)
         LoanManager.sharedInstance.setTech(tech)
+        self.view.window?.close()
     }
     
     /**

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -687,6 +688,7 @@
                         <menuItem title="Status:" enabled="NO" id="1eb-i7-55V">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
+                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.agentMenu.configured" previousBinding="XiS-SH-uKk" id="4mu-0j-cbL"/>
                                 <binding destination="uNU-7g-Wke" name="enabled" keyPath="values.buttonTest" id="XiS-SH-uKk"/>
                             </connections>
                         </menuItem>
@@ -709,6 +711,13 @@
                                     </menuItem>
                                 </items>
                             </menu>
+                            <connections>
+                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.agentMenu.configured" id="TxF-ew-fRS">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
                         </menuItem>
                         <menuItem title="Contact" id="6tG-0V-pGD" userLabel="Contact">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -716,12 +725,22 @@
                                 <items>
                                     <menuItem title="Email Address:" id="dDC-gA-FBf">
                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <binding destination="JhK-Ks-yo4" name="hidden" keyPath="values" id="6WV-QX-yB0"/>
+                                        </connections>
                                     </menuItem>
                                     <menuItem title="Phone Number:" id="CJc-I9-tTV">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
                                 </items>
                             </menu>
+                            <connections>
+                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.agentMenu.configured" id="uoQ-Xw-yLW">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
                         </menuItem>
                         <menuItem title="Administrator" id="LY3-Ct-XxW">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -730,12 +749,18 @@
                                     <menuItem title="Configure" id="CGc-d9-pUa">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
+                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.agentMenu.configured" id="qdW-IF-EE6"/>
                                             <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="bB6-3X-qhi"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extend" id="wv5-v9-Wbd">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
+                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.agentMenu.configured" id="fPj-71-JOg">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
                                             <segue destination="B8D-0N-5wS" kind="modal" identifier="extend" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="6SY-2e-R2H"/>
                                         </connections>
                                     </menuItem>
@@ -892,6 +917,22 @@ DQ
                                     <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.requirementsCompleted" id="2hb-q1-LND"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m27-IF-l1a">
+                                <rect key="frame" x="13" y="48" width="68" height="11"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="2WE-yH-gez">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.errorMessage" id="eeY-DH-WfK">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSIsNil</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.errorMessage" id="ifZ-Jh-FDl"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Zpw-RM-CYf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="4L4-Yc-Tld"/>
@@ -900,6 +941,7 @@ DQ
                             <constraint firstAttribute="trailing" secondItem="H5H-RI-TUA" secondAttribute="trailing" constant="8" id="CB5-sK-K0N"/>
                             <constraint firstItem="Zpw-RM-CYf" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="CLR-qj-4fW"/>
                             <constraint firstItem="nGc-Io-CxJ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="FKR-rb-TRR"/>
+                            <constraint firstItem="m27-IF-l1a" firstAttribute="top" secondItem="nGc-Io-CxJ" secondAttribute="bottom" constant="2" id="HWi-Xe-jeR"/>
                             <constraint firstItem="ih2-gr-Rdi" firstAttribute="top" secondItem="8PX-UJ-RZ0" secondAttribute="bottom" constant="8" id="IsN-sc-gl7"/>
                             <constraint firstItem="8PX-UJ-RZ0" firstAttribute="top" secondItem="H5H-RI-TUA" secondAttribute="bottom" constant="8" id="LZc-XZ-7Vd"/>
                             <constraint firstAttribute="bottom" secondItem="96W-hV-4nB" secondAttribute="bottom" constant="20" id="OJM-Oc-tRc"/>
@@ -907,6 +949,7 @@ DQ
                             <constraint firstItem="H5H-RI-TUA" firstAttribute="top" secondItem="Zpw-RM-CYf" secondAttribute="bottom" constant="8" id="ZVF-On-OXa"/>
                             <constraint firstItem="H5H-RI-TUA" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="b73-7U-OUN"/>
                             <constraint firstItem="nGc-Io-CxJ" firstAttribute="top" secondItem="8PX-UJ-RZ0" secondAttribute="bottom" constant="8" id="bTl-JW-XDb"/>
+                            <constraint firstItem="m27-IF-l1a" firstAttribute="leading" secondItem="nGc-Io-CxJ" secondAttribute="leading" id="ccC-xI-Iop"/>
                             <constraint firstItem="ih2-gr-Rdi" firstAttribute="leading" secondItem="nGc-Io-CxJ" secondAttribute="trailing" constant="8" id="eWp-Az-IiZ"/>
                             <constraint firstAttribute="trailing" secondItem="ih2-gr-Rdi" secondAttribute="trailing" constant="15" id="gfX-du-Ux3"/>
                             <constraint firstAttribute="trailing" secondItem="nli-ZE-3uz" secondAttribute="trailing" constant="8" id="iiI-p7-BfM"/>
@@ -922,6 +965,7 @@ DQ
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="JhK-Ks-yo4"/>
             </objects>
             <point key="canvasLocation" x="189" y="605"/>
         </scene>

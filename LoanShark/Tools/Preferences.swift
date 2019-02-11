@@ -14,7 +14,7 @@ import Foundation
 class Preferences {
     
     
-    //MARK: Variables
+    //  MARK: Variables
     
     static let sharedInstance = Preferences() //    Singleton
     internal let userDefaults: UserDefaults

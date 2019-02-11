@@ -32,6 +32,15 @@ class AuthenticationViewController: NSViewController {
     
     @objc var requirementsCompleted: Bool = false
     
+    @objc var errorMessage: String? {
+        willSet {
+            self.willChangeValue(forKey: "errorMessage")
+        }
+        didSet {
+            self.didChangeValue(forKey: "errorMessage")
+        }
+    }
+    
     
     //  MARK: Variables
     public var destination: String?
@@ -45,29 +54,47 @@ class AuthenticationViewController: NSViewController {
     }
     
     @IBAction func performAuthorization(_ sender: NSButton) {
-        self.performingAuthorization = true
-        
-        let authenticator = ActivationAuthentication()
-        do {
-            try authenticator.authenticate(self.username ?? "", self.password ?? "")
-        }
-        catch ActivationAuthentication.AuthenticationError.UnableToAuthenticate(let message) {
-            Log.write(.error, Log.Category.view, "Recieved \(message) from authentication attempt.")
-        }
-        catch {
-            Log.write(.error, Log.Category.view, "Recieved unknown error from authtentication attempt.")
+        DispatchQueue.main.async {
+            self.performingAuthorization = true
         }
         
-        if let dest = self.destination {
-            if dest == "configure" {
-                self.view.window?.close()
-                self.performSegue(withIdentifier: "toConfiguration", sender: self)
+        DispatchQueue(label: "AuthenticationBackground", qos: .userInteractive, attributes: .concurrent, autoreleaseFrequency: .workItem, target: nil) .async {
+            let authenticator = ActivationAuthentication()
+            do {
+                
+                if try authenticator.authenticate(self.username ?? "", self.password ?? "") {
+                    let access = try authenticator.doesHaveAccess()
+                    if access {
+                        DispatchQueue.main.async {
+                            self.performTransition()
+                        }
+                    }
+                    else {
+                        DispatchQueue.main.async {
+                            self.errorMessage = "Sorry, you do not have access to perform this action!"
+                            self.performingAuthorization = false
+                        }
+                    }
+                }
+                else {
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Unable to authenticate \(self.username ?? ""), invalid username or password."
+                        self.performingAuthorization = false
+                    }
+                }
             }
-            else if dest == "extend" {
-                self.view.window?.close()
-                self.performSegue(withIdentifier: "toExtension", sender: self)
+            catch ActivationAuthentication.AuthenticationError.UnableToAuthenticate(let message) {
+                Log.write(.error, Log.Category.view, "Recieved \(message) from authentication attempt.")
+                DispatchQueue.main.async {
+                    self.errorMessage = message
+                    self.performingAuthorization = false
+                }
+            }
+            catch {
+                Log.write(.error, Log.Category.view, "Recieved unknown error from authtentication attempt.")
             }
         }
+        
     }
     
     private func checkRequirements() {
@@ -80,6 +107,19 @@ class AuthenticationViewController: NSViewController {
             self.willChangeValue(forKey: "requirementsCompleted")
             self.requirementsCompleted = true
             self.didChangeValue(forKey: "requirementsCompleted")
+        }
+    }
+    
+    private func performTransition() {
+        if let dest = self.destination {
+            if dest == "configure" {
+                self.view.window?.close()
+                self.performSegue(withIdentifier: "toConfiguration", sender: self)
+            }
+            else if dest == "extend" {
+                self.view.window?.close()
+                self.performSegue(withIdentifier: "toExtension", sender: self)
+            }
         }
     }
     
