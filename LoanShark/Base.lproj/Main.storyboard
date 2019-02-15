@@ -60,6 +60,18 @@
                         </menuItem>
                         <menuItem title="Remaining:" enabled="NO" id="xak-Ah-ceE">
                             <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanPeriod.remaining" id="Oag-43-CmF">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod.remaining" previousBinding="Oag-43-CmF" id="3bY-bG-DOj">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="yU3-Fy-LGb"/>
                         <menuItem title="Loanee" id="hAA-WT-oAc">
@@ -175,6 +187,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="MeZ-Xa-r1f"/>
+                <userDefaultsController id="q4z-48-IQ2"/>
             </objects>
             <point key="canvasLocation" x="131" y="-162"/>
         </scene>
