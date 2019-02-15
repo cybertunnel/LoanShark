@@ -40,7 +40,7 @@ import Foundation
     
     
     //  Current status of the loaning period
-    var loanStatus: Status {
+    @objc var loanStatus: Status {
         get {
             
             /// Checks if a loan period has been set.

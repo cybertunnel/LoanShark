@@ -10,7 +10,6 @@ import Cocoa
 
 class AgentMenu: NSMenu, NSUserNotificationCenterDelegate {
     
-    
     //  MARK: Cocoa Binding Resources
     @objc var configured: Bool = false {
         willSet {
@@ -41,6 +40,15 @@ class AgentMenu: NSMenu, NSUserNotificationCenterDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.loanerPeriodDidChange(_:)), name: NSNotification.Name.loanerPeriodChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.loanerPeriodSet(_:)), name: NSNotification.Name.loanerPeriodSet, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.loanerPeriodExpired(_:)), name: NSNotification.Name.loanerPeriodExpired, object: nil)
+    }
+    
+    override init(title: String) {
+        ValueTransformer.setValueTransformer(StatusTransformer(), forName: .statusTransformer)
+        super.init(title: title)
+    }
+    
+    required init(coder decoder: NSCoder) {
+        super.init(coder: decoder)
     }
     
 }
