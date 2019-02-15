@@ -46,9 +46,13 @@
                         <menuItem title="Status:" enabled="NO" id="1eb-i7-55V">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loanStatus" id="ron-VJ-Zu0">
+                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanStatus" id="C4B-QN-VXV">
                                     <dictionary key="options">
-                                        <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                    </dictionary>
+                                </binding>
+                                <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loanStatus" id="lzB-Fl-dbT">
+                                    <dictionary key="options">
                                         <string key="NSValueTransformerName">StatusTransformer</string>
                                     </dictionary>
                                 </binding>
