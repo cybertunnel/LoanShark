@@ -12,14 +12,19 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
     
     
-    @objc var testText: String = "Testing"
+    //  MARK: Cocoa Binding Resources
     @objc let loanerManager = LoanManager.sharedInstance
+    
+    //  Don't Use
     private let dontUse: Any? = initialSetup()
-    //  MARK: IBOutlets
+    
+    
+    //  MARK: IB Outlets
     
     //  Menu that is displayed in the top Apple Menubar
     @IBOutlet weak var agentMenu: AgentMenu!
 
+    
     //  MARK: Variables
     
     let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -32,20 +37,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         item.menu = agentMenu
         item.title = "LoanShark"
         
-        self.agentMenu.startListening()
+        if let startDate = Preferences.sharedInstance.startDate, let endDate = Preferences.sharedInstance.endDate {
+            let period = LoanPeriod(startDate: startDate, endDate: endDate)
+            self.willChangeValue(forKey: "loanerManager")
+            self.loanerManager.loanPeriod = period
+            NSLog(self.loanerManager.loanStatus.toString())
+            self.didChangeValue(forKey: "loanerManager")
+        }
         
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-    
-    private static func initialSetup() {
         
-        //  Value Transformers for bindings
-        ValueTransformer.setValueTransformer(StatusTransformer(), forName: .statusTransformer)
-        ValueTransformer.setValueTransformer(TimerTransformer(), forName: .timerTransformer)
-        
+        /**
         if let loanee = Preferences.sharedInstance.loaneeDetails {
             LoanManager.sharedInstance.setLoanee(loanee)
         }
@@ -58,8 +59,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             let period = LoanPeriod(startDate: startDate, endDate: endDate)
             LoanManager.sharedInstance.loanPeriod = period
         }
+ */
     }
 
-
+    func applicationWillTerminate(_ aNotification: Notification) {
+        // Insert code here to tear down your application
+    }
+    
+    private static func initialSetup() {
+        
+        //  Value Transformers for bindings
+        ValueTransformer.setValueTransformer(StatusTransformer(), forName: .statusTransformer)
+        ValueTransformer.setValueTransformer(TimerTransformer(), forName: .timerTransformer)
+        ValueTransformer.setValueTransformer(RemainingTransformer(), forName: .remainingTransformer)
+    }
 }
 

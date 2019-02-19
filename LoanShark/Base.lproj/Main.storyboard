@@ -46,13 +46,9 @@
                         <menuItem title="Status:" enabled="NO" id="1eb-i7-55V">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanStatus" id="C4B-QN-VXV">
+                                <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loanStatus" id="rVp-yS-6dh">
                                     <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loanStatus" id="lzB-Fl-dbT">
-                                    <dictionary key="options">
+                                        <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                         <string key="NSValueTransformerName">StatusTransformer</string>
                                     </dictionary>
                                 </binding>
@@ -61,14 +57,9 @@
                         <menuItem title="Remaining:" enabled="NO" id="xak-Ah-ceE">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanPeriod.remaining" id="Oag-43-CmF">
+                                <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loanPeriod.remaining" id="7b4-97-Us5">
                                     <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod.remaining" previousBinding="Oag-43-CmF" id="3bY-bG-DOj">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                        <string key="NSValueTransformerName">RemainingTransformer</string>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -89,13 +80,6 @@
                                     </menuItem>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.agentMenu.configured" id="TxF-ew-fRS">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                         <menuItem title="Contact" id="6tG-0V-pGD" userLabel="Contact">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -112,13 +96,6 @@
                                     </menuItem>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.agentMenu.configured" id="uoQ-Xw-yLW">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                         <menuItem title="Administrator" id="LY3-Ct-XxW">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -127,18 +104,12 @@
                                     <menuItem title="Configure" id="CGc-d9-pUa">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.agentMenu.configured" id="qdW-IF-EE6"/>
                                             <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="bB6-3X-qhi"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extend" id="wv5-v9-Wbd">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.agentMenu.configured" id="fPj-71-JOg">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                </dictionary>
-                                            </binding>
                                             <segue destination="B8D-0N-5wS" kind="modal" identifier="extend" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="6SY-2e-R2H"/>
                                         </connections>
                                     </menuItem>
@@ -188,6 +159,7 @@
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="MeZ-Xa-r1f"/>
                 <userDefaultsController id="q4z-48-IQ2"/>
+                <userDefaultsController id="w9d-yd-MRm"/>
             </objects>
             <point key="canvasLocation" x="131" y="-162"/>
         </scene>

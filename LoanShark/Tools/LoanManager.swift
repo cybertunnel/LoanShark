@@ -66,7 +66,16 @@ import Foundation
     @objc var loanee: Person?
     @objc var tech: Person?
     
-    @objc var loanPeriod: LoanPeriod?
+    @objc var loanPeriod: LoanPeriod? {
+        willSet {
+            self.willChangeValue(forKey: "loanPeriod")
+            self.willChangeValue(forKey: "loanStatus")
+        }
+        didSet {
+            self.didChangeValue(forKey: "loanPeriod")
+            self.didChangeValue(forKey: "loanStatus")
+        }
+    }
     
     static let sharedInstance = LoanManager()
     
