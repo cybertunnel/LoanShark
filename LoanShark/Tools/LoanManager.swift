@@ -66,6 +66,33 @@ import Foundation
     @objc var loanee: Person?
     @objc var tech: Person?
     
+    @objc var loaneeName: String? {
+        get {
+            guard let name = self.loanee?.name else {
+                return nil
+            }
+            return "Assigned User: \(name)"
+        }
+    }
+    
+    @objc var loaneePhone: String? {
+        get {
+            guard let phone = self.loanee?.phoneNum else {
+                return nil
+            }
+            return "Phone Number: \(phone)"
+        }
+    }
+    
+    @objc var loaneeEmail: String? {
+        get {
+            guard let email = self.loanee?.emailAddr else {
+                return nil
+            }
+            return "Email: \(email)"
+        }
+    }
+    
     @objc var loanPeriod: LoanPeriod? {
         willSet {
             self.willChangeValue(forKey: "loanPeriod")

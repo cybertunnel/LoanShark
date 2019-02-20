@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8149B7622216137300243E13 /* StatusTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B7612216137300243E13 /* StatusTransformer.swift */; };
-		8149B7642216196D00243E13 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B7632216196D00243E13 /* Application.swift */; };
 		815E7FFC221CB11F009E3CA2 /* RemainingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */; };
 		81CAD2F92209D942003C5D32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD2F82209D942003C5D32 /* AppDelegate.swift */; };
 		81CAD2FB2209D942003C5D32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD2FA2209D942003C5D32 /* ViewController.swift */; };
@@ -57,7 +56,6 @@
 
 /* Begin PBXFileReference section */
 		8149B7612216137300243E13 /* StatusTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTransformer.swift; sourceTree = "<group>"; };
-		8149B7632216196D00243E13 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingTransformer.swift; sourceTree = "<group>"; };
 		81CAD2F52209D942003C5D32 /* LoanShark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoanShark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CAD2F82209D942003C5D32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 				81CAD2FE2209D942003C5D32 /* Main.storyboard */,
 				81CAD3012209D942003C5D32 /* Info.plist */,
 				81CAD3022209D942003C5D32 /* LoanShark.entitlements */,
-				8149B7632216196D00243E13 /* Application.swift */,
 			);
 			path = LoanShark;
 			sourceTree = "<group>";
@@ -376,7 +373,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8149B7642216196D00243E13 /* Application.swift in Sources */,
 				81CAD34B220B618D003C5D32 /* ExtensionRequestViewController.swift in Sources */,
 				81CAD3292209D9F1003C5D32 /* ActionOptions.swift in Sources */,
 				81CAD33F220A2AED003C5D32 /* StatusListener.swift in Sources */,

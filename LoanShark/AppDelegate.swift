@@ -41,7 +41,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             let period = LoanPeriod(startDate: startDate, endDate: endDate)
             self.willChangeValue(forKey: "loanerManager")
             self.loanerManager.loanPeriod = period
-            NSLog(self.loanerManager.loanStatus.toString())
+            self.didChangeValue(forKey: "loanerManager")
+        }
+        
+        if let loanee = Preferences.sharedInstance.loaneeDetails {
+            self.willChangeValue(forKey: "loanerManager")
+            self.loanerManager.loanee = loanee
             self.didChangeValue(forKey: "loanerManager")
         }
         
