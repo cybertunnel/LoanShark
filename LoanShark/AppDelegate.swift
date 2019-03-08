@@ -50,6 +50,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             self.didChangeValue(forKey: "loanerManager")
         }
         
+        if let tech = Preferences.sharedInstance.contactDetails {
+            self.willChangeValue(forKey: "loanerManager")
+            self.loanerManager.tech = tech
+            self.didChangeValue(forKey: "loanerManager")
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodChanged(_:)), name: NSNotification.Name.loanerPeriodChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodSet(_:)), name: NSNotification.Name.loanerPeriodSet, object: nil)
         
         /**
         if let loanee = Preferences.sharedInstance.loaneeDetails {
@@ -77,6 +85,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         ValueTransformer.setValueTransformer(StatusTransformer(), forName: .statusTransformer)
         ValueTransformer.setValueTransformer(TimerTransformer(), forName: .timerTransformer)
         ValueTransformer.setValueTransformer(RemainingTransformer(), forName: .remainingTransformer)
+    }
+    
+    @objc func loanPeriodChanged(_ aNotification: Notification) {
+        self.willChangeValue(forKey: "loanerManager")
+        self.didChangeValue(forKey: "loanerManager")
+    }
+    
+    @objc func loanPeriodSet(_ aNotification: Notification) {
+        self.willChangeValue(forKey: "loanerManager")
+        self.didChangeValue(forKey: "loanerManager")
     }
 }
 

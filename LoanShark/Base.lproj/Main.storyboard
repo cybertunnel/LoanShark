@@ -82,12 +82,12 @@
                                     <menuItem title="Assigned User:" id="8R1-P1-SZm">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanee" id="vhd-Rl-O0N">
+                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" previousBinding="vhd-Rl-O0N" id="FIY-gg-Phm">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">NSIsNil</string>
                                                 </dictionary>
                                             </binding>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" previousBinding="vhd-Rl-O0N" id="5Vc-en-eH1">
+                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanee" id="vhd-Rl-O0N">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">NSIsNil</string>
                                                 </dictionary>
@@ -118,12 +118,12 @@
                                     <menuItem title="Phone Number:" id="756-if-ig7">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanee" id="tmo-Ia-DdT">
+                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" previousBinding="tmo-Ia-DdT" id="mDu-NO-mdF">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">NSIsNil</string>
                                                 </dictionary>
                                             </binding>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" previousBinding="tmo-Ia-DdT" id="mDu-NO-mdF">
+                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanee" id="tmo-Ia-DdT">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">NSIsNil</string>
                                                 </dictionary>
@@ -137,6 +137,13 @@
                                     </menuItem>
                                 </items>
                             </menu>
+                            <connections>
+                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" id="qoc-4w-wBb">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
                         </menuItem>
                         <menuItem title="Contact" id="6tG-0V-pGD" userLabel="Contact">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -145,14 +152,44 @@
                                     <menuItem title="Email Address:" id="dDC-gA-FBf">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <binding destination="JhK-Ks-yo4" name="hidden" keyPath="values" id="6WV-QX-yB0"/>
+                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.tech" id="wbt-FZ-vbi">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSIsNil</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.tech" previousBinding="wbt-FZ-vbi" id="O8b-pd-xqQ">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSIsNil</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.techEmail" id="Iig-dc-rnD"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Phone Number:" id="CJc-I9-tTV">
                                         <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.tech" id="MX4-GM-TBN">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSIsNil</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.tech" previousBinding="MX4-GM-TBN" id="cLp-hm-J6E">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSIsNil</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.techPhone" id="duv-yj-ykz"/>
+                                        </connections>
                                     </menuItem>
                                 </items>
                             </menu>
+                            <connections>
+                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.tech" id="KOu-P7-G6T">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
                         </menuItem>
                         <menuItem title="Administrator" id="LY3-Ct-XxW">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -161,12 +198,22 @@
                                     <menuItem title="Configure" id="CGc-d9-pUa">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
+                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod" id="Kbl-Kd-ch8">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSIsNotNil</string>
+                                                </dictionary>
+                                            </binding>
                                             <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="bB6-3X-qhi"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extend" id="wv5-v9-Wbd">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
+                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod" id="6Sh-sP-6PJ">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSIsNil</string>
+                                                </dictionary>
+                                            </binding>
                                             <segue destination="B8D-0N-5wS" kind="modal" identifier="extend" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="6SY-2e-R2H"/>
                                         </connections>
                                     </menuItem>
@@ -192,7 +239,7 @@
                                     <menuItem title="Extension Request Screen" id="eXX-9h-xrq">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="t7t-sB-qfQ" kind="modal" id="UHg-Ui-kxk"/>
+                                            <segue destination="gZa-NH-KiA" kind="modal" id="MaI-bj-0sO"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Configuration Screen" id="hsq-E0-Udh">
@@ -217,6 +264,7 @@
                 <userDefaultsController id="MeZ-Xa-r1f"/>
                 <userDefaultsController id="q4z-48-IQ2"/>
                 <userDefaultsController id="w9d-yd-MRm"/>
+                <userDefaultsController id="ZNr-9s-d6A"/>
             </objects>
             <point key="canvasLocation" x="131" y="-162"/>
         </scene>
@@ -1233,6 +1281,7 @@ DQ
     <inferredMetricsTieBreakers>
         <segue reference="U5K-mc-5fC"/>
         <segue reference="WxV-BK-mYs"/>
+        <segue reference="ebf-zh-Kg3"/>
         <segue reference="6SY-2e-R2H"/>
     </inferredMetricsTieBreakers>
 </document>

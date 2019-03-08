@@ -93,6 +93,24 @@ import Foundation
         }
     }
     
+    @objc var techEmail: String? {
+        get {
+            guard let email = self.tech?.emailAddr else {
+                return nil
+            }
+            return "Email: \(email)"
+        }
+    }
+    
+    @objc var techPhone: String? {
+        get {
+            guard let phone = self.tech?.phoneNum else {
+                return nil
+            }
+            return "Phone Number: \(phone)"
+        }
+    }
+    
     @objc var loanPeriod: LoanPeriod? {
         willSet {
             self.willChangeValue(forKey: "loanPeriod")
