@@ -18,22 +18,11 @@ class StatusTransformer: ValueTransformer {
     }
     
     override func transformedValue(_ value: Any?) -> Any? {
-        if let status = value as? LoanManager.Status {
-            switch status {
-            case .active:
-                return "Status: Active"
-            case .critical:
-                return "Status: Critical"
-            case .expired:
-                return "Status: Expired"
-            case .notSet:
-                return "Status: Not Configured"
-            case .warning:
-                return "Status: Warning"
-            }
-        }
-        else {
-            return "Status: Not Configured"
+        if let statusInt = value as? UInt {
+            let status = LoanManager.Status.init(rawValue: statusInt)
+            return "Status: \(status!.toString())"
+        } else {
+            return "Status: Not Set"
         }
     }
 }

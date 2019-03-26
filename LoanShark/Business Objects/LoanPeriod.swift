@@ -18,7 +18,7 @@ import Foundation
     let start: Date
     let end: Date
     
-    var remaining: Int {
+    @objc var remaining: Int {
         get {
             return self.end.days(from: Date())
         }

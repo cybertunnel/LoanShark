@@ -59,11 +59,7 @@ class LoanerConfigurationViewController: NSViewController {
         }
     }
     
-    @objc var requiredCompleted: Bool = false {
-        didSet {
-            print(requiredCompleted)
-        }
-    }
+    @objc var requiredCompleted: Bool = false
     
     
     override func viewDidLoad() {
@@ -77,9 +73,10 @@ class LoanerConfigurationViewController: NSViewController {
         let tech = Person(first: self.techFirst ?? "", last: self.techLast ?? "", emailAddress: self.techEmail ?? "", phoneNumber: self.techPhone ?? "")
         
         Log.write(.info, Log.Category.view, "Requested to provide loanee of " + loanee.description + " a loaner period of " + String(describing: self.loanPeriod) + " assigned by " + tech.description)
-        LoanManager.sharedInstance.setPeriod(Int(self.loanPeriod ?? 0))
         LoanManager.sharedInstance.setLoanee(loanee)
         LoanManager.sharedInstance.setTech(tech)
+        LoanManager.sharedInstance.setPeriod(Int(truncating: self.loanPeriod ?? 0))
+        
         self.view.window?.close()
     }
     
