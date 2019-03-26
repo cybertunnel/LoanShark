@@ -42,22 +42,29 @@ import Foundation
     //  Current status of the loaning period
     @objc var loanStatus: Status {
         get {
-            
+            Log.write(.info, Log.Category.loanManager, "Loan Status requested")
             /// Checks if a loan period has been set.
             guard let period = self.loanPeriod else {
                 Log.write(.error, Log.Category.loanManager, "Loan period has not been set yet.")
                 return .notSet
             }
             
+            Log.write(.debug, Log.Category.loanManager, "period set \(period.description)")
+            
             /// Checking how many days remaining
+            Log.write(.debug, Log.Category.loanManager, "Checking time remaining")
             switch period.remaining {
             case _ where period.remaining >= 15:
+                Log.write(.debug, Log.Category.loanManager, "15 days or more remaining on loaning period")
                 return .active
             case _ where period.remaining >= 5:
+                Log.write(.debug, Log.Category.loanManager, "Between 5 and 14 days remaining on loaning period")
                 return .warning
             case _ where period.remaining >= 0:
+                Log.write(.debug, Log.Category.loanManager, "Between 0 and 4 days remaining on loaning period")
                 return .critical
             default:
+                Log.write(.debug, Log.Category.loanManager, "Less than 0 days remaining on loaning period")
                 return .expired
             }
         }
@@ -152,7 +159,9 @@ import Foundation
         self.loanPeriod = LoanPeriod(startDate: currentDate, endDate: endDate)
         Log.write(.info, Log.Category.loanManager, "Successfully set loaning period ending on " + String(describing: endDate))
         Log.write(.debug, Log.Category.loanManager, "Alerting whole application loaner period has been set.")
-        NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodSet, object: nil)
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodSet, object: nil)
+        }
     }
     
     /**
