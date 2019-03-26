@@ -74,6 +74,18 @@
                                 </binding>
                             </connections>
                         </menuItem>
+                        <menuItem title="Request Extension" id="0ri-sD-RGq">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod.remaining" id="yOX-TU-4w5">
+                                    <dictionary key="options">
+                                        <integer key="NSNullPlaceholder" value="1"/>
+                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                    </dictionary>
+                                </binding>
+                                <segue destination="lRq-Sq-zZ6" kind="show" id="npD-rZ-4Dd"/>
+                            </connections>
+                        </menuItem>
                         <menuItem isSeparatorItem="YES" id="yU3-Fy-LGb"/>
                         <menuItem title="Loanee" id="hAA-WT-oAc">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -474,11 +486,11 @@ DQ
             <objects>
                 <viewController title="LoanShark Loaner Extension Request" showSeguePresentationStyle="single" id="lRq-Sq-zZ6" customClass="ExtensionRequestViewController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="IOZ-KI-u6s">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="208"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="226"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I9g-24-KQd">
-                                <rect key="frame" x="13" y="152" width="454" height="36"/>
+                                <rect key="frame" x="13" y="170" width="454" height="36"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Loan Extension Request" id="eJl-34-jn3">
                                     <font key="font" metaFont="systemThin" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -486,10 +498,10 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="XSG-Zm-ka2">
-                                <rect key="frame" x="15" y="141" width="450" height="5"/>
+                                <rect key="frame" x="15" y="159" width="450" height="5"/>
                             </box>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d8p-En-2hj">
-                                <rect key="frame" x="15" y="115" width="450" height="20"/>
+                                <rect key="frame" x="15" y="133" width="450" height="20"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hp4-ri-dpx">
                                         <rect key="frame" x="-2" y="3" width="118" height="17"/>
@@ -531,10 +543,10 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xor-Tw-D84">
-                                <rect key="frame" x="15" y="56" width="450" height="44"/>
+                                <rect key="frame" x="15" y="68" width="450" height="50"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Syo-Ey-5Jm">
-                                        <rect key="frame" x="-2" y="27" width="78" height="17"/>
+                                        <rect key="frame" x="-2" y="33" width="78" height="17"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Justification" id="pdZ-VO-ldI">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -587,8 +599,30 @@ DQ
                                     </binding>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bW-eL-u7d">
+                                <rect key="frame" x="13" y="49" width="62" height="11"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="kkz-ZO-vsw">
+                                    <font key="font" metaFont="system" size="8"/>
+                                    <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="lRq-Sq-zZ6" name="hidden" keyPath="self.errMsg" id="YwI-uP-aPD">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSIsNil</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="lRq-Sq-zZ6" name="value" keyPath="self.errMsg" id="qmZ-tQ-ZJ3">
+                                        <dictionary key="options">
+                                            <string key="NSNullPlaceholder">Error Message</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="6bW-eL-u7d" firstAttribute="leading" secondItem="xor-Tw-D84" secondAttribute="leading" id="04J-xV-inz"/>
+                            <constraint firstItem="6bW-eL-u7d" firstAttribute="top" secondItem="KaG-Xm-BtI" secondAttribute="bottom" constant="8" id="1Fs-Ij-eIv"/>
                             <constraint firstAttribute="trailing" secondItem="I9g-24-KQd" secondAttribute="trailing" constant="15" id="HuM-ep-kDT"/>
                             <constraint firstItem="xor-Tw-D84" firstAttribute="top" secondItem="d8p-En-2hj" secondAttribute="bottom" constant="15" id="IHI-nl-Shm"/>
                             <constraint firstAttribute="trailing" secondItem="d8p-En-2hj" secondAttribute="trailing" constant="15" id="Jdl-e9-WJ8"/>
@@ -598,7 +632,7 @@ DQ
                             <constraint firstItem="I9g-24-KQd" firstAttribute="top" secondItem="IOZ-KI-u6s" secondAttribute="top" constant="20" id="XrS-V9-jYI"/>
                             <constraint firstItem="xor-Tw-D84" firstAttribute="leading" secondItem="IOZ-KI-u6s" secondAttribute="leading" constant="15" id="YQH-Bm-Kip"/>
                             <constraint firstAttribute="bottom" secondItem="2Sw-si-nbj" secondAttribute="bottom" constant="20" id="YRl-q7-ZOv"/>
-                            <constraint firstItem="2Sw-si-nbj" firstAttribute="top" secondItem="xor-Tw-D84" secondAttribute="bottom" constant="15" id="gOb-cZ-UYf"/>
+                            <constraint firstItem="2Sw-si-nbj" firstAttribute="top" secondItem="6bW-eL-u7d" secondAttribute="bottom" constant="8" id="gOb-cZ-UYf"/>
                             <constraint firstItem="I9g-24-KQd" firstAttribute="leading" secondItem="IOZ-KI-u6s" secondAttribute="leading" constant="15" id="hw9-pP-qvb"/>
                             <constraint firstItem="d8p-En-2hj" firstAttribute="leading" secondItem="IOZ-KI-u6s" secondAttribute="leading" constant="15" id="lRx-D2-STt"/>
                             <constraint firstItem="XSG-Zm-ka2" firstAttribute="top" secondItem="I9g-24-KQd" secondAttribute="bottom" constant="8" id="mwx-RN-O8a"/>
@@ -606,6 +640,9 @@ DQ
                             <constraint firstItem="2Sw-si-nbj" firstAttribute="centerX" secondItem="IOZ-KI-u6s" secondAttribute="centerX" id="uYV-r9-Tuu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="requestOptions" destination="3il-7v-uHx" id="I9d-xx-pTv"/>
+                    </connections>
                 </viewController>
                 <customObject id="xoY-gw-u3p" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1302,6 +1339,7 @@ DQ
         <segue reference="U5K-mc-5fC"/>
         <segue reference="WxV-BK-mYs"/>
         <segue reference="ebf-zh-Kg3"/>
+        <segue reference="Kzt-8Q-PxN"/>
         <segue reference="6SY-2e-R2H"/>
     </inferredMetricsTieBreakers>
 </document>
