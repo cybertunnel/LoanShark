@@ -8,6 +8,9 @@
 
 import Cocoa
 
+/**
+ Custom NSWindow to ensure the Lockout Message is able to be come key and display properly.
+ */
 class LockoutWindow: NSWindow {
     override var canBecomeKey: Bool {
         return true
