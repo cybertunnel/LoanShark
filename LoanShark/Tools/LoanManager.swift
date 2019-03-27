@@ -35,6 +35,10 @@ import Foundation
         }
     }
     
+    enum ExtensionError: Error {
+        case LoanerPeriodIsNull
+    }
+    
     
     //  MARK: Variables
     
@@ -233,8 +237,24 @@ import Foundation
      Extends the loaner by the provided amount of time in days.
      - Parameter extensionOf: Number of days the loaner will be extended for.
     */
-    func extend(extensionOf amount: Int) {
+    func extend(extensionOf amount: Int) throws {
         Log.write(.info, Log.Category.loanManager, "Recieved a request to extend loaner by " + String(describing: amount) + " days.")
         
+        guard let period = self.loanPeriod else {
+            throw ExtensionError.LoanerPeriodIsNull
+        }
+        
+        let totalDays = period.remaining + amount
+        guard let endDate = Calendar.current.date(byAdding: .day, value: totalDays, to: Date()) else {
+            return
+        }
+        let newPeriod = LoanPeriod(startDate: period.start, endDate: endDate)
+        
+        Preferences.sharedInstance.endDate = endDate
+        self.loanPeriod = newPeriod
+        
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodChanged, object: nil)
+        }
     }
 }

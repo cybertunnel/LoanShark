@@ -131,6 +131,12 @@ class Preferences {
         }
     }
     
+    public var extensionOptions: Array<String>? {
+        get {
+            return self.userDefaults.array(forKey: "extensionOptions") as? Array<String>
+        }
+    }
+    
     //MARK: Initializers
     
     init(nsUserDefaults: UserDefaults = UserDefaults.standard) {

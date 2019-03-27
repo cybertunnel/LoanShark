@@ -30,6 +30,15 @@ class ExtensionViewController: NSViewController {
         }
     }
     
+    @objc var errMsg: String? {
+        willSet {
+            self.willChangeValue(forKey: "errMsg")
+        }
+        didSet {
+            self.didChangeValue(forKey: "errMsg")
+        }
+    }
+    
     
     //  MARK: Functions
     
@@ -49,7 +58,27 @@ class ExtensionViewController: NSViewController {
     
     //  MARK: IB Actions
     @IBAction func extend(_ sender: NSButton) {
-        self.view.window?.close()
+        guard let extendAmount = self.extensionAmount else {
+            self.errMsg = "Extension period is null."
+            return
+        }
+        
+        guard let extend = Int(exactly: extendAmount) else {
+            self.errMsg = "Error while converting extension."
+            return
+        }
+        
+        if extend < 0 {
+            self.errMsg = "Extension amount is in the negative, must be positive."
+            return
+        }
+        do {
+            try LoanManager.sharedInstance.extend(extensionOf: extend)
+            self.view.window?.close()
+        } catch {
+            self.errMsg = "Error was thrown"
+            return
+        }
     }
     
 }
