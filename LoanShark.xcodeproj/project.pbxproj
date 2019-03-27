@@ -35,6 +35,8 @@
 		81CAD34D220B63DC003C5D32 /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD34C220B63DC003C5D32 /* ExtensionViewController.swift */; };
 		81CAD350220B6D7C003C5D32 /* AgentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD34F220B6D7C003C5D32 /* AgentMenu.swift */; };
 		81CAD353220B725D003C5D32 /* AgentMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD352220B725D003C5D32 /* AgentMenuSegue.swift */; };
+		81E486D8224BB5F20001DE4B /* LockoutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E486D7224BB5F20001DE4B /* LockoutWindowController.swift */; };
+		81E486DA224BB6940001DE4B /* LockoutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E486D9224BB6940001DE4B /* LockoutWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,8 @@
 		81CAD34C220B63DC003C5D32 /* ExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
 		81CAD34F220B6D7C003C5D32 /* AgentMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentMenu.swift; sourceTree = "<group>"; };
 		81CAD352220B725D003C5D32 /* AgentMenuSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentMenuSegue.swift; sourceTree = "<group>"; };
+		81E486D7224BB5F20001DE4B /* LockoutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockoutWindowController.swift; sourceTree = "<group>"; };
+		81E486D9224BB6940001DE4B /* LockoutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockoutWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,8 @@
 			children = (
 				81CAD340220A3DB0003C5D32 /* LoanerExpiredViewController.swift */,
 				81CAD346220B3015003C5D32 /* LoanerConfigurationViewController.swift */,
+				81E486D7224BB5F20001DE4B /* LockoutWindowController.swift */,
+				81E486D9224BB6940001DE4B /* LockoutWindow.swift */,
 				81CAD348220B4295003C5D32 /* AuthenticationViewController.swift */,
 				81CAD34A220B618D003C5D32 /* ExtensionRequestViewController.swift */,
 				81CAD34C220B63DC003C5D32 /* ExtensionViewController.swift */,
@@ -384,7 +390,9 @@
 				81CAD349220B4295003C5D32 /* AuthenticationViewController.swift in Sources */,
 				81CAD331220A0F9E003C5D32 /* Preferences.swift in Sources */,
 				81CAD353220B725D003C5D32 /* AgentMenuSegue.swift in Sources */,
+				81E486DA224BB6940001DE4B /* LockoutWindow.swift in Sources */,
 				81CAD347220B3015003C5D32 /* LoanerConfigurationViewController.swift in Sources */,
+				81E486D8224BB5F20001DE4B /* LockoutWindowController.swift in Sources */,
 				81CAD333220A0FB2003C5D32 /* UserDefaults_Extension.swift in Sources */,
 				81CAD32D220A0C68003C5D32 /* Date_Extension.swift in Sources */,
 				81CAD2FB2209D942003C5D32 /* ViewController.swift in Sources */,

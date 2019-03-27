@@ -83,7 +83,7 @@
                                         <string key="NSValueTransformerName">NSIsNil</string>
                                     </dictionary>
                                 </binding>
-                                <segue destination="lRq-Sq-zZ6" kind="show" id="npD-rZ-4Dd"/>
+                                <segue destination="lRq-Sq-zZ6" kind="modal" id="npD-rZ-4Dd"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="yU3-Fy-LGb"/>
@@ -444,8 +444,8 @@ DQ
         <!--Window Controller-->
         <scene sceneID="WDF-T0-nk8">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="NZG-5q-u8T" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aqW-aO-hIt">
+                <windowController showSeguePresentationStyle="single" id="NZG-5q-u8T" customClass="LockoutWindowController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aqW-aO-hIt" customClass="LockoutWindow" customModule="LoanShark" customModuleProvider="target">
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
@@ -457,6 +457,10 @@ DQ
                     </connections>
                 </windowController>
                 <customObject id="tD4-qN-wmQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" id="E1G-GH-iRY">
+                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </visualEffectView>
             </objects>
             <point key="canvasLocation" x="631" y="250"/>
         </scene>
@@ -600,7 +604,7 @@ DQ
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bW-eL-u7d">
-                                <rect key="frame" x="13" y="49" width="62" height="11"/>
+                                <rect key="frame" x="13" y="49" width="454" height="11"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="kkz-ZO-vsw">
                                     <font key="font" metaFont="system" size="8"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
@@ -634,6 +638,7 @@ DQ
                             <constraint firstAttribute="bottom" secondItem="2Sw-si-nbj" secondAttribute="bottom" constant="20" id="YRl-q7-ZOv"/>
                             <constraint firstItem="2Sw-si-nbj" firstAttribute="top" secondItem="6bW-eL-u7d" secondAttribute="bottom" constant="8" id="gOb-cZ-UYf"/>
                             <constraint firstItem="I9g-24-KQd" firstAttribute="leading" secondItem="IOZ-KI-u6s" secondAttribute="leading" constant="15" id="hw9-pP-qvb"/>
+                            <constraint firstItem="6bW-eL-u7d" firstAttribute="trailing" secondItem="KaG-Xm-BtI" secondAttribute="trailing" id="i2M-W4-mkc"/>
                             <constraint firstItem="d8p-En-2hj" firstAttribute="leading" secondItem="IOZ-KI-u6s" secondAttribute="leading" constant="15" id="lRx-D2-STt"/>
                             <constraint firstItem="XSG-Zm-ka2" firstAttribute="top" secondItem="I9g-24-KQd" secondAttribute="bottom" constant="8" id="mwx-RN-O8a"/>
                             <constraint firstItem="XSG-Zm-ka2" firstAttribute="leading" secondItem="IOZ-KI-u6s" secondAttribute="leading" constant="15" id="qAs-Af-OY3"/>
@@ -1279,7 +1284,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Mv-vw-dCb">
-                                <rect key="frame" x="13" y="44" width="62" height="11"/>
+                                <rect key="frame" x="13" y="44" width="454" height="11"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="adq-Oh-ody">
                                     <font key="font" metaFont="system" size="8"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
@@ -1308,6 +1313,7 @@ DQ
                             <constraint firstItem="G0B-tz-taH" firstAttribute="centerX" secondItem="zCF-fv-Dwm" secondAttribute="centerX" id="LNP-Lv-NaF"/>
                             <constraint firstItem="ql0-BB-QiJ" firstAttribute="centerY" secondItem="xua-8n-aZT" secondAttribute="centerY" id="T55-8f-1mg"/>
                             <constraint firstAttribute="trailing" secondItem="lyJ-Ow-hQZ" secondAttribute="trailing" constant="15" id="TYZ-h4-xFv"/>
+                            <constraint firstItem="5Mv-vw-dCb" firstAttribute="trailing" secondItem="lyJ-Ow-hQZ" secondAttribute="trailing" id="WjG-wf-dp1"/>
                             <constraint firstItem="HLO-Ag-DaG" firstAttribute="leading" secondItem="zCF-fv-Dwm" secondAttribute="leading" constant="15" id="XaL-bF-k8h"/>
                             <constraint firstItem="xua-8n-aZT" firstAttribute="top" secondItem="r78-lc-Y8r" secondAttribute="bottom" constant="15" id="XkP-jd-PAQ"/>
                             <constraint firstItem="ql0-BB-QiJ" firstAttribute="leading" secondItem="zCF-fv-Dwm" secondAttribute="leading" constant="15" id="daV-p3-BtG"/>
@@ -1329,7 +1335,7 @@ DQ
                 <customObject id="DLm-0z-y7p" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="A7O-wQ-bUH"/>
             </objects>
-            <point key="canvasLocation" x="2224" y="660"/>
+            <point key="canvasLocation" x="2288" y="596"/>
         </scene>
     </scenes>
     <resources>
@@ -1339,7 +1345,7 @@ DQ
         <segue reference="U5K-mc-5fC"/>
         <segue reference="WxV-BK-mYs"/>
         <segue reference="ebf-zh-Kg3"/>
-        <segue reference="Kzt-8Q-PxN"/>
+        <segue reference="npD-rZ-4Dd"/>
         <segue reference="6SY-2e-R2H"/>
     </inferredMetricsTieBreakers>
 </document>

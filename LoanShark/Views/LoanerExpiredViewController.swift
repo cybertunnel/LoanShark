@@ -85,6 +85,17 @@ class LoanerExpiredViewController: NSViewController {
         self.startTimerCountdown()
     }
     
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        self.view.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
+        self.view.layer?.cornerRadius = 10
+        self.view.layer?.shadowRadius = 2
+        self.view.layer?.borderWidth = 0.2
+        
+        self.view.layer?.isOpaque = true
+    }
+    
     /**
      Function to begin the countdown of the timer.
      - Note: Runs in the background and updates timer on main thread.
