@@ -210,9 +210,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             message = "Please configure before deploying this loaner."
             notification.title = title
             notification.informativeText = message
-            notification.hasActionButton = false
+            notification.hasActionButton = true
             notification.hasReplyButton = false
+            notification.actionButtonTitle = "Configure"
+            notification.otherButtonTitle = "Close"
             notification.soundName = NSUserNotificationDefaultSoundName
+            NSUserNotificationCenter.default.delegate = self
             NSUserNotificationCenter.default.deliver(notification)
             
         }
@@ -221,18 +224,41 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
     
     func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
-        switch notification.activationType {
-        case .actionButtonClicked:
-            var controller: NSWindowController?
-            if #available(OSX 10.13, *) {
-                controller = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("extensionRequest")) as? NSWindowController
-            } else {
-                controller = self.storyboard.instantiateController(withIdentifier: "extensionRequest") as? NSWindowController
+        if notification.title == "Loan Period not set" {
+            switch notification.activationType {
+            case .actionButtonClicked:
+                var controller: NSWindowController?
+                if #available(OSX 10.13, *) {
+                    controller = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("authentication")) as? NSWindowController
+                } else {
+                    controller = self.storyboard.instantiateController(withIdentifier: "authentication") as? NSWindowController
+                }
+                
+                guard let view = controller?.window?.contentViewController as? AuthenticationViewController else {
+                    return
+                }
+                
+                view.destination = "configure"
+                controller?.loadWindow()
+                controller?.showWindow(self)
+            default:
+                print("Nothing")
             }
-            guard let window = controller?.window else {    return  }
-            NSApp.runModal(for: window)
-        default:
-            print("Nothing")
+        }
+        else {
+            switch notification.activationType {
+            case .actionButtonClicked:
+                var controller: NSWindowController?
+                if #available(OSX 10.13, *) {
+                    controller = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("extensionRequest")) as? NSWindowController
+                } else {
+                    controller = self.storyboard.instantiateController(withIdentifier: "extensionRequest") as? NSWindowController
+                }
+                controller?.loadWindow()
+                controller?.showWindow(self)
+            default:
+                print("Nothing")
+            }
         }
     }
     
