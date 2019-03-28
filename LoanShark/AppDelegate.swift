@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import UserNotifications
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
@@ -85,6 +86,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodSet(_:)), name: NSNotification.Name.loanerPeriodSet, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodExpired(_:)), name: NSNotification.Name.loanerPeriodExpired, object: nil)
         self.loanerManager.startPeriodChecker()
+        self.sendUserNotification()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -105,6 +107,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         Log.write(.debug, Log.Category.application, "Application detected a loan period change.")
         self.willChangeValue(forKey: "loanerManager")
         self.didChangeValue(forKey: "loanerManager")
+        self.sendUserNotification()
     }
     
     @objc func loanPeriodSet(_ aNotification: Notification) {
@@ -132,6 +135,108 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         self.lockoutWindow.loadWindow()
         self.lockoutWindow.showWindow(self)
     }
+    
+    private func sendUserNotification() {
+        var title: String
+        var message: String
+        
+        let notification = NSUserNotification()
+        
+        switch self.loanerManager.loanStatus {
+        case .active:
+            title = "Loan Period Active"
+            if let endDate = self.loanerManager.loanPeriod?.end, let remaining = self.loanerManager.loanPeriod?.remaining {
+                message = "You have \(String(describing: remaining)) days remaining on your loan. Ending on \(endDate.toString(format: "MM/dd/yyyy"))."
+            } else {
+                message = "You have \(String(describing: self.loanerManager.loanPeriod?.remaining ?? 0)) days remaining on your loan."
+            }
+            notification.title = title
+            notification.informativeText = message
+            notification.hasReplyButton = false
+            notification.hasActionButton = false
+            notification.soundName = NSUserNotificationDefaultSoundName
+            NSUserNotificationCenter.default.deliver(notification)
+            
+        case .warning:
+            title = "Loan Period Ending Soon"
+            if let endDate = self.loanerManager.loanPeriod?.end, let remaining = self.loanerManager.loanPeriod?.remaining {
+                message = "You have \(String(describing: remaining)) days remaining on your loan. Ending on \(endDate.toString(format: "MM/dd/yyyy"))."
+            } else {
+                message = "You have \(String(describing: self.loanerManager.loanPeriod?.remaining ?? 0)) days remaining on your loan."
+            }
+            notification.title = title
+            notification.informativeText = message
+            notification.deliveryDate = Date(timeIntervalSinceNow: 10)
+            
+            notification.hasReplyButton = false
+            notification.hasActionButton = true
+            notification.actionButtonTitle = "Request Extension"
+            notification.otherButtonTitle = "Close"
+            notification.soundName = NSUserNotificationDefaultSoundName
+            NSUserNotificationCenter.default.delegate = self
+            NSUserNotificationCenter.default.deliver(notification)
+        case .critical:
+            title = "Loan Period Ending Shortly"
+            if let endDate = self.loanerManager.loanPeriod?.end, let remaining = self.loanerManager.loanPeriod?.remaining {
+                message = "You have \(String(describing: remaining)) days remaining on your loan. Ending on \(endDate.toString(format: "MM/dd/yyyy"))."
+            } else {
+                message = "You have \(String(describing: self.loanerManager.loanPeriod?.remaining ?? 0)) days remaining on your loan."
+            }
+            notification.title = title
+            notification.informativeText = message
+            notification.hasReplyButton = false
+            notification.hasActionButton = true
+            notification.actionButtonTitle = "Request Extension"
+            notification.otherButtonTitle = "Close"
+            notification.soundName = NSUserNotificationDefaultSoundName
+            NSUserNotificationCenter.default.deliver(notification)
+        case .expired:
+            title = "Loan Period has expired"
+            if let endDate = self.loanerManager.loanPeriod?.end, let remaining = self.loanerManager.loanPeriod?.remaining {
+                message = "You have \(String(describing: remaining)) days remaining on your loan. Ending on \(endDate.toString(format: "MM/dd/yyyy"))."
+            } else {
+                message = "You have \(String(describing: self.loanerManager.loanPeriod?.remaining ?? 0)) days remaining on your loan."
+            }
+            notification.title = title
+            notification.informativeText = message
+            notification.hasReplyButton = false
+            notification.hasActionButton = true
+            notification.actionButtonTitle = "Request Extension"
+            notification.otherButtonTitle = "Close"
+            notification.soundName = NSUserNotificationDefaultSoundName
+            NSUserNotificationCenter.default.deliver(notification)
+        case .notSet:
+            title = "Loan Period not set"
+            message = "Please configure before deploying this loaner."
+            notification.title = title
+            notification.informativeText = message
+            notification.hasActionButton = false
+            notification.hasReplyButton = false
+            notification.soundName = NSUserNotificationDefaultSoundName
+            NSUserNotificationCenter.default.deliver(notification)
+            
+        }
+        
+        
+    }
+    
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        switch notification.activationType {
+        case .actionButtonClicked:
+            var controller: NSWindowController?
+            if #available(OSX 10.13, *) {
+                controller = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("extensionRequest")) as? NSWindowController
+            } else {
+                controller = self.storyboard.instantiateController(withIdentifier: "extensionRequest") as? NSWindowController
+            }
+            guard let window = controller?.window else {    return  }
+            NSApp.runModal(for: window)
+        default:
+            print("Nothing")
+        }
+    }
+    
+    
     
 }
 
