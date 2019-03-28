@@ -69,6 +69,7 @@ import Foundation
                 return .critical
             default:
                 Log.write(.debug, Log.Category.loanManager, "Less than 0 days remaining on loaning period")
+                NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodExpired, object: nil)
                 return .expired
             }
         }
@@ -255,6 +256,35 @@ import Foundation
         
         DispatchQueue.main.async {
             NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodChanged, object: nil)
+        }
+    }
+    
+    /**
+     Checks every 30 minutes for a period change.
+    */
+    func checkPeriod(_ previousValue: Int) -> Int {
+        Log.write(.debug, Log.Category.loanManager, "Checking period using previous value of \(previousValue.description)")
+        if previousValue != self.loanPeriod?.remaining ?? 0 {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodChanged, object: nil)
+            }
+            return self.loanPeriod?.remaining ?? 0
+        }
+        else {
+            return previousValue
+        }
+    }
+    
+    /**
+     Starts checking the loaning period remaining and alerts the application of a change.
+    */
+    func startPeriodChecker() {
+        DispatchQueue.global(qos: .background).async {
+            var currentRemaining = 0
+            while true {
+                currentRemaining = self.checkPeriod(currentRemaining)
+                sleep(6000)
+            }
         }
     }
 }

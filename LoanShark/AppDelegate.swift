@@ -17,6 +17,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     //  Don't Use
     private let dontUse: Any? = initialSetup()
+    private var lockoutWindow: LockoutWindowController!
+    private var storyboard: NSStoryboard {
+        return NSStoryboard(name: "Main", bundle: nil)
+    }
     
     
     //  MARK: IB Outlets
@@ -79,6 +83,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         Log.write(.info, Log.Category.application, "Enabling observer for notifications.")
         NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodChanged(_:)), name: NSNotification.Name.loanerPeriodChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodSet(_:)), name: NSNotification.Name.loanerPeriodSet, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodExpired(_:)), name: NSNotification.Name.loanerPeriodExpired, object: nil)
+        self.loanerManager.startPeriodChecker()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -106,5 +112,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         self.willChangeValue(forKey: "loanerManager")
         self.didChangeValue(forKey: "loanerManager")
     }
+    
+    @objc func loanPeriodExpired(_ aNotification: Notification) {
+        Log.write(.info, Log.Category.application, "Loan period expired, displaying lockout message")
+        if #available(OSX 10.13, *) {
+            guard let lockoutWC = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
+                Log.write(.error, Log.Category.application, "Unable to get lockout window controller")
+                return
+            }
+            self.lockoutWindow = lockoutWC
+        } else {
+            guard let lockoutWC = self.storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
+                Log.write(.error, Log.Category.application, "Unable to get lockout window controller")
+                return
+            }
+            self.lockoutWindow = lockoutWC
+        }
+        
+        self.lockoutWindow.loadWindow()
+        self.lockoutWindow.showWindow(self)
+    }
+    
 }
 

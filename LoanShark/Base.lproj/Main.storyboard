@@ -444,7 +444,7 @@ DQ
         <!--Window Controller-->
         <scene sceneID="WDF-T0-nk8">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="NZG-5q-u8T" customClass="LockoutWindowController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="lockoutWindow" showSeguePresentationStyle="single" id="NZG-5q-u8T" customClass="LockoutWindowController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aqW-aO-hIt" customClass="LockoutWindow" customModule="LoanShark" customModuleProvider="target">
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
@@ -457,10 +457,6 @@ DQ
                     </connections>
                 </windowController>
                 <customObject id="tD4-qN-wmQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" id="E1G-GH-iRY">
-                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </visualEffectView>
             </objects>
             <point key="canvasLocation" x="631" y="250"/>
         </scene>
