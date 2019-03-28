@@ -251,7 +251,7 @@
                                     <menuItem title="Extension Request Screen" id="eXX-9h-xrq">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="gZa-NH-KiA" kind="modal" id="MaI-bj-0sO"/>
+                                            <segue destination="lRq-Sq-zZ6" kind="show" id="TFM-wG-cfn"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Configuration Screen" id="hsq-E0-Udh">
@@ -463,7 +463,7 @@ DQ
         <!--Window Controller-->
         <scene sceneID="GKv-Is-frS">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="t7t-sB-qfQ" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="extensionRequest" showSeguePresentationStyle="single" id="t7t-sB-qfQ" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Gi0-oB-idJ">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -1340,8 +1340,7 @@ DQ
     <inferredMetricsTieBreakers>
         <segue reference="U5K-mc-5fC"/>
         <segue reference="WxV-BK-mYs"/>
-        <segue reference="ebf-zh-Kg3"/>
-        <segue reference="npD-rZ-4Dd"/>
+        <segue reference="Kzt-8Q-PxN"/>
         <segue reference="6SY-2e-R2H"/>
     </inferredMetricsTieBreakers>
 </document>
