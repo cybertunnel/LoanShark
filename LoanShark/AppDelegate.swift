@@ -86,7 +86,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodSet(_:)), name: NSNotification.Name.loanerPeriodSet, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodExpired(_:)), name: NSNotification.Name.loanerPeriodExpired, object: nil)
         self.loanerManager.startPeriodChecker()
-        self.sendUserNotification()
+        if self.loanerManager.loanStatus == .notSet {
+            self.sendUserNotification()
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
