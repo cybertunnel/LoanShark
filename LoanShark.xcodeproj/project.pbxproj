@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8149B7622216137300243E13 /* StatusTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B7612216137300243E13 /* StatusTransformer.swift */; };
 		815E7FFC221CB11F009E3CA2 /* RemainingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */; };
+		81898DED224E9CB900A70807 /* LoginWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81898DEC224E9CB900A70807 /* LoginWindow.swift */; };
 		81CAD2F92209D942003C5D32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD2F82209D942003C5D32 /* AppDelegate.swift */; };
 		81CAD2FB2209D942003C5D32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD2FA2209D942003C5D32 /* ViewController.swift */; };
 		81CAD2FD2209D942003C5D32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81CAD2FC2209D942003C5D32 /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 /* Begin PBXFileReference section */
 		8149B7612216137300243E13 /* StatusTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTransformer.swift; sourceTree = "<group>"; };
 		815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingTransformer.swift; sourceTree = "<group>"; };
+		81898DEC224E9CB900A70807 /* LoginWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWindow.swift; sourceTree = "<group>"; };
 		81CAD2F52209D942003C5D32 /* LoanShark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoanShark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CAD2F82209D942003C5D32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81CAD2FA2209D942003C5D32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				81CAD338220A1B50003C5D32 /* LoanManager.swift */,
 				81CAD33A220A1CB6003C5D32 /* Log.swift */,
 				81CAD33E220A2AED003C5D32 /* StatusListener.swift */,
+				81898DEC224E9CB900A70807 /* LoginWindow.swift */,
 				81CAD342220A3ED4003C5D32 /* TimerTransformer.swift */,
 				8149B7612216137300243E13 /* StatusTransformer.swift */,
 				815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */,
@@ -390,6 +393,7 @@
 				81CAD349220B4295003C5D32 /* AuthenticationViewController.swift in Sources */,
 				81CAD331220A0F9E003C5D32 /* Preferences.swift in Sources */,
 				81CAD353220B725D003C5D32 /* AgentMenuSegue.swift in Sources */,
+				81898DED224E9CB900A70807 /* LoginWindow.swift in Sources */,
 				81E486DA224BB6940001DE4B /* LockoutWindow.swift in Sources */,
 				81CAD347220B3015003C5D32 /* LoanerConfigurationViewController.swift in Sources */,
 				81E486D8224BB5F20001DE4B /* LockoutWindowController.swift in Sources */,

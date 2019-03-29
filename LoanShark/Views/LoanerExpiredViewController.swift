@@ -106,6 +106,10 @@ class LoanerExpiredViewController: NSViewController {
                 sleep(1)
                 DispatchQueue.main.async {
                     self.timer -= 1
+                    if self.timer <= 0 {
+                        Log.write(.info, Log.Category.application, "Logging user off")
+                        LoginWindow.logoff()
+                    }
                 }
             }
         }
