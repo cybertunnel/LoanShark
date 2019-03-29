@@ -1,3 +1,12 @@
+![Swift 4.0](https://img.shields.io/static/v1.svg?label=Swift&message=4.0&color=green&logo=swift)
+![macOS 10.12](https://img.shields.io/static/v1.svg?label=macOS&message=10.12&color=green&logo=apple)
+![macOS 10.13](https://img.shields.io/static/v1.svg?label=macOS&message=10.13&color=green&logo=apple)
+![macOS 10.14](https://img.shields.io/static/v1.svg?label=macOS&message=10.14&color=green&logo=apple)
+![macOS Dark Mode](https://img.shields.io/static/v1.svg?label=Dark%20Mode&message=enabled&color=green&logo=apple)
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![macOS Dark Mode](https://img.shields.io/static/v1.svg?label=version&message=0.2&color=lightgrey)
+
 ![Lockout Window - Fullscreen](https://user-images.githubusercontent.com/23121750/55244620-e4ed6780-5217-11e9-8aba-d814b1b4f372.png)
 # LoanShark
 LoanShark's goal is to provide a simple, yet effective management to your loaner fleet.
