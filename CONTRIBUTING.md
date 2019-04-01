@@ -34,9 +34,9 @@ Make sure you:
 - Use the correct username and email (make sure your employer is OK that you use your professional email)
 
 ## Getting Help
-The best place to discuss LoanShark is to join the [#loanshark](https://google.com) channel on the [MacAdmins Slack](https://macadmins.herokuapp.com/).
+The best place to discuss LoanShark is to join the [#loanshark](https://macadmins.slack.com/messages/CHGFDDKST) channel on the [MacAdmins Slack](https://macadmins.herokuapp.com/).
 
 ### Development Help
-Since LoanShark is heavily written in Swift, the [#swift](https://google.com) channel on the [MacAdmins Slack](https://macadmins.herokuapp.com/) is a great resource for questions.
+Since LoanShark is heavily written in Swift, the [#swift](https://macadmins.slack.com/messages/C0688BNEM) channel on the [MacAdmins Slack](https://macadmins.herokuapp.com/) is a great resource for questions.
 
 After your first Pull Request(PR) you will be invited to a private developer channel.
