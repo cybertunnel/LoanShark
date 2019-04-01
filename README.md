@@ -8,7 +8,7 @@
 ![macOS Dark Mode](https://img.shields.io/static/v1.svg?label=version&message=0.2&color=lightgrey)
 
 ![Lockout Window - Fullscreen](https://user-images.githubusercontent.com/23121750/55244620-e4ed6780-5217-11e9-8aba-d814b1b4f372.png)
-# LoanShark
+# LoanShark[!LoanShark](https://user-images.githubusercontent.com/23121750/55338309-71916300-546e-11e9-8517-b3d5cbd4ffbd.png)
 LoanShark's goal is to provide a simple, yet effective management to your loaner fleet.
 This utility allows you to:
 - Lockout users after loaning period expires
