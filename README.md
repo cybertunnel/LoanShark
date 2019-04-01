@@ -7,8 +7,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![macOS Dark Mode](https://img.shields.io/static/v1.svg?label=version&message=0.2&color=lightgrey)
 
-![Lockout Window - Fullscreen](https://user-images.githubusercontent.com/23121750/55244620-e4ed6780-5217-11e9-8aba-d814b1b4f372.png)
-# LoanShark
+# LoanShark![LoanShark](https://user-images.githubusercontent.com/23121750/55338309-71916300-546e-11e9-8517-b3d5cbd4ffbd.png)
 LoanShark's goal is to provide a simple, yet effective management to your loaner fleet.
 This utility allows you to:
 - Lockout users after loaning period expires
@@ -40,6 +39,7 @@ LoanShark has a complete loaning lifecycle which includes custom duration, tech 
 ![Loaner Extension Request](https://user-images.githubusercontent.com/23121750/55245638-e750c100-5219-11e9-8c0a-e15b84149bd3.png)
 ![Loaner Extension](https://user-images.githubusercontent.com/23121750/55245640-e881ee00-5219-11e9-8d04-f4229206fbe3.png)
 ![Loaner Expired](https://user-images.githubusercontent.com/23121750/55245647-e9b31b00-5219-11e9-88de-af6d9fee92e0.png)
+![Lockout Window - Fullscreen](https://user-images.githubusercontent.com/23121750/55244620-e4ed6780-5217-11e9-8aba-d814b1b4f372.png)
 
 #### Automatic Email Extension Requests
 LoanShark includes built in support to automatically open default mail client and send email to the tech who assigned the loane
