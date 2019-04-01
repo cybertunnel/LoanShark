@@ -16,8 +16,8 @@ By _secure_ we mean:
 ## How Can You Contribute
 
 ### Contributing to documentation
-The wiki is open to edit for everyone. Don't hesitate to modify it!
-Please ask for help in the Slack channel (see below) or create an issue.
+The [wiki](https://github.com/cybertunnel/LoanShark/wiki) is open to edit for everyone. Don't hesitate to modify it!
+Please ask for help in the Slack channel (see below) or [create an issue](https://github.com/cybertunnel/LoanShark/issues/new).
 
 ### Contributing to code
 Please pick a topic in the issues section:
