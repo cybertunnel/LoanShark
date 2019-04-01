@@ -4,12 +4,12 @@ LoanShark wouldn't have been possible without the help of these folks
 ## Community
 A huge thanks to the community on #LoanShark on the MacAdmins Slack, and especially:
 - @ftiff
- - Used a variety of SplashBuddy code to speed up the process in development.
- - Helping assist in answering my long list of questions during this process.
+  - Used a variety of SplashBuddy code to speed up the process in development.
+  - Helping assist in answering my long list of questions during this process.
 - @jwojda
- - Willing to help test the early Alpha versions of LoanShark
-- #swift on the MacAdmins Slack
- - Helping reduce the head injuries during development from banging my head on the wall(s)
+  - Willing to help test the early Alpha versions of LoanShark
+- [#swift](https://macadmins.slack.com/messages/C0688BNEM) on the [MacAdmins Slack](https://macadmins.herokuapp.com/)
+  - Helping reduce the head injuries during development from banging my head on the wall(s)
 
 
 ## Code
