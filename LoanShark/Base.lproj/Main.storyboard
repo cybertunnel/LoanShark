@@ -313,78 +313,186 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="LoanShark Authentication" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="AuthenticationViewController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="198"/>
+                    <view key="view" misplaced="YES" id="SH2-yM-fko">
+                        <rect key="frame" x="0.0" y="0.0" width="489" height="245"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zpw-RM-CYf">
-                                <rect key="frame" x="13" y="142" width="454" height="36"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="LoanShark Configuration" id="unF-8t-0mS">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zir-3K-NPk">
+                                <rect key="frame" x="13" y="201" width="463" height="36"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="LoanShark Configuration" id="gZ0-35-Zt9">
                                     <font key="font" metaFont="systemThin" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="H5H-RI-TUA">
-                                <rect key="frame" x="8" y="131" width="464" height="5"/>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="QeL-sF-qoA">
+                                <rect key="frame" x="8" y="190" width="473" height="5"/>
                             </box>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8PX-UJ-RZ0">
-                                <rect key="frame" x="13" y="91" width="454" height="34"/>
-                                <textFieldCell key="cell" selectable="YES" title="Please login below to authenticate. Once authenticated the loaner period can be configured." id="OPi-3C-sCL">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EyI-T7-7hK">
+                                <rect key="frame" x="0.0" y="48" width="489" height="144"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="9x0-KT-wg3">
+                                        <rect key="frame" x="0.0" y="72" width="489" height="72"/>
+                                        <subviews>
+                                            <textField autoresizesSubviews="NO" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1WA-cc-2nk">
+                                                <rect key="frame" x="13" y="30" width="463" height="34"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Please login below to authenticate. Once authenticated the loaner period can be configured." id="Nvb-cz-yKD">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sZf-Ca-Wrn">
+                                                <rect key="frame" x="15" y="0.0" width="226" height="22"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Username" drawsBackground="YES" id="DHB-xi-419">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="4DG-yo-6yN">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.username" id="6Pd-aK-U5S">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                            <string key="NSNullPlaceholder">Username</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </textField>
+                                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pAc-WU-fIS">
+                                                <rect key="frame" x="249" y="0.0" width="225" height="22"/>
+                                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="9Cu-Dz-DUC">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <allowedInputSourceLocales>
+                                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                    </allowedInputSourceLocales>
+                                                </secureTextFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="dTp-xp-zMe">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.password" id="v0s-99-4le">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                            <string key="NSNullPlaceholder">Password</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </secureTextField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="1WA-cc-2nk" secondAttribute="trailing" constant="15" id="6zO-Z1-4sN"/>
+                                            <constraint firstItem="sZf-Ca-Wrn" firstAttribute="top" secondItem="1WA-cc-2nk" secondAttribute="bottom" constant="8" id="9af-z6-h2z"/>
+                                            <constraint firstItem="pAc-WU-fIS" firstAttribute="leading" secondItem="sZf-Ca-Wrn" secondAttribute="trailing" constant="8" id="CTd-CP-Lig"/>
+                                            <constraint firstAttribute="bottom" secondItem="sZf-Ca-Wrn" secondAttribute="bottom" id="FCC-eI-n2Y"/>
+                                            <constraint firstItem="1WA-cc-2nk" firstAttribute="top" secondItem="9x0-KT-wg3" secondAttribute="top" constant="8" id="YWf-Bl-eyx"/>
+                                            <constraint firstItem="sZf-Ca-Wrn" firstAttribute="centerY" secondItem="pAc-WU-fIS" secondAttribute="centerY" id="dmi-jo-zOT"/>
+                                            <constraint firstItem="1WA-cc-2nk" firstAttribute="leading" secondItem="9x0-KT-wg3" secondAttribute="leading" constant="15" id="hrd-ZQ-6A8"/>
+                                            <constraint firstItem="sZf-Ca-Wrn" firstAttribute="leading" secondItem="9x0-KT-wg3" secondAttribute="leading" constant="15" id="hu6-i9-HDT"/>
+                                            <constraint firstItem="sZf-Ca-Wrn" firstAttribute="width" secondItem="pAc-WU-fIS" secondAttribute="width" id="pHY-Ea-F5u"/>
+                                            <constraint firstAttribute="trailing" secondItem="pAc-WU-fIS" secondAttribute="trailing" constant="15" id="s9N-Tw-Gkn"/>
+                                            <constraint firstItem="pAc-WU-fIS" firstAttribute="leading" secondItem="sZf-Ca-Wrn" secondAttribute="trailing" constant="8" id="swD-vn-osT"/>
+                                        </constraints>
+                                        <connections>
+                                            <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.isSharedSecretEnabled" id="hbd-AX-lLJ"/>
+                                        </connections>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="G1w-eL-CW2">
+                                        <rect key="frame" x="0.0" y="0.0" width="489" height="72"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GO5-4r-FCg">
+                                                <rect key="frame" x="13" y="30" width="463" height="34"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Please enter the password below to authenticate." id="hqa-Ft-mtx">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4YT-v9-0MB">
+                                                <rect key="frame" x="15" y="0.0" width="459" height="22"/>
+                                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="7z7-hl-Ed1">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <allowedInputSourceLocales>
+                                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                    </allowedInputSourceLocales>
+                                                </secureTextFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="vN2-bO-D8y">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.sharedSecret" id="jKc-rc-eIo">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                            <string key="NSNullPlaceholder">Password</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </secureTextField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="GO5-4r-FCg" firstAttribute="leading" secondItem="G1w-eL-CW2" secondAttribute="leading" constant="15" id="8qg-Xo-aRm"/>
+                                            <constraint firstItem="4YT-v9-0MB" firstAttribute="leading" secondItem="G1w-eL-CW2" secondAttribute="leading" constant="15" id="J3u-mA-AOv"/>
+                                            <constraint firstItem="GO5-4r-FCg" firstAttribute="top" secondItem="G1w-eL-CW2" secondAttribute="top" constant="8" id="Mtp-8G-xf6"/>
+                                            <constraint firstAttribute="bottom" secondItem="4YT-v9-0MB" secondAttribute="bottom" id="eSX-Be-W6L"/>
+                                            <constraint firstItem="4YT-v9-0MB" firstAttribute="top" secondItem="GO5-4r-FCg" secondAttribute="bottom" constant="8" id="eZP-sc-F4M"/>
+                                            <constraint firstAttribute="trailing" secondItem="4YT-v9-0MB" secondAttribute="trailing" constant="15" id="l8I-E5-U8h"/>
+                                            <constraint firstAttribute="trailing" secondItem="GO5-4r-FCg" secondAttribute="trailing" constant="15" id="rAP-ed-NTC"/>
+                                        </constraints>
+                                        <connections>
+                                            <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.isSharedSecretEnabled" id="mWd-3L-2tF">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="G1w-eL-CW2" secondAttribute="trailing" id="EdI-vi-AQJ"/>
+                                    <constraint firstItem="9x0-KT-wg3" firstAttribute="leading" secondItem="EyI-T7-7hK" secondAttribute="leading" id="OSL-dp-xYb"/>
+                                    <constraint firstAttribute="trailing" secondItem="9x0-KT-wg3" secondAttribute="trailing" id="RU4-wx-mWN"/>
+                                    <constraint firstItem="G1w-eL-CW2" firstAttribute="leading" secondItem="EyI-T7-7hK" secondAttribute="leading" id="oow-32-qro"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-it-phG">
+                                <rect key="frame" x="13" y="37" width="463" height="11"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="oTM-tF-M5B">
+                                    <font key="font" metaFont="system" size="9"/>
+                                    <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nGc-Io-CxJ">
-                                <rect key="frame" x="15" y="61" width="221" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Username" drawsBackground="YES" id="2oZ-tZ-4JM">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.username" id="Rgp-Rt-vDx">
+                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.errorMessage" id="dqa-9r-lga">
                                         <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                            <string key="NSNullPlaceholder">Username</string>
+                                            <string key="NSValueTransformerName">NSIsNil</string>
                                         </dictionary>
                                     </binding>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.errorMessage" id="WjG-A1-scn"/>
                                 </connections>
                             </textField>
-                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ih2-gr-Rdi">
-                                <rect key="frame" x="244" y="61" width="221" height="22"/>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="gIj-Ej-LMe">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <allowedInputSourceLocales>
-                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                    </allowedInputSourceLocales>
-                                </secureTextFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.password" id="3YF-dP-4U6">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                            <string key="NSNullPlaceholder">Password</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </secureTextField>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="nli-ZE-3uz">
-                                <rect key="frame" x="456" y="8" width="16" height="16"/>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="animate" keyPath="self.performingAuthorization" id="7jG-yG-3pJ"/>
-                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.performingAuthorization" id="QjH-6x-ia1">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </progressIndicator>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="96W-hV-4nB">
-                                <rect key="frame" x="182" y="13" width="117" height="32"/>
-                                <buttonCell key="cell" type="push" title="Authenticate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="whu-fI-XQZ">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0OV-xL-jfF">
+                                <rect key="frame" x="186" y="1" width="117" height="32"/>
+                                <buttonCell key="cell" type="push" title="Authenticate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w9j-8M-zPd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
@@ -392,51 +500,41 @@ DQ
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="performAuthorization:" target="XfG-lQ-9wD" id="0pp-69-cZT"/>
-                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.requirementsCompleted" id="2hb-q1-LND"/>
+                                    <action selector="performAuthorization:" target="XfG-lQ-9wD" id="Uip-ez-yAv"/>
+                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.requirementsCompleted" id="ENB-Oo-9lA"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m27-IF-l1a">
-                                <rect key="frame" x="13" y="48" width="449" height="11"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="2WE-yH-gez">
-                                    <font key="font" metaFont="miniSystem"/>
-                                    <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WNK-wj-AwT">
+                                <rect key="frame" x="465" y="8" width="16" height="16"/>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.errorMessage" id="eeY-DH-WfK">
+                                    <binding destination="XfG-lQ-9wD" name="animate" keyPath="self.performingAuthorization" id="QYp-T4-cL8"/>
+                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.performingAuthorization" id="915-9l-rpC">
                                         <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNil</string>
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.errorMessage" id="ifZ-Jh-FDl"/>
                                 </connections>
-                            </textField>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Zpw-RM-CYf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="4L4-Yc-Tld"/>
-                            <constraint firstItem="96W-hV-4nB" firstAttribute="top" secondItem="nGc-Io-CxJ" secondAttribute="bottom" constant="20" id="7ha-uS-GH6"/>
-                            <constraint firstItem="nGc-Io-CxJ" firstAttribute="width" secondItem="ih2-gr-Rdi" secondAttribute="width" id="CA2-Aj-mXN"/>
-                            <constraint firstAttribute="trailing" secondItem="H5H-RI-TUA" secondAttribute="trailing" constant="8" id="CB5-sK-K0N"/>
-                            <constraint firstItem="Zpw-RM-CYf" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="CLR-qj-4fW"/>
-                            <constraint firstItem="nGc-Io-CxJ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="FKR-rb-TRR"/>
-                            <constraint firstItem="m27-IF-l1a" firstAttribute="top" secondItem="nGc-Io-CxJ" secondAttribute="bottom" constant="2" id="HWi-Xe-jeR"/>
-                            <constraint firstItem="ih2-gr-Rdi" firstAttribute="top" secondItem="8PX-UJ-RZ0" secondAttribute="bottom" constant="8" id="IsN-sc-gl7"/>
-                            <constraint firstItem="8PX-UJ-RZ0" firstAttribute="top" secondItem="H5H-RI-TUA" secondAttribute="bottom" constant="8" id="LZc-XZ-7Vd"/>
-                            <constraint firstAttribute="bottom" secondItem="96W-hV-4nB" secondAttribute="bottom" constant="20" id="OJM-Oc-tRc"/>
-                            <constraint firstAttribute="bottom" secondItem="nli-ZE-3uz" secondAttribute="bottom" constant="8" id="Rry-by-474"/>
-                            <constraint firstItem="H5H-RI-TUA" firstAttribute="top" secondItem="Zpw-RM-CYf" secondAttribute="bottom" constant="8" id="ZVF-On-OXa"/>
-                            <constraint firstItem="H5H-RI-TUA" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="b73-7U-OUN"/>
-                            <constraint firstItem="nGc-Io-CxJ" firstAttribute="top" secondItem="8PX-UJ-RZ0" secondAttribute="bottom" constant="8" id="bTl-JW-XDb"/>
-                            <constraint firstItem="m27-IF-l1a" firstAttribute="leading" secondItem="nGc-Io-CxJ" secondAttribute="leading" id="ccC-xI-Iop"/>
-                            <constraint firstItem="ih2-gr-Rdi" firstAttribute="leading" secondItem="nGc-Io-CxJ" secondAttribute="trailing" constant="8" id="eWp-Az-IiZ"/>
-                            <constraint firstAttribute="trailing" secondItem="ih2-gr-Rdi" secondAttribute="trailing" constant="15" id="gfX-du-Ux3"/>
-                            <constraint firstAttribute="trailing" secondItem="nli-ZE-3uz" secondAttribute="trailing" constant="8" id="iiI-p7-BfM"/>
-                            <constraint firstItem="8PX-UJ-RZ0" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="jAQ-Ij-Dx5"/>
-                            <constraint firstAttribute="trailing" secondItem="8PX-UJ-RZ0" secondAttribute="trailing" constant="15" id="jPt-E0-CSE"/>
-                            <constraint firstItem="96W-hV-4nB" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="jwU-Mk-DWV"/>
-                            <constraint firstAttribute="trailing" secondItem="Zpw-RM-CYf" secondAttribute="trailing" constant="15" id="p33-G3-HfV"/>
-                            <constraint firstAttribute="trailing" secondItem="m27-IF-l1a" secondAttribute="trailing" constant="20" id="wvG-mR-vA6"/>
+                            <constraint firstItem="QeL-sF-qoA" firstAttribute="leading" secondItem="SH2-yM-fko" secondAttribute="leading" constant="8" id="1ZH-Ss-TdP"/>
+                            <constraint firstItem="zir-3K-NPk" firstAttribute="leading" secondItem="SH2-yM-fko" secondAttribute="leading" constant="15" id="50O-nG-GOV"/>
+                            <constraint firstItem="xcy-it-phG" firstAttribute="leading" secondItem="SH2-yM-fko" secondAttribute="leading" constant="15" id="5s5-MZ-kP0"/>
+                            <constraint firstItem="zir-3K-NPk" firstAttribute="top" secondItem="SH2-yM-fko" secondAttribute="top" constant="8" id="Dv7-RO-BAG"/>
+                            <constraint firstAttribute="bottom" secondItem="WNK-wj-AwT" secondAttribute="bottom" constant="8" id="OG4-ie-13G"/>
+                            <constraint firstItem="EyI-T7-7hK" firstAttribute="top" secondItem="QeL-sF-qoA" secondAttribute="bottom" id="P4b-jH-0BK"/>
+                            <constraint firstItem="QeL-sF-qoA" firstAttribute="top" secondItem="zir-3K-NPk" secondAttribute="bottom" constant="8" id="RWn-9O-zyH"/>
+                            <constraint firstAttribute="trailing" secondItem="QeL-sF-qoA" secondAttribute="trailing" constant="8" id="XSd-ov-CWX"/>
+                            <constraint firstAttribute="trailing" secondItem="WNK-wj-AwT" secondAttribute="trailing" constant="8" id="brS-Qz-FqJ"/>
+                            <constraint firstItem="xcy-it-phG" firstAttribute="top" secondItem="EyI-T7-7hK" secondAttribute="bottom" id="byz-ep-pP8"/>
+                            <constraint firstItem="0OV-xL-jfF" firstAttribute="centerX" secondItem="SH2-yM-fko" secondAttribute="centerX" id="ci9-37-BDN"/>
+                            <constraint firstItem="0OV-xL-jfF" firstAttribute="top" secondItem="xcy-it-phG" secondAttribute="bottom" constant="8" id="eZH-FT-9zK"/>
+                            <constraint firstAttribute="bottom" secondItem="0OV-xL-jfF" secondAttribute="bottom" constant="8" id="hxm-rG-sGA"/>
+                            <constraint firstAttribute="trailing" secondItem="EyI-T7-7hK" secondAttribute="trailing" id="o8z-fH-yAN"/>
+                            <constraint firstItem="EyI-T7-7hK" firstAttribute="top" secondItem="QeL-sF-qoA" secondAttribute="bottom" id="pCj-3J-z6e"/>
+                            <constraint firstAttribute="trailing" secondItem="xcy-it-phG" secondAttribute="trailing" constant="15" id="sLt-ah-hHT"/>
+                            <constraint firstAttribute="trailing" secondItem="zir-3K-NPk" secondAttribute="trailing" constant="15" id="uFL-FZ-5KO"/>
+                            <constraint firstItem="EyI-T7-7hK" firstAttribute="leading" secondItem="SH2-yM-fko" secondAttribute="leading" id="w7h-jH-QPD"/>
                         </constraints>
                     </view>
                     <connections>
@@ -447,7 +545,7 @@ DQ
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="JhK-Ks-yo4"/>
             </objects>
-            <point key="canvasLocation" x="189" y="605"/>
+            <point key="canvasLocation" x="75" y="742"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="WDF-T0-nk8">
@@ -1346,9 +1444,9 @@ DQ
         <image name="NSLockLockedTemplate" width="10" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U5K-mc-5fC"/>
-        <segue reference="WxV-BK-mYs"/>
-        <segue reference="Kzt-8Q-PxN"/>
+        <segue reference="mdw-5s-7aC"/>
+        <segue reference="Kzu-Rj-n2l"/>
+        <segue reference="TFM-wG-cfn"/>
         <segue reference="bB6-3X-qhi"/>
     </inferredMetricsTieBreakers>
 </document>
