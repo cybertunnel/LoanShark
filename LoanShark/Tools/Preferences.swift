@@ -143,6 +143,12 @@ class Preferences {
         }
     }
     
+    public var sharedSecret: String? {
+        get {
+            return self.userDefaults.string(forKey: "sharedSecret")
+        }
+    }
+    
     //MARK: Initializers
     
     init(nsUserDefaults: UserDefaults = UserDefaults.standard) {
