@@ -26,7 +26,6 @@
 		81CAD337220A1409003C5D32 /* NotificationName_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD336220A1409003C5D32 /* NotificationName_Extension.swift */; };
 		81CAD339220A1B50003C5D32 /* LoanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD338220A1B50003C5D32 /* LoanManager.swift */; };
 		81CAD33B220A1CB6003C5D32 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD33A220A1CB6003C5D32 /* Log.swift */; };
-		81CAD33F220A2AED003C5D32 /* StatusListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD33E220A2AED003C5D32 /* StatusListener.swift */; };
 		81CAD341220A3DB0003C5D32 /* LoanerExpiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD340220A3DB0003C5D32 /* LoanerExpiredViewController.swift */; };
 		81CAD343220A3ED4003C5D32 /* TimerTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD342220A3ED4003C5D32 /* TimerTransformer.swift */; };
 		81CAD345220B2AC3003C5D32 /* ActivationAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD344220B2AC3003C5D32 /* ActivationAuthentication.swift */; };
@@ -84,7 +83,6 @@
 		81CAD336220A1409003C5D32 /* NotificationName_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName_Extension.swift; sourceTree = "<group>"; };
 		81CAD338220A1B50003C5D32 /* LoanManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanManager.swift; sourceTree = "<group>"; };
 		81CAD33A220A1CB6003C5D32 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		81CAD33E220A2AED003C5D32 /* StatusListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListener.swift; sourceTree = "<group>"; };
 		81CAD340220A3DB0003C5D32 /* LoanerExpiredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanerExpiredViewController.swift; sourceTree = "<group>"; };
 		81CAD342220A3ED4003C5D32 /* TimerTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTransformer.swift; sourceTree = "<group>"; };
 		81CAD344220B2AC3003C5D32 /* ActivationAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationAuthentication.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 				81CAD332220A0FB2003C5D32 /* UserDefaults_Extension.swift */,
 				81CAD338220A1B50003C5D32 /* LoanManager.swift */,
 				81CAD33A220A1CB6003C5D32 /* Log.swift */,
-				81CAD33E220A2AED003C5D32 /* StatusListener.swift */,
 				81898DEC224E9CB900A70807 /* LoginWindow.swift */,
 				81CAD342220A3ED4003C5D32 /* TimerTransformer.swift */,
 				8149B7612216137300243E13 /* StatusTransformer.swift */,
@@ -384,7 +381,6 @@
 			files = (
 				81CAD34B220B618D003C5D32 /* ExtensionRequestViewController.swift in Sources */,
 				81CAD3292209D9F1003C5D32 /* ActionOptions.swift in Sources */,
-				81CAD33F220A2AED003C5D32 /* StatusListener.swift in Sources */,
 				815E7FFC221CB11F009E3CA2 /* RemainingTransformer.swift in Sources */,
 				81CAD339220A1B50003C5D32 /* LoanManager.swift in Sources */,
 				8149B7622216137300243E13 /* StatusTransformer.swift in Sources */,
