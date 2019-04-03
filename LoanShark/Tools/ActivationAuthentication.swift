@@ -25,6 +25,7 @@ class ActivationAuthentication {
     enum AuthenticationError: Error {
         case UnableToAuthenticate(String)
         case NoAccessGroups
+        case NoSharedSecretStored
     }
     
     //  MARK: Functions
@@ -144,6 +145,21 @@ class ActivationAuthentication {
             sleep(1)
         }
         return authorized
+    }
+    
+    /**
+     Authenicates a user using a shared secret.
+     - Parameters:
+        - secret: The secret given to the authentication window.
+     
+     - Note: This should only be used if not using Jamf Pro
+    */
+    func authenticate(secret: String) throws -> Bool {
+        guard let sharedSecret = Preferences.sharedInstance.sharedSecret else {
+            Log.write(.error, Log.Category.authenticator, "Shared Secret not in preferences.")
+            throw AuthenticationError.NoSharedSecretStored
+        }
+        return sharedSecret == secret.sha256()
     }
     
     /**
