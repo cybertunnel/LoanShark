@@ -268,6 +268,13 @@
                                     </menuItem>
                                 </items>
                             </menu>
+                            <connections>
+                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.enableDebugging" id="yQb-10-cGL">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
                         </menuItem>
                     </items>
                 </menu>
@@ -277,6 +284,7 @@
                 <userDefaultsController id="q4z-48-IQ2"/>
                 <userDefaultsController id="w9d-yd-MRm"/>
                 <userDefaultsController id="ZNr-9s-d6A"/>
+                <userDefaultsController id="Vyy-Ln-m1a"/>
             </objects>
             <point key="canvasLocation" x="131" y="-162"/>
         </scene>
@@ -1341,6 +1349,6 @@ DQ
         <segue reference="U5K-mc-5fC"/>
         <segue reference="WxV-BK-mYs"/>
         <segue reference="Kzt-8Q-PxN"/>
-        <segue reference="6SY-2e-R2H"/>
+        <segue reference="bB6-3X-qhi"/>
     </inferredMetricsTieBreakers>
 </document>

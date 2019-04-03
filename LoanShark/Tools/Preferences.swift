@@ -137,6 +137,12 @@ class Preferences {
         }
     }
     
+    public var enableDebugging: Bool {
+        get {
+            return self.userDefaults.bool(forKey: "enableDebugging")
+        }
+    }
+    
     //MARK: Initializers
     
     init(nsUserDefaults: UserDefaults = UserDefaults.standard) {
