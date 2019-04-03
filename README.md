@@ -47,7 +47,7 @@ LoanShark includes built in support to automatically open default mail client an
 ![Loaner Extension Request - Auto Email](https://user-images.githubusercontent.com/23121750/55245707-0f402480-521a-11e9-9b8b-b4639f4c16ca.png)
 
 ## Quick Start
-The best way to start is the Kickstart Guide.
+The best way to start is the [Kickstart Guide](https://github.com/cybertunnel/LoanShark/wiki).
 
 ## Release History
 The release hsitory is available [here](https://github.com/cybertunnel/LoanShark/blob/master/CHANGELOG.md).
