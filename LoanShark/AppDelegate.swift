@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     //  MARK: Cocoa Binding Resources
     @objc let loanerManager = LoanManager.sharedInstance
+    @objc let enableDebugging = Preferences.sharedInstance.enableDebugging
     
     //  Don't Use
     private let dontUse: Any? = initialSetup()
