@@ -169,11 +169,17 @@ class ActivationAuthentication {
             Log.write(.debug, Log.Category.authenticator, "Host value is now: \(host)")
         }
         
-        if !host.contains(":8443") {
+        if Preferences.sharedInstance.jamfCloud && !host.contains(":443") {
+            Log.write(.info, Log.Category.authenticator, "Provided host is Jamf Cloud isntance, adding 443 to the port")
+            host += ":443"
+            Log.write(.debug, Log.Category.authenticator, "Host value is now: \(host)")
+        }
+        else if !host.contains(":8443") {
             Log.write(.info, Log.Category.authenticator, "Provided host did not include port, adding")
             host += ":8443"
             Log.write(.debug, Log.Category.authenticator, "Host value is now: \(host)")
         }
+        
         return host
     }
 }
