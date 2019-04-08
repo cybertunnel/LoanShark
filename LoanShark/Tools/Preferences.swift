@@ -149,6 +149,12 @@ class Preferences {
         }
     }
     
+    public var jamfCloud: Bool {
+        get {
+            return self.userDefaults.bool(forKey: "jamfCloud")
+        }
+    }
+    
     //MARK: Initializers
     
     init(nsUserDefaults: UserDefaults = UserDefaults.standard) {
