@@ -40,11 +40,16 @@ class ActivationAuthentication {
         let host = try self.getURI()
         let uri = host + "/uapi/auth/current"
         
+        Log.write(.debug, Log.Category.authenticator, "URI: \(uri)")
+        
         //  Creates the request
+        Log.write(.debug, Log.Category.authenticator, "Creating URL Request")
         let url = URL(string: uri)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer " + Token.sharedInstance.token!, forHTTPHeaderField: "Authorization")
+        
+        Log.write(.debug, Log.Category.authenticator, "Request: \(request.debugDescription)")
         
         //  Performs the request
         var running = true
@@ -55,14 +60,19 @@ class ActivationAuthentication {
                 return
             }
             
+            Log.write(.debug, Log.Category.authenticator, "Response: \(response.debugDescription)")
+            
             if let httpStatus = response as? HTTPURLResponse {
                 //  Checks status code returned by the http server.
                 if httpStatus.statusCode == 200 {
                     Log.write(.info, Log.Category.authenticator, "Successfully got response from server")
                     do {
+                        Log.write(.debug, Log.Category.authenticator, "Data found: \(data.debugDescription)")
                         let jsonObj = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
                         let groupIDs = (jsonObj?["account"] as? [String:Any])?["groupIds"] as? Array <Int>
+                        Log.write(.debug, Log.Category.authenticator, "Group IDs discovered: \(groupIDs.debugDescription)")
                         let approved = Preferences.sharedInstance.authorizedGroupIDs ?? []
+                        Log.write(.debug, Log.Category.authenticator, "Approved groups: \(approved.debugDescription)")
                         for groupID in groupIDs ?? [] {
                             if approved.contains(groupID) {
                                 Log.write(.debug, Log.Category.authenticator, "Found group authorized ID \(groupID) associated with this user.")
@@ -168,6 +178,8 @@ class ActivationAuthentication {
             host = "https://" + host
             Log.write(.debug, Log.Category.authenticator, "Host value is now: \(host)")
         }
+        
+        Log.write(.debug, Log.Category.authenticator, "Jamf Cloud Instance: \(Preferences.sharedInstance.jamfCloud)")
         
         if Preferences.sharedInstance.jamfCloud && !host.contains(":443") {
             Log.write(.info, Log.Category.authenticator, "Provided host is Jamf Cloud isntance, adding 443 to the port")
