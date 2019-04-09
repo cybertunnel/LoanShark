@@ -46,7 +46,7 @@ class Log {
     
     //MARK: Functions
     static func write(_ level: Level, _ category: String, _ message: String) {
-        let log = OSLog(subsystem: level.toString(), category: category)
+        let log = OSLog(subsystem: appName, category: category)
         os_log("%{public}@", log: log, type: OSLogType(level.rawValue), message)
     }
 }
