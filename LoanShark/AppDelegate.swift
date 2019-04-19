@@ -34,9 +34,59 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     //  MARK: Variables
     
     let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    let argParser = ArgumentParser()
     
     
     //  MARK: Functions
+    
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        
+        Log.write(.debug, Log.Category.argumentParser, "Building argument parsing.")
+        
+        argParser.addArgument(name: "--set-expired", description: "Set loaner period to expired.") { (value) in
+            Log.write(.info, Log.Category.application, "Set expiration argument sent, setting loaner period to expired.")
+            self.loanerManager.setExpired()
+        }
+        
+        argParser.addArgument(name: "--extend", description: "Extend loaner by set number of days.") { (value) in
+            Log.write(.info, Log.Category.application, "Loaner extension argument passed, attempting to extend loaner")
+            
+            guard let passcode = value["--passcode"] else {
+                Log.write(.fault, Log.Category.application, "--passcode was not passed, unable to authenticate.")
+                throw ArgumentError.missingValue("Missing --passcode")
+            }
+            
+            guard let sharedSecret = Preferences.sharedInstance.sharedSecret else {
+                Log.write(.fault, Log.Category.application, "Shared secret not configured, please ensure this is configured before attempting to extend loaner period via. Command Line")
+                throw ArgumentError.unsupportedArgument("Missing Shared Secret in preferences for --passcode or --extend to work properly.")
+            }
+            
+            if passcode.sha256() == sharedSecret {
+                Log.write(.info, Log.Category.application, "Provided passcode is correct, proceeding")
+                guard let daysRaw = value["--extend"] else {
+                    Log.write(.fault, Log.Category.application, "Unable to get extension amount.")
+                    throw ArgumentError.missingValue("--extend")
+                }
+                
+                guard let days = Int(daysRaw) else {
+                    Log.write(.fault, Log.Category.application, "Unable to get number of days from provided input")
+                    throw ArgumentError.invalidType(value: daysRaw, type: "Int", argument: "--extend")
+                }
+                
+                try self.loanerManager.extend(extensionOf: days)
+            }
+            else {
+                print("Invalid passcode provided, please try again.")
+                Log.write(.error, Log.Category.application, "Passcode provided is invalid")
+                NSApp.terminate(self)
+            }
+            
+        }
+        
+        argParser.addArgument(name: "--passcode", description: "Passcode to properly authenticate you") { (value) in
+            
+        }
+    }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -90,6 +140,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         if self.loanerManager.loanStatus == .notSet {
             self.sendUserNotification()
         }
+        
+        self.argParser.parse()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

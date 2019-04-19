@@ -20,6 +20,7 @@ class Log {
         static let loanManager = "LoanManager"
         static let statusListener = "StatusListener"
         static let authenticator = "Authenticator"
+        static let argumentParser = "ArgumentParser"
     }
     
     

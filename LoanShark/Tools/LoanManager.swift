@@ -287,4 +287,23 @@ import Foundation
             }
         }
     }
+    
+    /**
+     Set loaner period to expired.
+    */
+    func setExpired() {
+        
+        Log.write(.info, Log.Category.loanManager, "Setting loaner period to expired.")
+        
+        DispatchQueue.global(qos: .background).async {
+            let currDate = Date()
+            let newDate = Calendar.current.date(byAdding: .day, value: -30, to: currDate)
+            
+            Preferences.sharedInstance.endDate = newDate
+            
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodExpired, object: nil)
+            }
+        }
+    }
 }
