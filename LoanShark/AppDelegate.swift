@@ -43,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         Log.write(.debug, Log.Category.argumentParser, "Building argument parsing.")
         
-        argParser.addArgument(name: "--set-expired", description: "Set loaner period to expired.") { (value) in
+        argParser.addArgument(name: "--set-expired", description: "Set loaner period to expired.", isBool: true) { (value) in
             Log.write(.info, Log.Category.application, "Set expiration argument sent, setting loaner period to expired.")
             self.loanerManager.setExpired()
         }
@@ -80,7 +80,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 Log.write(.error, Log.Category.application, "Passcode provided is invalid")
                 NSApp.terminate(self)
             }
-            
         }
         
         argParser.addArgument(name: "--passcode", description: "Passcode to properly authenticate you") { (value) in

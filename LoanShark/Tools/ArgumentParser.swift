@@ -19,6 +19,7 @@ class ArgumentParser {
         let name: String?
         let help: String?
         let apply: (_ value: [String:String]) throws -> ()
+        let isBool: Bool
     }
     
     private var validOptions: [String] {
@@ -38,12 +39,20 @@ class ArgumentParser {
         else {
             for arg in CommandLine.arguments {
                 if validOptions.contains(arg) {
-                    let index = CommandLine.arguments.firstIndex(of: arg)
-                    let value = CommandLine.arguments[(index ?? 0) + 1]
-                    let elementIndex = self.validOptions.firstIndex(of: arg)
                     
+                    let index = CommandLine.arguments.firstIndex(of: arg)
+                    let elementIndex = self.validOptions.firstIndex(of: arg)
                     let element = self.arguments[elementIndex ?? 0]
-                    self.argumentValues[arg] = value
+                    
+                    if (self.arguments[elementIndex ?? 0]).isBool {
+                        let value = true
+                        self.argumentValues[arg] = String(describing: value)
+                    }
+                    else {
+                        let value = CommandLine.arguments[(index ?? 0) + 1]
+                        self.argumentValues[arg] = value
+                    }
+                    
                     self.argumentCallbacks.append(element.apply)
                 }
             }
@@ -66,8 +75,8 @@ class ArgumentParser {
         }
     }
     
-    func addArgument(name: String, description help: String, callback: @escaping (_ value: [String:String]) throws -> ()) {
-        let arg = Argument(name: name, help: help, apply: callback)
+    func addArgument(name: String, description help: String, isBool: Bool = false, callback: @escaping (_ value: [String:String]) throws -> ()) {
+        let arg = Argument(name: name, help: help, apply: callback, isBool: isBool)
         self.arguments.append(arg)
     }
     
@@ -75,5 +84,6 @@ class ArgumentParser {
         for arg in self.arguments {
             print("\(arg.name ?? "") - \(arg.help ?? "")")
         }
+        exit(0)
     }
 }
