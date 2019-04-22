@@ -6,15 +6,29 @@
 //  Copyright © 2019 Tyler Morgan. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
+/**
+ Errors thrown associated with the ArgumentParser class.
+ */
 enum ArgumentError: Error {
     case missingValue(String)
     case invalidType(value: String, type: String, argument: String? )
     case unsupportedArgument(String)
 }
 
+/**
+ Parses the arguments passed to the application and stores those values and settings.
+ */
 class ArgumentParser {
+    
+    
+    //  MARK: Structs
+    
+    /**
+     Elements an argument must have.
+     - Note: Apply is a function which gets called on when the argument is discovered.
+    */
     struct Argument {
         let name: String?
         let help: String?
@@ -22,15 +36,28 @@ class ArgumentParser {
         let isBool: Bool
     }
     
+    
+    //  MARK: Variables
+    
+    //  Arguments which are valid
     private var validOptions: [String] {
         return arguments.compactMap { $0.name }
     }
+    
     private var arguments: [Argument] = []
     
     private var argumentValues: [String:String] = [:]
     private var argumentCallbacks: [(_ values: [String:String]) throws -> ()] = []
     
+    
+    //  MARK: Functions
+    
+    /**
+     Parses the commndline arguments for the arguments requested.
+    */
     func parse() {
+        
+        //  Does CommandLine contain help command?
         if CommandLine.arguments.contains("--help") ||
             CommandLine.arguments.contains("-h")    ||
             CommandLine.arguments.contains("help") {
@@ -75,6 +102,15 @@ class ArgumentParser {
         }
     }
     
+    /**
+     Adds argument to a list to parse later.
+     
+     - Parameters:
+        - name: The parameter as String to monitor. Ex: `--title`
+        - description: A description or usage information of the argument
+        - isBool: Just monitor for the argument and set a true to false. *Default is false*
+        - callback: Function which you want to run when the argument is discovered. Function is provided a [String:String] element for parsing
+    */
     func addArgument(name: String, description help: String, isBool: Bool = false, callback: @escaping (_ value: [String:String]) throws -> ()) {
         let arg = Argument(name: name, help: help, apply: callback, isBool: isBool)
         self.arguments.append(arg)
@@ -84,6 +120,7 @@ class ArgumentParser {
         for arg in self.arguments {
             print("\(arg.name ?? "") - \(arg.help ?? "")")
         }
+        NSApp.terminate(self)
         exit(0)
     }
 }

@@ -43,11 +43,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         Log.write(.debug, Log.Category.argumentParser, "Building argument parsing.")
         
+        //  Set Loan Period to Expired argument
         argParser.addArgument(name: "--set-expired", description: "Set loaner period to expired.", isBool: true) { (value) in
             Log.write(.info, Log.Category.application, "Set expiration argument sent, setting loaner period to expired.")
             self.loanerManager.setExpired()
         }
         
+        //  Perform extension argument
+        //  Requires --passcode parameter as well
         argParser.addArgument(name: "--extend", description: "Extend loaner by set number of days.") { (value) in
             Log.write(.info, Log.Category.application, "Loaner extension argument passed, attempting to extend loaner")
             
@@ -82,9 +85,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             }
         }
         
+        //  Authenticate using passcode
         argParser.addArgument(name: "--passcode", description: "Passcode to properly authenticate you") { (value) in
             
         }
+        
+        //  Get Loaner Status
+        argParser.addArgument(name: "--status", description: "Get the loaner period status", isBool: true) { (_) in
+            Log.write(.info, Log.Category.application, "Requested to provide loaner period status")
+            print(self.loanerManager.loanStatus.toString())
+            NSApp.terminate(self)
+        }
+        
+        //  Get Loanee Details
+        argParser.addArgument(name: "--loanee-details", description: "Get the loanee details", isBool: true) { (_) in
+            Log.write(.info, Log.Category.application, "Requested to give loanee details, getting and providing loanee information")
+            print(self.loanerManager.loanee?.description ?? "No Information to Provide")
+            NSApp.terminate(self)
+        }
+        
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
