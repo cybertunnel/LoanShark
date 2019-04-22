@@ -49,6 +49,10 @@ class AuthenticationViewController: NSViewController {
         guard let _ = Preferences.sharedInstance.sharedSecret else {
             return false
         }
+        
+        if !Preferences.sharedInstance.sharedSecretAuth {
+            return false
+        }
         return true
     }
     

@@ -149,6 +149,12 @@ class Preferences {
         }
     }
     
+    public var sharedSecretAuth: Bool {
+        get {
+            return self.userDefaults.bool(forKey: "sharedSecretAuth")
+        }
+    }
+    
     public var jamfCloud: Bool {
         get {
             return self.userDefaults.bool(forKey: "jamfCloud")
