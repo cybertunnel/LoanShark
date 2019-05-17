@@ -42,7 +42,7 @@ LoanShark has a complete loaning lifecycle which includes custom duration, tech 
 ![Lockout Window - Fullscreen](https://user-images.githubusercontent.com/23121750/55244620-e4ed6780-5217-11e9-8aba-d814b1b4f372.png)
 
 #### Automatic Email Extension Requests
-LoanShark includes built in support to automatically open default mail client and send email to the tech who assigned the loane
+LoanShark includes built in support to automatically open default mail client and send email to the tech who assigned the loaner
 
 ![Loaner Extension Request - Auto Email](https://user-images.githubusercontent.com/23121750/55245707-0f402480-521a-11e9-9b8b-b4639f4c16ca.png)
 
@@ -50,7 +50,7 @@ LoanShark includes built in support to automatically open default mail client an
 The best way to start is the [Kickstart Guide](https://github.com/cybertunnel/LoanShark/wiki).
 
 ## Release History
-The release hsitory is available [here](https://github.com/cybertunnel/LoanShark/blob/master/CHANGELOG.md).
+The release hisitory is available [here](https://github.com/cybertunnel/LoanShark/blob/master/CHANGELOG.md).
 
 LoanShark was made possible thanks to the work for the [following individuals](https://github.com/cybertunnel/LoanShark/blob/master/THANKS.md).
 
