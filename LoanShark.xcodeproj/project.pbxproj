@@ -581,7 +581,7 @@
 				CODE_SIGN_ENTITLEMENTS = LoanShark/LoanShark.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Q6428T7Y4D;
+				DEVELOPMENT_TEAM = DAH86Q54R2;
 				INFOPLIST_FILE = LoanShark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -601,7 +601,7 @@
 				CODE_SIGN_ENTITLEMENTS = LoanShark/LoanShark.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = Q6428T7Y4D;
+				DEVELOPMENT_TEAM = DAH86Q54R2;
 				INFOPLIST_FILE = LoanShark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

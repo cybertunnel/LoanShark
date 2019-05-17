@@ -56,8 +56,9 @@ class Preferences {
             return self.userDefaults.person(forKey: "loanee")
         }
         set(newValue) {
-            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
-            self.userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: newValue as Any), forKey: "loanee")
+            guard let value = newValue else { return }
+            let data = NSKeyedArchiver.archivedData(withRootObject: value)
+            self.userDefaults.set(data as Any, forKey: "loanee")
             self.userDefaults.synchronize()
         }
     }
