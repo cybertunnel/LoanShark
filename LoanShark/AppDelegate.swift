@@ -46,6 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         //  Set Loan Period to Expired argument
         argParser.addArgument(name: "--set-expired", description: "Set loaner period to expired.", isBool: true) { (value) in
             Log.write(.info, Log.Category.application, "Set expiration argument sent, setting loaner period to expired.")
+            print("Setting Loan Period to expired!")
             self.loanerManager.setExpired()
         }
         
@@ -76,7 +77,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                     throw ArgumentError.invalidType(value: daysRaw, type: "Int", argument: "--extend")
                 }
                 
-                try self.loanerManager.extend(extensionOf: days)
+                try self.loanerManager.extend(extensionOf: (days + 1))
+                print("Successfully extended loaner by \(String(describing: days)). Total loaning period remaining is now \(self.loanerManager.loanPeriod?.remaining ?? 0) days.")
+                NSApp.terminate(self)
             }
             else {
                 print("Invalid passcode provided, please try again.")
