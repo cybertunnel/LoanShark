@@ -107,6 +107,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             NSApp.terminate(self)
         }
         
+        //  DEBUG: Get Preferences
+        argParser.addArgument(name: "--prefs", description: "Get the preferences LoanShark sees", isBool: true) {(_) in
+            Log.write(.info, Log.Category.application, "Requested to provide preference details, getting information and dumping it to standard out.")
+            
+            //  Jamf URL
+            print("Jamf URL:" + (Preferences.sharedInstance.jssURL ?? "NONE"))
+            
+            //   Shared Secret
+            print("Shared Secret:" + (Preferences.sharedInstance.sharedSecret ?? "NONE"))
+            print("Shared Secret Auth:" + String(describing: Preferences.sharedInstance.sharedSecretAuth))
+            
+        }
+        
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

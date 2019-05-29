@@ -169,7 +169,8 @@ class ActivationAuthentication {
             Log.write(.error, Log.Category.authenticator, "Shared Secret not in preferences.")
             throw AuthenticationError.NoSharedSecretStored
         }
-        return sharedSecret == secret.sha256()
+        Log.write(.debug, Log.Category.authenticator, "Hash provided: " + secret.sha256().uppercased())
+        return sharedSecret == secret.sha256().uppercased()
     }
     
     /**
