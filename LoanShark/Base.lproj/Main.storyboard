@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -215,7 +215,7 @@
                                                     <string key="NSValueTransformerName">NSIsNotNil</string>
                                                 </dictionary>
                                             </binding>
-                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="bB6-3X-qhi"/>
+                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" id="bB6-3X-qhi"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extend" id="wv5-v9-Wbd">
@@ -292,7 +292,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="authentication" showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -374,15 +374,15 @@
                                                     </allowedInputSourceLocales>
                                                 </secureTextFieldCell>
                                                 <connections>
-                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="dTp-xp-zMe">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                        </dictionary>
-                                                    </binding>
                                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.password" id="v0s-99-4le">
                                                         <dictionary key="options">
                                                             <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                                             <string key="NSNullPlaceholder">Password</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="dTp-xp-zMe">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                         </dictionary>
                                                     </binding>
                                                 </connections>
@@ -477,17 +477,17 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-it-phG">
                                 <rect key="frame" x="13" y="37" width="463" height="11"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="oTM-tF-M5B">
-                                    <font key="font" metaFont="system" size="9"/>
+                                    <font key="font" metaFont="miniSystem"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.errorMessage" id="WjG-A1-scn"/>
                                     <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.errorMessage" id="dqa-9r-lga">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">NSIsNil</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.errorMessage" id="WjG-A1-scn"/>
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0OV-xL-jfF">
@@ -507,12 +507,12 @@ DQ
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WNK-wj-AwT">
                                 <rect key="frame" x="465" y="8" width="16" height="16"/>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="animate" keyPath="self.performingAuthorization" id="QYp-T4-cL8"/>
                                     <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.performingAuthorization" id="915-9l-rpC">
                                         <dictionary key="options">
                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                         </dictionary>
                                     </binding>
+                                    <binding destination="XfG-lQ-9wD" name="animate" keyPath="self.performingAuthorization" id="QYp-T4-cL8"/>
                                 </connections>
                             </progressIndicator>
                         </subviews>
@@ -551,7 +551,7 @@ DQ
         <scene sceneID="WDF-T0-nk8">
             <objects>
                 <windowController storyboardIdentifier="lockoutWindow" showSeguePresentationStyle="single" id="NZG-5q-u8T" customClass="LockoutWindowController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aqW-aO-hIt" customClass="LockoutWindow" customModule="LoanShark" customModuleProvider="target">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" id="aqW-aO-hIt" customClass="LockoutWindow" customModule="LoanShark" customModuleProvider="target">
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
@@ -570,7 +570,7 @@ DQ
         <scene sceneID="GKv-Is-frS">
             <objects>
                 <windowController storyboardIdentifier="extensionRequest" showSeguePresentationStyle="single" id="t7t-sB-qfQ" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Gi0-oB-idJ">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Gi0-oB-idJ">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
@@ -942,7 +942,7 @@ DQ
         <scene sceneID="D8L-RE-682">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="smC-sj-ZbX" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Hc3-7w-f9b">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Hc3-7w-f9b">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
@@ -1272,7 +1272,7 @@ DQ
         <scene sceneID="eCg-ab-Ar0">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="c2Q-3e-TR7" sceneMemberID="viewController">
-                    <window key="window" title="LoanShark Loaner Extension" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aQ4-cf-oG8">
+                    <window key="window" title="LoanShark Loaner Extension" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="aQ4-cf-oG8">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
@@ -1444,9 +1444,9 @@ DQ
         <image name="NSLockLockedTemplate" width="10" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mdw-5s-7aC"/>
-        <segue reference="Kzu-Rj-n2l"/>
-        <segue reference="TFM-wG-cfn"/>
+        <segue reference="KW1-v4-3D0"/>
+        <segue reference="6dd-QE-Xvt"/>
+        <segue reference="Kzt-8Q-PxN"/>
         <segue reference="bB6-3X-qhi"/>
     </inferredMetricsTieBreakers>
 </document>
