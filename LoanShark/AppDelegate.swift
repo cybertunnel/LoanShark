@@ -111,13 +111,34 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         argParser.addArgument(name: "--prefs", description: "Get the preferences LoanShark sees", isBool: true) {(_) in
             Log.write(.info, Log.Category.application, "Requested to provide preference details, getting information and dumping it to standard out.")
             
-            //  Jamf URL
-            print("Jamf URL:" + (Preferences.sharedInstance.jssURL ?? "NONE"))
-            
-            //   Shared Secret
-            print("Shared Secret:" + (Preferences.sharedInstance.sharedSecret ?? "NONE"))
-            print("Shared Secret Auth:" + String(describing: Preferences.sharedInstance.sharedSecretAuth))
-            
+            // Jamf URL
+            print("jamfURL:" + (Preferences.sharedInstance.jssURL ?? "Not Set"))
+            // Authorized Groups
+            if let authGroups = Preferences.sharedInstance.authorizedGroupIDs {
+                print("authorizedGroupIds:" + String(describing: authGroups))
+            }
+            else {
+                print("authorizedGroupIds:Not Set")
+            }
+            // Extension Options
+            if let extOpt = Preferences.sharedInstance.extensionOptions {
+                print("extensionOptions:" + String(describing: extOpt))
+            }
+            else {
+                print("extensionOptions:Not Set")
+            }
+            // Log Off Timer
+            print("logOffTimer:" + String(describing: Preferences.sharedInstance.logoffTimer))
+            // Lockout Message
+            print("lockoutMessage:" + (Preferences.sharedInstance.lockoutMessage ?? "Not Set"))
+            // Debugging
+            print("enableDebugging:" + String(describing: Preferences.sharedInstance.enableDebugging))
+            // Shared Secret
+            print("sharedSecret:" + (Preferences.sharedInstance.sharedSecret ?? "Not Set"))
+            // Shared Secret Auth
+            print("sharedSecretAuth:" + String(describing: Preferences.sharedInstance.sharedSecretAuth))
+            // Jamf Cloud
+            print("jamfCloud:" + String(describing: Preferences.sharedInstance.jamfCloud))
         }
         
     }
