@@ -1,9 +1,14 @@
 #!/bin/bash
 
-launch_plist="/Library/LaunchDaemons/com.github.cyebrtunnel.launch.plist"
+launch_plist="/Library/LaunchDaemons/com.github.cybertunnel.launch.plist"
 launchctl="/bin/launchctl"
 sudo="/usr/bin/sudo"
 
-$sudo $launchctl load -w $launch_plist || exit 1
+#$sudo $launchctl load -w $launch_plist || exit 1
+
+$launchctl bootstrap system $launch_plist
+
+
+
 
 exit 0
