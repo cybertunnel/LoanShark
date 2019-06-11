@@ -245,25 +245,25 @@
                                     <menuItem title="Loaner Expiration Screen" id="Fbm-Kz-IfR">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="NZG-5q-u8T" kind="show" id="ouM-iB-5r6"/>
+                                            <segue destination="NZG-5q-u8T" kind="modal" id="ouM-iB-5r6"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extension Request Screen" id="eXX-9h-xrq">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="lRq-Sq-zZ6" kind="show" id="TFM-wG-cfn"/>
+                                            <segue destination="lRq-Sq-zZ6" kind="modal" id="TFM-wG-cfn"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Configuration Screen" id="hsq-E0-Udh">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="DSB-g8-MKz" kind="show" id="WxV-BK-mYs"/>
+                                            <segue destination="DSB-g8-MKz" kind="modal" id="WxV-BK-mYs"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extension Screen" id="zda-pk-KKM">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="20Z-7b-FQf" kind="show" id="U5K-mc-5fC"/>
+                                            <segue destination="20Z-7b-FQf" kind="modal" id="U5K-mc-5fC"/>
                                         </connections>
                                     </menuItem>
                                 </items>
@@ -294,7 +294,6 @@
                 <windowController storyboardIdentifier="authentication" showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
@@ -572,7 +571,6 @@ DQ
                 <windowController storyboardIdentifier="extensionRequest" showSeguePresentationStyle="single" id="t7t-sB-qfQ" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Gi0-oB-idJ">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
@@ -944,7 +942,6 @@ DQ
                 <windowController showSeguePresentationStyle="single" id="smC-sj-ZbX" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Hc3-7w-f9b">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
@@ -1274,7 +1271,6 @@ DQ
                 <windowController showSeguePresentationStyle="single" id="c2Q-3e-TR7" sceneMemberID="viewController">
                     <window key="window" title="LoanShark Loaner Extension" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="aQ4-cf-oG8">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
@@ -1447,6 +1443,6 @@ DQ
         <segue reference="KW1-v4-3D0"/>
         <segue reference="6dd-QE-Xvt"/>
         <segue reference="Kzt-8Q-PxN"/>
-        <segue reference="bB6-3X-qhi"/>
+        <segue reference="6SY-2e-R2H"/>
     </inferredMetricsTieBreakers>
 </document>
