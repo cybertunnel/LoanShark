@@ -6,6 +6,7 @@
 - Argument parser to be used in with the Command Line Interface
 - Fixed a logging bug
 - Added back the previously delete preferences file
+- Added detection of existing loan period for other users and kicks user out if they are not authorized to log into the loaner
 
 # 0.2.1 Jamf Cloud Authentication Hotfix
 - Fixes an issue where authentication using Jamf API uses `:443` instead of `:8443`
