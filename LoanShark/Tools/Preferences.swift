@@ -56,8 +56,9 @@ class Preferences {
             return self.userDefaults.person(forKey: "loanee")
         }
         set(newValue) {
-            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
-            self.userDefaults.set(NSKeyedArchiver.archivedData(withRootObject: newValue as Any), forKey: "loanee")
+            guard let value = newValue else { return }
+            let data = NSKeyedArchiver.archivedData(withRootObject: value)
+            self.userDefaults.set(data as Any, forKey: "loanee")
             self.userDefaults.synchronize()
         }
     }
@@ -140,6 +141,18 @@ class Preferences {
     public var enableDebugging: Bool {
         get {
             return self.userDefaults.bool(forKey: "enableDebugging")
+        }
+    }
+    
+    public var sharedSecret: String? {
+        get {
+            return self.userDefaults.string(forKey: "sharedSecret")
+        }
+    }
+    
+    public var sharedSecretAuth: Bool {
+        get {
+            return self.userDefaults.bool(forKey: "sharedSecretAuth")
         }
     }
     

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.11"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -215,7 +215,7 @@
                                                     <string key="NSValueTransformerName">NSIsNotNil</string>
                                                 </dictionary>
                                             </binding>
-                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="bB6-3X-qhi"/>
+                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" id="bB6-3X-qhi"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extend" id="wv5-v9-Wbd">
@@ -245,25 +245,25 @@
                                     <menuItem title="Loaner Expiration Screen" id="Fbm-Kz-IfR">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="NZG-5q-u8T" kind="show" id="ouM-iB-5r6"/>
+                                            <segue destination="NZG-5q-u8T" kind="modal" id="ouM-iB-5r6"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extension Request Screen" id="eXX-9h-xrq">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="lRq-Sq-zZ6" kind="show" id="TFM-wG-cfn"/>
+                                            <segue destination="lRq-Sq-zZ6" kind="modal" id="TFM-wG-cfn"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Configuration Screen" id="hsq-E0-Udh">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="DSB-g8-MKz" kind="show" id="WxV-BK-mYs"/>
+                                            <segue destination="DSB-g8-MKz" kind="modal" id="WxV-BK-mYs"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extension Screen" id="zda-pk-KKM">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="20Z-7b-FQf" kind="show" id="U5K-mc-5fC"/>
+                                            <segue destination="20Z-7b-FQf" kind="modal" id="U5K-mc-5fC"/>
                                         </connections>
                                     </menuItem>
                                 </items>
@@ -292,9 +292,8 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="authentication" showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Management Authentication" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
@@ -313,78 +312,186 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="LoanShark Authentication" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="AuthenticationViewController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="198"/>
+                    <view key="view" misplaced="YES" id="SH2-yM-fko">
+                        <rect key="frame" x="0.0" y="0.0" width="489" height="245"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zpw-RM-CYf">
-                                <rect key="frame" x="13" y="142" width="454" height="36"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="LoanShark Configuration" id="unF-8t-0mS">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zir-3K-NPk">
+                                <rect key="frame" x="13" y="201" width="463" height="35"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="LoanShark Configuration" id="gZ0-35-Zt9">
                                     <font key="font" metaFont="systemThin" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="H5H-RI-TUA">
-                                <rect key="frame" x="8" y="131" width="464" height="5"/>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="QeL-sF-qoA">
+                                <rect key="frame" x="8" y="190" width="473" height="5"/>
                             </box>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8PX-UJ-RZ0">
-                                <rect key="frame" x="13" y="91" width="454" height="34"/>
-                                <textFieldCell key="cell" selectable="YES" title="Please login below to authenticate. Once authenticated the loaner period can be configured." id="OPi-3C-sCL">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EyI-T7-7hK">
+                                <rect key="frame" x="0.0" y="48" width="489" height="144"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="9x0-KT-wg3">
+                                        <rect key="frame" x="0.0" y="72" width="489" height="72"/>
+                                        <subviews>
+                                            <textField autoresizesSubviews="NO" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1WA-cc-2nk">
+                                                <rect key="frame" x="13" y="29" width="463" height="35"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Please login below to authenticate. Once authenticated the loaner period can be configured." id="Nvb-cz-yKD">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sZf-Ca-Wrn">
+                                                <rect key="frame" x="15" y="0.0" width="226" height="21"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Username" drawsBackground="YES" id="DHB-xi-419">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="4DG-yo-6yN">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.username" id="6Pd-aK-U5S">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                            <string key="NSNullPlaceholder">Username</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </textField>
+                                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pAc-WU-fIS">
+                                                <rect key="frame" x="249" y="0.0" width="225" height="21"/>
+                                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="9Cu-Dz-DUC">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <allowedInputSourceLocales>
+                                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                    </allowedInputSourceLocales>
+                                                </secureTextFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.password" id="v0s-99-4le">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                            <string key="NSNullPlaceholder">Password</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="dTp-xp-zMe">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </secureTextField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="1WA-cc-2nk" secondAttribute="trailing" constant="15" id="6zO-Z1-4sN"/>
+                                            <constraint firstItem="sZf-Ca-Wrn" firstAttribute="top" secondItem="1WA-cc-2nk" secondAttribute="bottom" constant="8" id="9af-z6-h2z"/>
+                                            <constraint firstItem="pAc-WU-fIS" firstAttribute="leading" secondItem="sZf-Ca-Wrn" secondAttribute="trailing" constant="8" id="CTd-CP-Lig"/>
+                                            <constraint firstAttribute="bottom" secondItem="sZf-Ca-Wrn" secondAttribute="bottom" id="FCC-eI-n2Y"/>
+                                            <constraint firstItem="1WA-cc-2nk" firstAttribute="top" secondItem="9x0-KT-wg3" secondAttribute="top" constant="8" id="YWf-Bl-eyx"/>
+                                            <constraint firstItem="sZf-Ca-Wrn" firstAttribute="centerY" secondItem="pAc-WU-fIS" secondAttribute="centerY" id="dmi-jo-zOT"/>
+                                            <constraint firstItem="1WA-cc-2nk" firstAttribute="leading" secondItem="9x0-KT-wg3" secondAttribute="leading" constant="15" id="hrd-ZQ-6A8"/>
+                                            <constraint firstItem="sZf-Ca-Wrn" firstAttribute="leading" secondItem="9x0-KT-wg3" secondAttribute="leading" constant="15" id="hu6-i9-HDT"/>
+                                            <constraint firstItem="sZf-Ca-Wrn" firstAttribute="width" secondItem="pAc-WU-fIS" secondAttribute="width" id="pHY-Ea-F5u"/>
+                                            <constraint firstAttribute="trailing" secondItem="pAc-WU-fIS" secondAttribute="trailing" constant="15" id="s9N-Tw-Gkn"/>
+                                            <constraint firstItem="pAc-WU-fIS" firstAttribute="leading" secondItem="sZf-Ca-Wrn" secondAttribute="trailing" constant="8" id="swD-vn-osT"/>
+                                        </constraints>
+                                        <connections>
+                                            <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.isSharedSecretEnabled" id="hbd-AX-lLJ"/>
+                                        </connections>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="G1w-eL-CW2">
+                                        <rect key="frame" x="0.0" y="0.0" width="489" height="72"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GO5-4r-FCg">
+                                                <rect key="frame" x="13" y="29" width="463" height="35"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Please enter the password below to authenticate." id="hqa-Ft-mtx">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4YT-v9-0MB">
+                                                <rect key="frame" x="15" y="0.0" width="459" height="21"/>
+                                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="7z7-hl-Ed1">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <allowedInputSourceLocales>
+                                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                    </allowedInputSourceLocales>
+                                                </secureTextFieldCell>
+                                                <connections>
+                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="vN2-bO-D8y">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.sharedSecret" id="jKc-rc-eIo">
+                                                        <dictionary key="options">
+                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                            <string key="NSNullPlaceholder">Password</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </secureTextField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="GO5-4r-FCg" firstAttribute="leading" secondItem="G1w-eL-CW2" secondAttribute="leading" constant="15" id="8qg-Xo-aRm"/>
+                                            <constraint firstItem="4YT-v9-0MB" firstAttribute="leading" secondItem="G1w-eL-CW2" secondAttribute="leading" constant="15" id="J3u-mA-AOv"/>
+                                            <constraint firstItem="GO5-4r-FCg" firstAttribute="top" secondItem="G1w-eL-CW2" secondAttribute="top" constant="8" id="Mtp-8G-xf6"/>
+                                            <constraint firstAttribute="bottom" secondItem="4YT-v9-0MB" secondAttribute="bottom" id="eSX-Be-W6L"/>
+                                            <constraint firstItem="4YT-v9-0MB" firstAttribute="top" secondItem="GO5-4r-FCg" secondAttribute="bottom" constant="8" id="eZP-sc-F4M"/>
+                                            <constraint firstAttribute="trailing" secondItem="4YT-v9-0MB" secondAttribute="trailing" constant="15" id="l8I-E5-U8h"/>
+                                            <constraint firstAttribute="trailing" secondItem="GO5-4r-FCg" secondAttribute="trailing" constant="15" id="rAP-ed-NTC"/>
+                                        </constraints>
+                                        <connections>
+                                            <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.isSharedSecretEnabled" id="mWd-3L-2tF">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="G1w-eL-CW2" secondAttribute="trailing" id="EdI-vi-AQJ"/>
+                                    <constraint firstItem="9x0-KT-wg3" firstAttribute="leading" secondItem="EyI-T7-7hK" secondAttribute="leading" id="OSL-dp-xYb"/>
+                                    <constraint firstAttribute="trailing" secondItem="9x0-KT-wg3" secondAttribute="trailing" id="RU4-wx-mWN"/>
+                                    <constraint firstItem="G1w-eL-CW2" firstAttribute="leading" secondItem="EyI-T7-7hK" secondAttribute="leading" id="oow-32-qro"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-it-phG">
+                                <rect key="frame" x="13" y="37" width="463" height="11"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="oTM-tF-M5B">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nGc-Io-CxJ">
-                                <rect key="frame" x="15" y="61" width="221" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Username" drawsBackground="YES" id="2oZ-tZ-4JM">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.username" id="Rgp-Rt-vDx">
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.errorMessage" id="WjG-A1-scn"/>
+                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.errorMessage" id="dqa-9r-lga">
                                         <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                            <string key="NSNullPlaceholder">Username</string>
+                                            <string key="NSValueTransformerName">NSIsNil</string>
                                         </dictionary>
                                     </binding>
                                 </connections>
                             </textField>
-                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ih2-gr-Rdi">
-                                <rect key="frame" x="244" y="61" width="221" height="22"/>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="gIj-Ej-LMe">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <allowedInputSourceLocales>
-                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                    </allowedInputSourceLocales>
-                                </secureTextFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.password" id="3YF-dP-4U6">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                            <string key="NSNullPlaceholder">Password</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </secureTextField>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="nli-ZE-3uz">
-                                <rect key="frame" x="456" y="8" width="16" height="16"/>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="animate" keyPath="self.performingAuthorization" id="7jG-yG-3pJ"/>
-                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.performingAuthorization" id="QjH-6x-ia1">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </progressIndicator>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="96W-hV-4nB">
-                                <rect key="frame" x="182" y="13" width="117" height="32"/>
-                                <buttonCell key="cell" type="push" title="Authenticate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="whu-fI-XQZ">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0OV-xL-jfF">
+                                <rect key="frame" x="186" y="1" width="117" height="32"/>
+                                <buttonCell key="cell" type="push" title="Authenticate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="w9j-8M-zPd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
@@ -392,51 +499,41 @@ DQ
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="performAuthorization:" target="XfG-lQ-9wD" id="0pp-69-cZT"/>
-                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.requirementsCompleted" id="2hb-q1-LND"/>
+                                    <action selector="performAuthorization:" target="XfG-lQ-9wD" id="Uip-ez-yAv"/>
+                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.requirementsCompleted" id="ENB-Oo-9lA"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m27-IF-l1a">
-                                <rect key="frame" x="13" y="48" width="449" height="11"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="2WE-yH-gez">
-                                    <font key="font" metaFont="miniSystem"/>
-                                    <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WNK-wj-AwT">
+                                <rect key="frame" x="465" y="8" width="16" height="16"/>
                                 <connections>
-                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.errorMessage" id="eeY-DH-WfK">
+                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.performingAuthorization" id="915-9l-rpC">
                                         <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNil</string>
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.errorMessage" id="ifZ-Jh-FDl"/>
+                                    <binding destination="XfG-lQ-9wD" name="animate" keyPath="self.performingAuthorization" id="QYp-T4-cL8"/>
                                 </connections>
-                            </textField>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Zpw-RM-CYf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="4L4-Yc-Tld"/>
-                            <constraint firstItem="96W-hV-4nB" firstAttribute="top" secondItem="nGc-Io-CxJ" secondAttribute="bottom" constant="20" id="7ha-uS-GH6"/>
-                            <constraint firstItem="nGc-Io-CxJ" firstAttribute="width" secondItem="ih2-gr-Rdi" secondAttribute="width" id="CA2-Aj-mXN"/>
-                            <constraint firstAttribute="trailing" secondItem="H5H-RI-TUA" secondAttribute="trailing" constant="8" id="CB5-sK-K0N"/>
-                            <constraint firstItem="Zpw-RM-CYf" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="CLR-qj-4fW"/>
-                            <constraint firstItem="nGc-Io-CxJ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="FKR-rb-TRR"/>
-                            <constraint firstItem="m27-IF-l1a" firstAttribute="top" secondItem="nGc-Io-CxJ" secondAttribute="bottom" constant="2" id="HWi-Xe-jeR"/>
-                            <constraint firstItem="ih2-gr-Rdi" firstAttribute="top" secondItem="8PX-UJ-RZ0" secondAttribute="bottom" constant="8" id="IsN-sc-gl7"/>
-                            <constraint firstItem="8PX-UJ-RZ0" firstAttribute="top" secondItem="H5H-RI-TUA" secondAttribute="bottom" constant="8" id="LZc-XZ-7Vd"/>
-                            <constraint firstAttribute="bottom" secondItem="96W-hV-4nB" secondAttribute="bottom" constant="20" id="OJM-Oc-tRc"/>
-                            <constraint firstAttribute="bottom" secondItem="nli-ZE-3uz" secondAttribute="bottom" constant="8" id="Rry-by-474"/>
-                            <constraint firstItem="H5H-RI-TUA" firstAttribute="top" secondItem="Zpw-RM-CYf" secondAttribute="bottom" constant="8" id="ZVF-On-OXa"/>
-                            <constraint firstItem="H5H-RI-TUA" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="b73-7U-OUN"/>
-                            <constraint firstItem="nGc-Io-CxJ" firstAttribute="top" secondItem="8PX-UJ-RZ0" secondAttribute="bottom" constant="8" id="bTl-JW-XDb"/>
-                            <constraint firstItem="m27-IF-l1a" firstAttribute="leading" secondItem="nGc-Io-CxJ" secondAttribute="leading" id="ccC-xI-Iop"/>
-                            <constraint firstItem="ih2-gr-Rdi" firstAttribute="leading" secondItem="nGc-Io-CxJ" secondAttribute="trailing" constant="8" id="eWp-Az-IiZ"/>
-                            <constraint firstAttribute="trailing" secondItem="ih2-gr-Rdi" secondAttribute="trailing" constant="15" id="gfX-du-Ux3"/>
-                            <constraint firstAttribute="trailing" secondItem="nli-ZE-3uz" secondAttribute="trailing" constant="8" id="iiI-p7-BfM"/>
-                            <constraint firstItem="8PX-UJ-RZ0" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="jAQ-Ij-Dx5"/>
-                            <constraint firstAttribute="trailing" secondItem="8PX-UJ-RZ0" secondAttribute="trailing" constant="15" id="jPt-E0-CSE"/>
-                            <constraint firstItem="96W-hV-4nB" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="jwU-Mk-DWV"/>
-                            <constraint firstAttribute="trailing" secondItem="Zpw-RM-CYf" secondAttribute="trailing" constant="15" id="p33-G3-HfV"/>
-                            <constraint firstAttribute="trailing" secondItem="m27-IF-l1a" secondAttribute="trailing" constant="20" id="wvG-mR-vA6"/>
+                            <constraint firstItem="QeL-sF-qoA" firstAttribute="leading" secondItem="SH2-yM-fko" secondAttribute="leading" constant="8" id="1ZH-Ss-TdP"/>
+                            <constraint firstItem="zir-3K-NPk" firstAttribute="leading" secondItem="SH2-yM-fko" secondAttribute="leading" constant="15" id="50O-nG-GOV"/>
+                            <constraint firstItem="xcy-it-phG" firstAttribute="leading" secondItem="SH2-yM-fko" secondAttribute="leading" constant="15" id="5s5-MZ-kP0"/>
+                            <constraint firstItem="zir-3K-NPk" firstAttribute="top" secondItem="SH2-yM-fko" secondAttribute="top" constant="8" id="Dv7-RO-BAG"/>
+                            <constraint firstAttribute="bottom" secondItem="WNK-wj-AwT" secondAttribute="bottom" constant="8" id="OG4-ie-13G"/>
+                            <constraint firstItem="EyI-T7-7hK" firstAttribute="top" secondItem="QeL-sF-qoA" secondAttribute="bottom" id="P4b-jH-0BK"/>
+                            <constraint firstItem="QeL-sF-qoA" firstAttribute="top" secondItem="zir-3K-NPk" secondAttribute="bottom" constant="8" id="RWn-9O-zyH"/>
+                            <constraint firstAttribute="trailing" secondItem="QeL-sF-qoA" secondAttribute="trailing" constant="8" id="XSd-ov-CWX"/>
+                            <constraint firstAttribute="trailing" secondItem="WNK-wj-AwT" secondAttribute="trailing" constant="8" id="brS-Qz-FqJ"/>
+                            <constraint firstItem="xcy-it-phG" firstAttribute="top" secondItem="EyI-T7-7hK" secondAttribute="bottom" id="byz-ep-pP8"/>
+                            <constraint firstItem="0OV-xL-jfF" firstAttribute="centerX" secondItem="SH2-yM-fko" secondAttribute="centerX" id="ci9-37-BDN"/>
+                            <constraint firstItem="0OV-xL-jfF" firstAttribute="top" secondItem="xcy-it-phG" secondAttribute="bottom" constant="8" id="eZH-FT-9zK"/>
+                            <constraint firstAttribute="bottom" secondItem="0OV-xL-jfF" secondAttribute="bottom" constant="8" id="hxm-rG-sGA"/>
+                            <constraint firstAttribute="trailing" secondItem="EyI-T7-7hK" secondAttribute="trailing" id="o8z-fH-yAN"/>
+                            <constraint firstItem="EyI-T7-7hK" firstAttribute="top" secondItem="QeL-sF-qoA" secondAttribute="bottom" id="pCj-3J-z6e"/>
+                            <constraint firstAttribute="trailing" secondItem="xcy-it-phG" secondAttribute="trailing" constant="15" id="sLt-ah-hHT"/>
+                            <constraint firstAttribute="trailing" secondItem="zir-3K-NPk" secondAttribute="trailing" constant="15" id="uFL-FZ-5KO"/>
+                            <constraint firstItem="EyI-T7-7hK" firstAttribute="leading" secondItem="SH2-yM-fko" secondAttribute="leading" id="w7h-jH-QPD"/>
                         </constraints>
                     </view>
                     <connections>
@@ -447,13 +544,13 @@ DQ
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="JhK-Ks-yo4"/>
             </objects>
-            <point key="canvasLocation" x="189" y="605"/>
+            <point key="canvasLocation" x="75" y="742"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="WDF-T0-nk8">
             <objects>
                 <windowController storyboardIdentifier="lockoutWindow" showSeguePresentationStyle="single" id="NZG-5q-u8T" customClass="LockoutWindowController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aqW-aO-hIt" customClass="LockoutWindow" customModule="LoanShark" customModuleProvider="target">
+                    <window key="window" title="Loaner Expired" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" id="aqW-aO-hIt" customClass="LockoutWindow" customModule="LoanShark" customModuleProvider="target">
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
@@ -472,9 +569,8 @@ DQ
         <scene sceneID="GKv-Is-frS">
             <objects>
                 <windowController storyboardIdentifier="extensionRequest" showSeguePresentationStyle="single" id="t7t-sB-qfQ" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Gi0-oB-idJ">
+                    <window key="window" title="Loaner Extension Request" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Gi0-oB-idJ">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
@@ -498,7 +594,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I9g-24-KQd">
-                                <rect key="frame" x="13" y="170" width="454" height="36"/>
+                                <rect key="frame" x="13" y="171" width="454" height="35"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Loan Extension Request" id="eJl-34-jn3">
                                     <font key="font" metaFont="systemThin" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -506,13 +602,13 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="XSG-Zm-ka2">
-                                <rect key="frame" x="15" y="159" width="450" height="5"/>
+                                <rect key="frame" x="15" y="160" width="450" height="5"/>
                             </box>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d8p-En-2hj">
-                                <rect key="frame" x="15" y="133" width="450" height="20"/>
+                                <rect key="frame" x="15" y="134" width="450" height="20"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hp4-ri-dpx">
-                                        <rect key="frame" x="-2" y="3" width="118" height="17"/>
+                                        <rect key="frame" x="-2" y="4" width="118" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Extension Amount:" id="Tyq-CD-OtJ">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -551,10 +647,10 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xor-Tw-D84">
-                                <rect key="frame" x="15" y="68" width="450" height="50"/>
+                                <rect key="frame" x="15" y="67" width="450" height="52"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Syo-Ey-5Jm">
-                                        <rect key="frame" x="-2" y="33" width="78" height="17"/>
+                                        <rect key="frame" x="-2" y="36" width="78" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Justification" id="pdZ-VO-ldI">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -608,7 +704,7 @@ DQ
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bW-eL-u7d">
-                                <rect key="frame" x="13" y="49" width="454" height="11"/>
+                                <rect key="frame" x="13" y="49" width="454" height="10"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="kkz-ZO-vsw">
                                     <font key="font" metaFont="system" size="8"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
@@ -662,11 +758,11 @@ DQ
             <objects>
                 <viewController title="LoanShark Loaner Period Expired" showSeguePresentationStyle="single" id="gZa-NH-KiA" customClass="LoanerExpiredViewController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="wv6-hf-89Z">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="302"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="299"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VfN-kn-mhc">
-                                <rect key="frame" x="13" y="246" width="454" height="36"/>
+                                <rect key="frame" x="13" y="244" width="454" height="35"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Loan Period Expired" id="hfO-Ga-7Ho">
                                     <font key="font" metaFont="systemThin" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -674,10 +770,10 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="1Y2-IJ-O9d">
-                                <rect key="frame" x="8" y="235" width="464" height="5"/>
+                                <rect key="frame" x="8" y="233" width="464" height="5"/>
                             </box>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1gd-1E-Mf5">
-                                <rect key="frame" x="208" y="165" width="64" height="64"/>
+                                <rect key="frame" x="208" y="163" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="djm-MM-EKh"/>
                                     <constraint firstAttribute="height" constant="64" id="o33-rN-NRg"/>
@@ -686,7 +782,7 @@ DQ
                                 <color key="contentTintColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
                             </imageView>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2cr-qg-vmS">
-                                <rect key="frame" x="13" y="126" width="454" height="17"/>
+                                <rect key="frame" x="13" y="125" width="454" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" title="Message to be displayed to the user." id="QRj-k0-f3Z">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -701,7 +797,7 @@ DQ
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SZ8-CY-92R">
-                                <rect key="frame" x="13" y="92" width="454" height="19"/>
+                                <rect key="frame" x="13" y="91" width="454" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Contact Information" id="VWQ-w7-MDF">
                                     <font key="font" metaFont="systemLight" size="16"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -709,7 +805,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="cLj-6v-5st">
-                                <rect key="frame" x="16" y="81" width="448" height="5"/>
+                                <rect key="frame" x="16" y="80" width="448" height="5"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jtI-GV-QP8">
                                 <rect key="frame" x="13" y="8" width="219" height="19"/>
@@ -735,10 +831,10 @@ DQ
                                 </connections>
                             </textField>
                             <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93C-4B-UcM">
-                                <rect key="frame" x="15" y="42" width="450" height="33"/>
+                                <rect key="frame" x="15" y="42" width="450" height="32"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rjd-zf-aL9">
-                                        <rect key="frame" x="-2" y="8" width="91" height="17"/>
+                                        <rect key="frame" x="-2" y="8" width="91" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Contact Name" id="Hy6-w2-n0a">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -753,7 +849,7 @@ DQ
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tyI-vk-iCV">
-                                        <rect key="frame" x="127" y="8" width="146" height="17"/>
+                                        <rect key="frame" x="127" y="8" width="146" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Contact Phone Number" id="g1w-By-MOo">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -768,7 +864,7 @@ DQ
                                         </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UsC-gd-NAa">
-                                        <rect key="frame" x="310" y="8" width="142" height="17"/>
+                                        <rect key="frame" x="310" y="8" width="142" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Contact Email Address" id="tqz-hF-yK2">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -844,9 +940,8 @@ DQ
         <scene sceneID="D8L-RE-682">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="smC-sj-ZbX" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Hc3-7w-f9b">
+                    <window key="window" title="Loaner Configuration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Hc3-7w-f9b">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
@@ -870,7 +965,7 @@ DQ
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JEO-c4-CLc">
-                                <rect key="frame" x="13" y="279" width="497" height="36"/>
+                                <rect key="frame" x="13" y="280" width="497" height="35"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Loan Period Configuration" id="lwO-xe-PNE">
                                     <font key="font" metaFont="systemThin" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -878,10 +973,10 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fQH-vT-zrD">
-                                <rect key="frame" x="8" y="268" width="507" height="5"/>
+                                <rect key="frame" x="8" y="269" width="507" height="5"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YBx-d3-usM">
-                                <rect key="frame" x="13" y="245" width="497" height="17"/>
+                                <rect key="frame" x="13" y="247" width="497" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Please fill out the information below to assign the loaner to the user." id="VoN-FG-sBV">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -889,10 +984,10 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PJ-xp-So7">
-                                <rect key="frame" x="15" y="212" width="493" height="25"/>
+                                <rect key="frame" x="15" y="207" width="493" height="32"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2jq-eN-Sz8">
-                                        <rect key="frame" x="-2" y="8" width="80" height="17"/>
+                                        <rect key="frame" x="-2" y="16" width="80" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Loan Period:" id="2pZ-ez-5ST">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -900,7 +995,7 @@ DQ
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjG-Gq-52I">
-                                        <rect key="frame" x="84" y="3" width="409" height="22"/>
+                                        <rect key="frame" x="84" y="11" width="409" height="21"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="BzW-ti-nyH">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="rgK-iU-oKe"/>
                                             <font key="font" metaFont="system"/>
@@ -931,14 +1026,14 @@ DQ
                                 </customSpacing>
                             </stackView>
                             <splitView arrangesAllSubviews="NO" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgz-x1-xfE">
-                                <rect key="frame" x="8" y="37" width="507" height="167"/>
+                                <rect key="frame" x="8" y="37" width="507" height="162"/>
                                 <subviews>
                                     <customView id="2Ne-u5-EZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="298" height="167"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="298" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mVp-9r-1xF">
-                                                <rect key="frame" x="96" y="142" width="106" height="17"/>
+                                                <rect key="frame" x="96" y="138" width="106" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="User Information" id="df2-IB-qDK">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -946,7 +1041,7 @@ DQ
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aRN-hE-DzM">
-                                                <rect key="frame" x="7" y="105" width="284" height="22"/>
+                                                <rect key="frame" x="7" y="102" width="284" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="First Name" drawsBackground="YES" id="iTc-SP-ZvY">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -962,7 +1057,7 @@ DQ
                                                 </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ehu-Rc-AfU">
-                                                <rect key="frame" x="7" y="45" width="284" height="22"/>
+                                                <rect key="frame" x="7" y="44" width="284" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Phone" drawsBackground="YES" id="YD6-CT-RSO">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -978,7 +1073,7 @@ DQ
                                                 </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h0h-Yj-MMn">
-                                                <rect key="frame" x="7" y="15" width="284" height="22"/>
+                                                <rect key="frame" x="7" y="15" width="284" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Email" drawsBackground="YES" id="vc1-Q5-HDj">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -994,7 +1089,7 @@ DQ
                                                 </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ARu-Tz-NF9">
-                                                <rect key="frame" x="7" y="75" width="284" height="22"/>
+                                                <rect key="frame" x="7" y="73" width="284" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Last Name" drawsBackground="YES" id="eWP-Jo-LsN">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1029,11 +1124,11 @@ DQ
                                         </constraints>
                                     </customView>
                                     <customView id="K8L-NE-sxT">
-                                        <rect key="frame" x="308" y="0.0" width="199" height="167"/>
+                                        <rect key="frame" x="308" y="0.0" width="199" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QU2-fc-l4M">
-                                                <rect key="frame" x="21" y="142" width="158" height="17"/>
+                                                <rect key="frame" x="21" y="138" width="158" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Tech Contact Information" id="cpg-bv-lYE">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1041,7 +1136,7 @@ DQ
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9lw-c6-txK" userLabel="First Name">
-                                                <rect key="frame" x="7" y="105" width="185" height="22"/>
+                                                <rect key="frame" x="7" y="102" width="185" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="First Name" drawsBackground="YES" id="2M6-aS-awA">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1057,7 +1152,7 @@ DQ
                                                 </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vzg-ph-nwm" userLabel="Last Name">
-                                                <rect key="frame" x="7" y="75" width="185" height="22"/>
+                                                <rect key="frame" x="7" y="73" width="185" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Last Name" drawsBackground="YES" id="QTL-GC-8c3">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1073,7 +1168,7 @@ DQ
                                                 </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wYy-RR-2r8" userLabel="Phone Number">
-                                                <rect key="frame" x="7" y="45" width="185" height="22"/>
+                                                <rect key="frame" x="7" y="44" width="185" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Phone" drawsBackground="YES" id="ROl-ds-zsP">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1089,7 +1184,7 @@ DQ
                                                 </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TGF-Gg-LpP" userLabel="Email Address">
-                                                <rect key="frame" x="7" y="15" width="185" height="22"/>
+                                                <rect key="frame" x="7" y="15" width="185" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Email" drawsBackground="YES" id="UhC-JF-Bwu">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1174,9 +1269,8 @@ DQ
         <scene sceneID="eCg-ab-Ar0">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="c2Q-3e-TR7" sceneMemberID="viewController">
-                    <window key="window" title="LoanShark Loaner Extension" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aQ4-cf-oG8">
+                    <window key="window" title="Loaner Extension" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="aQ4-cf-oG8">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
                         <connections>
@@ -1196,11 +1290,11 @@ DQ
             <objects>
                 <viewController title="LoanShark Loaner Extension" showSeguePresentationStyle="single" id="20Z-7b-FQf" customClass="ExtensionViewController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="zCF-fv-Dwm">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="216"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="211"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eAq-Z5-iYs">
-                                <rect key="frame" x="13" y="165" width="454" height="36"/>
+                                <rect key="frame" x="13" y="161" width="454" height="35"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Loan Period Extension" id="dvj-jD-3Jd">
                                     <font key="font" metaFont="systemThin" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1208,10 +1302,10 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="dnt-6m-kbM">
-                                <rect key="frame" x="8" y="154" width="464" height="5"/>
+                                <rect key="frame" x="8" y="150" width="464" height="5"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r78-lc-Y8r">
-                                <rect key="frame" x="13" y="131" width="454" height="17"/>
+                                <rect key="frame" x="13" y="128" width="454" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Please input the amount of days you would like to extend this loaner for." id="KxN-TH-AXM">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1219,7 +1313,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xua-8n-aZT">
-                                <rect key="frame" x="180" y="94" width="247" height="22"/>
+                                <rect key="frame" x="180" y="92" width="247" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Number of Days" drawsBackground="YES" id="436-KB-YBz">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="vai-dI-kJX"/>
                                     <font key="font" metaFont="system"/>
@@ -1235,7 +1329,7 @@ DQ
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ql0-BB-QiJ">
-                                <rect key="frame" x="13" y="96" width="161" height="17"/>
+                                <rect key="frame" x="13" y="94" width="161" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Extension amount:" id="CK5-vE-izd">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1243,7 +1337,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HLO-Ag-DaG">
-                                <rect key="frame" x="13" y="63" width="161" height="17"/>
+                                <rect key="frame" x="13" y="62" width="161" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Extender's Email Address:" id="CSx-4J-eeZ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1251,7 +1345,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lyJ-Ow-hQZ">
-                                <rect key="frame" x="180" y="61" width="285" height="22"/>
+                                <rect key="frame" x="180" y="60" width="285" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="johnny@apple.seed.com" drawsBackground="YES" id="n9L-9S-1ik">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1280,7 +1374,7 @@ DQ
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BLg-kf-uEZ">
-                                <rect key="frame" x="433" y="96" width="34" height="17"/>
+                                <rect key="frame" x="433" y="94" width="34" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Days" id="Log-Uh-63e">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1288,7 +1382,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Mv-vw-dCb">
-                                <rect key="frame" x="13" y="44" width="454" height="11"/>
+                                <rect key="frame" x="13" y="44" width="454" height="10"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="adq-Oh-ody">
                                     <font key="font" metaFont="system" size="8"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
@@ -1346,9 +1440,9 @@ DQ
         <image name="NSLockLockedTemplate" width="10" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U5K-mc-5fC"/>
-        <segue reference="WxV-BK-mYs"/>
+        <segue reference="KW1-v4-3D0"/>
+        <segue reference="6dd-QE-Xvt"/>
         <segue reference="Kzt-8Q-PxN"/>
-        <segue reference="bB6-3X-qhi"/>
+        <segue reference="6SY-2e-R2H"/>
     </inferredMetricsTieBreakers>
 </document>

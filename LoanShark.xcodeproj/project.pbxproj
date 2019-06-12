@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81239EDF226A68D700713960 /* ArgumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81239EDE226A68D700713960 /* ArgumentParser.swift */; };
 		8149B7622216137300243E13 /* StatusTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B7612216137300243E13 /* StatusTransformer.swift */; };
+		815CDAFF225529DF0020A0D7 /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CDAFE225529DF0020A0D7 /* String_Extension.swift */; };
 		815E7FFC221CB11F009E3CA2 /* RemainingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */; };
 		81898DED224E9CB900A70807 /* LoginWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81898DEC224E9CB900A70807 /* LoginWindow.swift */; };
 		81CAD2F92209D942003C5D32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD2F82209D942003C5D32 /* AppDelegate.swift */; };
@@ -57,7 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81239EDE226A68D700713960 /* ArgumentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentParser.swift; sourceTree = "<group>"; };
 		8149B7612216137300243E13 /* StatusTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTransformer.swift; sourceTree = "<group>"; };
+		815CDAFE225529DF0020A0D7 /* String_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
 		815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingTransformer.swift; sourceTree = "<group>"; };
 		81898DEC224E9CB900A70807 /* LoginWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWindow.swift; sourceTree = "<group>"; };
 		81CAD2F52209D942003C5D32 /* LoanShark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoanShark.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +221,8 @@
 				8149B7612216137300243E13 /* StatusTransformer.swift */,
 				815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */,
 				81CAD344220B2AC3003C5D32 /* ActivationAuthentication.swift */,
+				815CDAFE225529DF0020A0D7 /* String_Extension.swift */,
+				81239EDE226A68D700713960 /* ArgumentParser.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -313,6 +319,9 @@
 					81CAD2F42209D941003C5D32 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
@@ -383,6 +392,7 @@
 				81CAD3292209D9F1003C5D32 /* ActionOptions.swift in Sources */,
 				815E7FFC221CB11F009E3CA2 /* RemainingTransformer.swift in Sources */,
 				81CAD339220A1B50003C5D32 /* LoanManager.swift in Sources */,
+				815CDAFF225529DF0020A0D7 /* String_Extension.swift in Sources */,
 				8149B7622216137300243E13 /* StatusTransformer.swift in Sources */,
 				81CAD350220B6D7C003C5D32 /* AgentMenu.swift in Sources */,
 				81CAD33B220A1CB6003C5D32 /* Log.swift in Sources */,
@@ -401,6 +411,7 @@
 				81CAD343220A3ED4003C5D32 /* TimerTransformer.swift in Sources */,
 				81CAD345220B2AC3003C5D32 /* ActivationAuthentication.swift in Sources */,
 				81CAD337220A1409003C5D32 /* NotificationName_Extension.swift in Sources */,
+				81239EDF226A68D700713960 /* ArgumentParser.swift in Sources */,
 				81CAD34D220B63DC003C5D32 /* ExtensionViewController.swift in Sources */,
 				81CAD335220A1379003C5D32 /* LoanPeriod.swift in Sources */,
 				81CAD32B220A0ABE003C5D32 /* Person.swift in Sources */,
@@ -574,6 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 55JHL22EU7;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = LoanShark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -594,6 +606,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 55JHL22EU7;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = LoanShark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
