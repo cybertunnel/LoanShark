@@ -10,6 +10,7 @@
 
 *Management Tools*
 With the release of 0.3, there are now management tools available to help handle loaning periods and obtain key information to assist in monitoring loaners.
+
 [Check These Tools Out](Tools/)
 
 # 0.2.1 Jamf Cloud Authentication Hotfix
