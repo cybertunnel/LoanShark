@@ -2,6 +2,7 @@
 ![macOS 10.12](https://img.shields.io/static/v1.svg?label=macOS&message=10.12&color=green&logo=apple)
 ![macOS 10.13](https://img.shields.io/static/v1.svg?label=macOS&message=10.13&color=green&logo=apple)
 ![macOS 10.14](https://img.shields.io/static/v1.svg?label=macOS&message=10.14&color=green&logo=apple)
+![macOS 10.15](https://img.shields.io/static/v1.svg?label=macOS&message=10.15&color=yellow&logo=apple)
 ![macOS Dark Mode](https://img.shields.io/static/v1.svg?label=Dark%20Mode&message=enabled&color=green&logo=apple)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
