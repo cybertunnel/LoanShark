@@ -46,6 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         //  Set Loan Period to Expired argument
         argParser.addArgument(name: "--set-expired", description: "Set loaner period to expired.", isBool: true) { (value) in
             Log.write(.info, Log.Category.application, "Set expiration argument sent, setting loaner period to expired.")
+            print("Setting Loan Period to expired!")
             self.loanerManager.setExpired()
         }
         
@@ -76,7 +77,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                     throw ArgumentError.invalidType(value: daysRaw, type: "Int", argument: "--extend")
                 }
                 
-                try self.loanerManager.extend(extensionOf: days)
+                try self.loanerManager.extend(extensionOf: (days + 1))
+                print("Successfully extended loaner by \(String(describing: days)). Total loaning period remaining is now \(self.loanerManager.loanPeriod?.remaining ?? 0) days.")
+                NSApp.terminate(self)
             }
             else {
                 print("Invalid passcode provided, please try again.")
@@ -102,6 +105,40 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             Log.write(.info, Log.Category.application, "Requested to give loanee details, getting and providing loanee information")
             print(self.loanerManager.loanee?.description ?? "No Information to Provide")
             NSApp.terminate(self)
+        }
+        
+        //  DEBUG: Get Preferences
+        argParser.addArgument(name: "--prefs", description: "Get the preferences LoanShark sees", isBool: true) {(_) in
+            Log.write(.info, Log.Category.application, "Requested to provide preference details, getting information and dumping it to standard out.")
+            
+            // Jamf URL
+            print("jamfURL:" + (Preferences.sharedInstance.jssURL ?? "Not Set"))
+            // Authorized Groups
+            if let authGroups = Preferences.sharedInstance.authorizedGroupIDs {
+                print("authorizedGroupIds:" + String(describing: authGroups))
+            }
+            else {
+                print("authorizedGroupIds:Not Set")
+            }
+            // Extension Options
+            if let extOpt = Preferences.sharedInstance.extensionOptions {
+                print("extensionOptions:" + String(describing: extOpt))
+            }
+            else {
+                print("extensionOptions:Not Set")
+            }
+            // Log Off Timer
+            print("logOffTimer:" + String(describing: Preferences.sharedInstance.logoffTimer))
+            // Lockout Message
+            print("lockoutMessage:" + (Preferences.sharedInstance.lockoutMessage ?? "Not Set"))
+            // Debugging
+            print("enableDebugging:" + String(describing: Preferences.sharedInstance.enableDebugging))
+            // Shared Secret
+            print("sharedSecret:" + (Preferences.sharedInstance.sharedSecret ?? "Not Set"))
+            // Shared Secret Auth
+            print("sharedSecretAuth:" + String(describing: Preferences.sharedInstance.sharedSecretAuth))
+            // Jamf Cloud
+            print("jamfCloud:" + String(describing: Preferences.sharedInstance.jamfCloud))
         }
         
     }

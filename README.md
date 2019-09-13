@@ -2,6 +2,7 @@
 ![macOS 10.12](https://img.shields.io/static/v1.svg?label=macOS&message=10.12&color=green&logo=apple)
 ![macOS 10.13](https://img.shields.io/static/v1.svg?label=macOS&message=10.13&color=green&logo=apple)
 ![macOS 10.14](https://img.shields.io/static/v1.svg?label=macOS&message=10.14&color=green&logo=apple)
+![macOS 10.15](https://img.shields.io/static/v1.svg?label=macOS&message=10.15&color=yellow&logo=apple)
 ![macOS Dark Mode](https://img.shields.io/static/v1.svg?label=Dark%20Mode&message=enabled&color=green&logo=apple)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -20,10 +21,10 @@ This currently supports Jamf Pro's interface for the Authentication piece.
 
 #### Notifications
 LoanShark has built in support to send notifications to the end user, is displays a notification like the ones below.
-![Notification - Active](https://user-images.githubusercontent.com/23121750/55244838-53cac080-5218-11e9-8718-f40b1a8115b6.png)
-![Notification - Critical](https://user-images.githubusercontent.com/23121750/55244841-55948400-5218-11e9-86b2-79fce128244f.png)
-![Notification - Not Set](https://user-images.githubusercontent.com/23121750/55244846-575e4780-5218-11e9-8836-1102f514ee48.png)
-![Notification - Warning](https://user-images.githubusercontent.com/23121750/55244848-588f7480-5218-11e9-8d04-6d0065d55e67.png)
+![Notification - Active](https://user-images.githubusercontent.com/23121750/59713291-148b8a80-91dd-11e9-8881-1ee16ecd4112.png)
+![Notification - Critical](https://user-images.githubusercontent.com/23121750/59713271-ffaef700-91dc-11e9-9d8b-b84ee3423c23.png)
+![Notification - Not Set](https://user-images.githubusercontent.com/23121750/59713248-eefe8100-91dc-11e9-8322-56ad219d3cbd.png)
+![Notification - Warning](https://user-images.githubusercontent.com/23121750/59713334-2ec56880-91dd-11e9-9488-c4847560bdf6.png)
 
 #### Jamf Pro Authentication
 LoanShark uses Jamf Pro's API to provide a layer of security to authenticate users who are allowed to manage loaner devices.
