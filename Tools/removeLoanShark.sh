@@ -14,7 +14,7 @@ app_folder="/Library/Application Support/LoanShark"
 app_name="LoanShark"
 
 #   Commands
-rm="rm"
+rm="/bin/rm"
 launchctl="/bin/launchctl"
 find="/usr/bin/find"
 echo="/bin/echo"
@@ -54,14 +54,14 @@ else
     $echo "No preferences found!"
 fi
 
-if [ -d ${app_folder} ]; then
+if [ -d "${app_folder}" ]; then
     $echo "LoanShark application folder..."
-    $rm -r ${app_folder}
+    $rm -r "${app_folder}"
 else
     $echo "No LoanShark application folder found!"
 fi
 
 $echo "Removing any loan period preferences..."
-$find "/Users/" -name ${loan_period_preference} -delete
+$find "/Users/" -name ${loan_period_preference} -delete 2> /dev/null
 
 exit 0
