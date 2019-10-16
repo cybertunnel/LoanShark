@@ -21,31 +21,55 @@ This currently supports Jamf Pro's interface for the Authentication piece.
 
 #### Notifications
 LoanShark has built in support to send notifications to the end user, is displays a notification like the ones below.
-![Notification - Active](https://user-images.githubusercontent.com/23121750/59713291-148b8a80-91dd-11e9-8881-1ee16ecd4112.png)
-![Notification - Critical](https://user-images.githubusercontent.com/23121750/59713271-ffaef700-91dc-11e9-9d8b-b84ee3423c23.png)
-![Notification - Not Set](https://user-images.githubusercontent.com/23121750/59713248-eefe8100-91dc-11e9-8322-56ad219d3cbd.png)
-![Notification - Warning](https://user-images.githubusercontent.com/23121750/59713334-2ec56880-91dd-11e9-9488-c4847560bdf6.png)
+![Notification - Not Configured](https://user-images.githubusercontent.com/23121750/66927992-b93c9e00-effe-11e9-9411-5b80fbfb957b.png)
+![Notification - Active](https://user-images.githubusercontent.com/23121750/66927988-b93c9e00-effe-11e9-89b2-57e32b939bfa.png)
+![Notification - Warning](https://user-images.githubusercontent.com/23121750/66927991-b93c9e00-effe-11e9-839f-a0064b6eb99c.png)
+![Notification - Critical](https://user-images.githubusercontent.com/23121750/66927990-b93c9e00-effe-11e9-8b43-3f3162df5e85.png)
+
 
 #### Jamf Pro Authentication
 LoanShark uses Jamf Pro's API to provide a layer of security to authenticate users who are allowed to manage loaner devices.
 
-![Authentication - Configuration ](https://user-images.githubusercontent.com/23121750/55244990-9be9e300-5218-11e9-8836-997546709099.png)
-![Authentication - Configuration - Entered](https://user-images.githubusercontent.com/23121750/55244995-9db3a680-5218-11e9-8eea-9327e47192e1.png)
+![Authentication - Jamf Pro ](https://user-images.githubusercontent.com/23121750/66928470-6ca59280-efff-11e9-924b-f26d89f6c31c.png)
+![Authentication - Jamf Pro - Filled](https://user-images.githubusercontent.com/23121750/66928472-6ca59280-efff-11e9-9e8b-73fc5f1aa4a8.png)
+
+#### Shared Secret Authentication
+LoanShark also allows the ability to use a passphrase, also known as a shared secret, to authenticate users who are allowed to manage loaner devices.
+![Authentication - SharedSecret ](https://user-images.githubusercontent.com/23121750/66928694-d3c34700-efff-11e9-86ae-2b2d71a24b60.png)
+![Authentication - SharedSecret - Filled ](https://user-images.githubusercontent.com/23121750/66928695-d3c34700-efff-11e9-9494-a25b642b5f32.png)
+
 
 #### Life Cycle
 LoanShark has a complete loaning lifecycle which includes custom duration, tech information, loanee information, extension requests, extensions, and expirations.
 
-![Configuration Screen - Entered](https://user-images.githubusercontent.com/23121750/55245618-dc962c00-5219-11e9-8a58-cb9baa23e166.png)
-![Loaner Extension Request - Entered](https://user-images.githubusercontent.com/23121750/55245626-e029b300-5219-11e9-81b7-54b2aaa5e5aa.png)
-![Loaner Extension Request](https://user-images.githubusercontent.com/23121750/55245638-e750c100-5219-11e9-8c0a-e15b84149bd3.png)
-![Loaner Extension](https://user-images.githubusercontent.com/23121750/55245640-e881ee00-5219-11e9-8d04-f4229206fbe3.png)
-![Loaner Expired](https://user-images.githubusercontent.com/23121750/55245647-e9b31b00-5219-11e9-88de-af6d9fee92e0.png)
-![Lockout Window - Fullscreen](https://user-images.githubusercontent.com/23121750/55244620-e4ed6780-5217-11e9-8aba-d814b1b4f372.png)
+##### Configuration
+After authenticating using Jamf Pro, or Shared Secret; the loaner is then able to be configured.
+![Configuration Screen](https://user-images.githubusercontent.com/23121750/66929287-c35f9c00-f000-11e9-801c-276163055b74.png)
+![Configuration Screen - Filled](https://user-images.githubusercontent.com/23121750/66929288-c35f9c00-f000-11e9-893f-cdd9adc52cc3.png)
+
+##### Extension Request
+When a loaner is about to expire, the user is provided a notification that asks if they want to extend the loaner. This will open the below window. Once submitted, it will open an email going to the person who deployed the loaner.
+![Extension - Request](https://user-images.githubusercontent.com/23121750/66929735-8c3dba80-f001-11e9-812e-06fa07a7ff10.png)
+![Extension - Request - Filled](https://user-images.githubusercontent.com/23121750/66929736-8c3dba80-f001-11e9-849f-6ea90d1c4079.png)
+
+##### Extension - Authorized User
+When an extension to a loaning period is recieved and approved to be performed; the user who is performing the extension can n avigate from the menu bar --> Admin --> Extend. The user will then be prompted to authenticate using Jamf Pro, or entering a Shared Secret. They will then see the below window.
+![Extension](https://user-images.githubusercontent.com/23121750/66930296-606f0480-f002-11e9-9a73-aaaa1f76aebd.png)
+![Extension - Filled](https://user-images.githubusercontent.com/23121750/66930298-606f0480-f002-11e9-9d8b-ad6d5890fad2.png)
+
+##### Lockout & Logoff
+When the loaning period expires, the user will then be locked out from being able to use the computer, and be forced to log off.
+![Lockout](https://user-images.githubusercontent.com/23121750/66930550-c3f93200-f002-11e9-978d-ad027f04a223.png)
 
 #### Automatic Email Extension Requests
 LoanShark includes built in support to automatically open default mail client and send email to the tech who assigned the loaner
 
 ![Loaner Extension Request - Auto Email](https://user-images.githubusercontent.com/23121750/55245707-0f402480-521a-11e9-9b8b-b4639f4c16ca.png)
+
+#### Agent Menu
+LoanShark also has an agent menu that provides valuable information and actions in a quick manner.
+![Agent Menu - Configured](https://user-images.githubusercontent.com/23121750/66930672-f30fa380-f002-11e9-9bb1-232fcbd5c0f2.png)
+![Agent Menu - Not Configured](https://user-images.githubusercontent.com/23121750/66930673-f30fa380-f002-11e9-82ee-d2170403ba16.png)
 
 ## Quick Start
 The best way to start is the [Kickstart Guide](https://github.com/cybertunnel/LoanShark/wiki).
