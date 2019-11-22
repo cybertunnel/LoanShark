@@ -21,11 +21,11 @@ This currently supports Jamf Pro's interface for the Authentication piece.
 
 #### Notifications
 LoanShark has built in support to send notifications to the end user, is displays a notification like the ones below.
+
 ![Notification - Not Configured](https://user-images.githubusercontent.com/23121750/66927992-b93c9e00-effe-11e9-9411-5b80fbfb957b.png)
 ![Notification - Active](https://user-images.githubusercontent.com/23121750/66927988-b93c9e00-effe-11e9-89b2-57e32b939bfa.png)
 ![Notification - Warning](https://user-images.githubusercontent.com/23121750/66927991-b93c9e00-effe-11e9-839f-a0064b6eb99c.png)
 ![Notification - Critical](https://user-images.githubusercontent.com/23121750/66927990-b93c9e00-effe-11e9-8b43-3f3162df5e85.png)
-
 
 #### Jamf Pro Authentication
 LoanShark uses Jamf Pro's API to provide a layer of security to authenticate users who are allowed to manage loaner devices.
