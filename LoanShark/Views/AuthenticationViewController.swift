@@ -113,6 +113,7 @@ class AuthenticationViewController: NSViewController {
                         let access = try authenticator.doesHaveAccess()
                         if access {
                             DispatchQueue.main.async {
+                                Log.write(.debug, Log.Category.authenticator, "Attempting to perform transition.")
                                 self.performTransition()
                             }
                         }

@@ -129,6 +129,8 @@ class ActivationAuthentication {
         var authorized = false
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
+                authorized = false
+                running = false
                 return
             }
             
@@ -149,6 +151,12 @@ class ActivationAuthentication {
                     running = false
                 }
             }
+            else {
+                Log.write(.error, Log.Category.authenticator, "No response from web server.")
+                authorized = false
+                running = false
+            }
+            
         }
         task.resume()
         while running {
