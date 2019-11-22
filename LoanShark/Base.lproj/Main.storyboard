@@ -265,7 +265,7 @@
                                                     <string key="NSValueTransformerName">NSIsNotNil</string>
                                                 </dictionary>
                                             </binding>
-                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" id="bB6-3X-qhi"/>
+                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="bB6-3X-qhi"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extend" id="wv5-v9-Wbd">
@@ -276,7 +276,7 @@
                                                     <string key="NSValueTransformerName">NSIsNil</string>
                                                 </dictionary>
                                             </binding>
-                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="extend" id="6SY-2e-R2H"/>
+                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="extend" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="6SY-2e-R2H"/>
                                         </connections>
                                     </menuItem>
                                 </items>
@@ -550,6 +550,15 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="performAuthorization:" target="XfG-lQ-9wD" id="Uip-ez-yAv"/>
+                                    <binding destination="XfG-lQ-9wD" name="enabled2" keyPath="self.performingAuthorization" previousBinding="ENB-Oo-9lA" id="gNg-PM-ltP">
+                                        <dictionary key="options">
+                                            <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                            <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                            <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                            <integer key="NSNullPlaceholder" value="-1"/>
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
                                     <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.requirementsCompleted" id="ENB-Oo-9lA"/>
                                 </connections>
                             </button>
@@ -1492,7 +1501,7 @@ DQ
     <inferredMetricsTieBreakers>
         <segue reference="U5K-mc-5fC"/>
         <segue reference="WxV-BK-mYs"/>
-        <segue reference="TFM-wG-cfn"/>
-        <segue reference="50v-MY-WNO"/>
+        <segue reference="npD-rZ-4Dd"/>
+        <segue reference="6SY-2e-R2H"/>
     </inferredMetricsTieBreakers>
 </document>
