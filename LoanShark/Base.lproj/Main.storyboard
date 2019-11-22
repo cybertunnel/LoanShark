@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,6 +25,56 @@
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="File" id="e8H-j4-vhs">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="File" id="Mgc-gU-EhJ">
+                                    <items>
+                                        <menuItem title="Close" keyEquivalent="w" id="AAv-1N-tak">
+                                            <connections>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="6h7-9j-551"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Edit" id="qlK-qz-7uR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Edit" id="FOS-XA-EgF">
+                                    <items>
+                                        <menuItem title="Undo" keyEquivalent="z" id="fnQ-YD-xeu">
+                                            <connections>
+                                                <action selector="undo:" target="Ady-hI-5gd" id="LBh-cc-e6K"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Redo" keyEquivalent="Z" id="DL5-PP-eCb">
+                                            <connections>
+                                                <action selector="redo:" target="Ady-hI-5gd" id="uR0-iK-Ija"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="lHN-Dr-IlZ"/>
+                                        <menuItem title="Cut" keyEquivalent="x" id="snr-ah-qXe">
+                                            <connections>
+                                                <action selector="cut:" target="Ady-hI-5gd" id="kVt-Ho-RNu"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="YhS-rr-mHT">
+                                            <connections>
+                                                <action selector="copy:" target="Ady-hI-5gd" id="MpT-xa-aRu"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste" keyEquivalent="v" id="kO7-87-boT">
+                                            <connections>
+                                                <action selector="paste:" target="Ady-hI-5gd" id="jqW-rL-f9h"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select All" keyEquivalent="a" id="Yc8-Vl-yct">
+                                            <connections>
+                                                <action selector="selectAll:" target="Ady-hI-5gd" id="UFP-gG-KQp"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -226,7 +276,7 @@
                                                     <string key="NSValueTransformerName">NSIsNil</string>
                                                 </dictionary>
                                             </binding>
-                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="extend" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="6SY-2e-R2H"/>
+                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="extend" id="6SY-2e-R2H"/>
                                         </connections>
                                     </menuItem>
                                 </items>
@@ -476,7 +526,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-it-phG">
                                 <rect key="frame" x="13" y="37" width="463" height="11"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="oTM-tF-M5B">
-                                    <font key="font" metaFont="miniSystem"/>
+                                    <font key="font" metaFont="menu" size="9"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -619,7 +669,7 @@ DQ
                                         <rect key="frame" x="120" y="-3" width="333" height="24"/>
                                         <popUpButtonCell key="cell" type="push" title="Option 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ml1-z2-Pk3" id="vXH-Qt-2fc">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
+                                            <font key="font" metaFont="system"/>
                                             <menu key="menu" id="9eI-c4-ukQ">
                                                 <items>
                                                     <menuItem title="Option 1" state="on" id="ml1-z2-Pk3"/>
@@ -1440,9 +1490,9 @@ DQ
         <image name="NSLockLockedTemplate" width="10" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KW1-v4-3D0"/>
-        <segue reference="6dd-QE-Xvt"/>
-        <segue reference="Kzt-8Q-PxN"/>
-        <segue reference="6SY-2e-R2H"/>
+        <segue reference="U5K-mc-5fC"/>
+        <segue reference="WxV-BK-mYs"/>
+        <segue reference="TFM-wG-cfn"/>
+        <segue reference="50v-MY-WNO"/>
     </inferredMetricsTieBreakers>
 </document>
