@@ -148,7 +148,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         Log.write(.debug, Log.Category.application, "Building Agent Menu.")
         
         item.menu = agentMenu
-        item.title = "LoanShark2"
+        item.title = "LoanShark"
         
         Log.write(.debug, Log.Category.application, "Agent Menu built.")
         
