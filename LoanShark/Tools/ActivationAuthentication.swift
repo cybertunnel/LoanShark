@@ -178,7 +178,7 @@ class ActivationAuthentication {
             throw AuthenticationError.NoSharedSecretStored
         }
         Log.write(.debug, Log.Category.authenticator, "Hash provided: " + secret.sha256().uppercased())
-        return sharedSecret == secret.sha256().uppercased()
+        return sharedSecret.uppercased() == secret.sha256().uppercased()
     }
     
     /**
