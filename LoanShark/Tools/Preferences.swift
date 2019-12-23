@@ -162,6 +162,12 @@ class Preferences {
         }
     }
     
+    public var useGmail: Bool {
+        get {
+            return self.userDefaults.bool(forKey:"useGmail")
+        }
+    }
+    
     //MARK: Initializers
     
     init(nsUserDefaults: UserDefaults = UserDefaults.standard) {
