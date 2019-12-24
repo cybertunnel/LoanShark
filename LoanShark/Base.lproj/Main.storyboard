@@ -736,13 +736,6 @@ DQ
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="gZa-NH-KiA" name="value" keyPath="self.lockoutMessage" id="oVC-s9-55c">
-                                        <dictionary key="options">
-                                            <string key="NSNullPlaceholder">Message that is displayed to the end user.</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SZ8-CY-92R">
                                 <rect key="frame" x="13" y="91" width="454" height="19"/>
@@ -770,13 +763,6 @@ DQ
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="gZa-NH-KiA" name="value" keyPath="self.timerString" id="zkZ-1V-5Zz">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">TimerTransformer</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                             <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93C-4B-UcM">
                                 <rect key="frame" x="15" y="42" width="450" height="32"/>
@@ -788,13 +774,6 @@ DQ
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <binding destination="gZa-NH-KiA" name="value" keyPath="self.contactName" id="daf-tn-ZkJ">
-                                                <dictionary key="options">
-                                                    <string key="NSNullPlaceholder">Contact Name</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tyI-vk-iCV">
                                         <rect key="frame" x="127" y="8" width="146" height="16"/>
@@ -803,13 +782,6 @@ DQ
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <binding destination="gZa-NH-KiA" name="value" keyPath="self.contactPhone" id="4Lv-dp-uZl">
-                                                <dictionary key="options">
-                                                    <string key="NSNullPlaceholder">Contact Phone Number</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UsC-gd-NAa">
                                         <rect key="frame" x="310" y="8" width="142" height="16"/>
@@ -818,13 +790,6 @@ DQ
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <binding destination="gZa-NH-KiA" name="value" keyPath="self.contactEmail" id="OrF-Gg-QbS">
-                                                <dictionary key="options">
-                                                    <string key="NSNullPlaceholder">Contact Email Address</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
