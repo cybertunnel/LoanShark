@@ -1158,13 +1158,6 @@ DQ
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="20Z-7b-FQf" name="value" keyPath="self.extensionAmount" id="kp2-Wd-uTE">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ql0-BB-QiJ">
                                 <rect key="frame" x="13" y="94" width="161" height="16"/>
@@ -1189,17 +1182,10 @@ DQ
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="20Z-7b-FQf" name="value" keyPath="self.extenderEmailAddr" id="S6l-4G-gFZ">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G0B-tz-taH">
                                 <rect key="frame" x="199" y="8" width="82" height="32"/>
-                                <buttonCell key="cell" type="push" title="Extend" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uOd-lM-gTg">
+                                <buttonCell key="cell" type="push" title="Extend" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uOd-lM-gTg">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
@@ -1208,7 +1194,6 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="extend:" target="20Z-7b-FQf" id="SlB-il-OiP"/>
-                                    <binding destination="20Z-7b-FQf" name="enabled" keyPath="self.requirementsMet" id="gpV-Ns-pPs"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BLg-kf-uEZ">
@@ -1219,21 +1204,13 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Mv-vw-dCb">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Mv-vw-dCb">
                                 <rect key="frame" x="13" y="44" width="454" height="10"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="adq-Oh-ody">
                                     <font key="font" metaFont="system" size="8"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="20Z-7b-FQf" name="hidden" keyPath="self.errMsg" id="c3m-Dg-Avm">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNil</string>
-                                        </dictionary>
-                                    </binding>
-                                    <binding destination="20Z-7b-FQf" name="value" keyPath="self.errMsg" id="c6Q-MQ-yFH"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <constraints>
@@ -1267,6 +1244,12 @@ DQ
                             <constraint firstItem="ql0-BB-QiJ" firstAttribute="width" secondItem="HLO-Ag-DaG" secondAttribute="width" id="zCj-QQ-zmV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="errorMessage" destination="5Mv-vw-dCb" id="f4d-ls-4ms"/>
+                        <outlet property="extensionAmount" destination="xua-8n-aZT" id="Js0-5q-JUX"/>
+                        <outlet property="extensionButton" destination="G0B-tz-taH" id="5al-Fo-pgA"/>
+                        <outlet property="extensionUser" destination="lyJ-Ow-hQZ" id="F6E-CJ-qFZ"/>
+                    </connections>
                 </viewController>
                 <customObject id="DLm-0z-y7p" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="A7O-wQ-bUH"/>
