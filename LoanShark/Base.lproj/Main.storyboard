@@ -843,6 +843,13 @@ DQ
                             <constraint firstItem="93C-4B-UcM" firstAttribute="leading" secondItem="wv6-hf-89Z" secondAttribute="leading" constant="15" id="y8K-bu-5HC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contactEmail" destination="UsC-gd-NAa" id="3eJ-a6-dww"/>
+                        <outlet property="contactName" destination="rjd-zf-aL9" id="mJW-1U-lgy"/>
+                        <outlet property="contactPhone" destination="tyI-vk-iCV" id="YzS-l8-mOz"/>
+                        <outlet property="message" destination="2cr-qg-vmS" id="lLP-TK-WDn"/>
+                        <outlet property="timerText" destination="V6F-0T-91z" id="99Z-uo-ugO"/>
+                    </connections>
                 </viewController>
                 <customObject id="36K-Fo-VPY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="uNU-7g-Wke"/>
