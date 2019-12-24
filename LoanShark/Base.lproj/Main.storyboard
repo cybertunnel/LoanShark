@@ -922,15 +922,6 @@ DQ
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <binding destination="DSB-g8-MKz" name="value" keyPath="self.loanPeriod" id="ITa-hs-Ljj">
-                                                <dictionary key="options">
-                                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                    <string key="NSNullPlaceholder">Period in Days</string>
-                                                    <bool key="NSValidatesImmediately" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -967,14 +958,6 @@ DQ
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.userFirst" id="mjx-7A-3xd">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">First Name</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ehu-Rc-AfU">
                                                 <rect key="frame" x="7" y="44" width="284" height="21"/>
@@ -983,14 +966,6 @@ DQ
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.userPhone" id="yeA-62-4Fc">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Phone Number</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h0h-Yj-MMn">
                                                 <rect key="frame" x="7" y="15" width="284" height="21"/>
@@ -999,14 +974,6 @@ DQ
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.userEmail" id="zhZ-UT-HhH">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Email Address</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ARu-Tz-NF9">
                                                 <rect key="frame" x="7" y="73" width="284" height="21"/>
@@ -1015,14 +982,6 @@ DQ
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.userLast" id="6ck-0f-naH">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Last Name</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -1062,14 +1021,6 @@ DQ
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.techFirst" id="KJc-U9-fhU">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">First Name</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vzg-ph-nwm" userLabel="Last Name">
                                                 <rect key="frame" x="7" y="73" width="185" height="21"/>
@@ -1078,14 +1029,6 @@ DQ
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.techLast" id="CG1-pJ-RH3">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Last Name</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wYy-RR-2r8" userLabel="Phone Number">
                                                 <rect key="frame" x="7" y="44" width="185" height="21"/>
@@ -1094,14 +1037,6 @@ DQ
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.techPhone" id="xKp-O1-vog">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Phone Number</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TGF-Gg-LpP" userLabel="Email Address">
                                                 <rect key="frame" x="7" y="15" width="185" height="21"/>
@@ -1110,14 +1045,6 @@ DQ
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.techEmail" id="ms9-C5-YcV">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Email Address</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -1155,7 +1082,6 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="assignDevice:" target="DSB-g8-MKz" id="Tsy-Kh-dGf"/>
-                                    <binding destination="DSB-g8-MKz" name="enabled" keyPath="self.requiredCompleted" id="fnm-8j-Uxf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1180,6 +1106,18 @@ DQ
                             <constraint firstItem="0PJ-xp-So7" firstAttribute="leading" secondItem="tZ7-t3-3n5" secondAttribute="leading" constant="15" id="zlO-z8-tHm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="assignButton" destination="aWa-86-QBy" id="BFf-qr-Ped"/>
+                        <outlet property="periodLength" destination="ZjG-Gq-52I" id="ghB-NQ-Z6T"/>
+                        <outlet property="techEmail" destination="TGF-Gg-LpP" id="USn-FC-H5o"/>
+                        <outlet property="techFirst" destination="9lw-c6-txK" id="ppR-TL-GYa"/>
+                        <outlet property="techLast" destination="vzg-ph-nwm" id="oIJ-Fc-cdi"/>
+                        <outlet property="techPhone" destination="wYy-RR-2r8" id="xCC-LB-Pdc"/>
+                        <outlet property="userEmail" destination="h0h-Yj-MMn" id="rcj-0k-wuw"/>
+                        <outlet property="userFirst" destination="aRN-hE-DzM" id="SrA-G0-oXG"/>
+                        <outlet property="userLast" destination="ARu-Tz-NF9" id="scb-Et-BfS"/>
+                        <outlet property="userPhone" destination="Ehu-Rc-AfU" id="NQO-PH-OPe"/>
+                    </connections>
                 </viewController>
                 <customObject id="abv-ZQ-FZZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
