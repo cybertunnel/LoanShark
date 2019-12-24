@@ -41,6 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         
+        // MARK: Argument Parsing
         Log.write(.debug, Log.Category.argumentParser, "Building argument parsing.")
         
         //  Set Loan Period to Expired argument
@@ -96,7 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         //  Get Loaner Status
         argParser.addArgument(name: "--status", description: "Get the loaner period status", isBool: true) { (_) in
             Log.write(.info, Log.Category.application, "Requested to provide loaner period status")
-            print(self.loanerManager.loanStatus.toString())
+            print(self.loanerManager.loanStatus.rawValue)
             NSApp.terminate(self)
         }
         
@@ -145,6 +146,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        // MARK: Agent Menu
         Log.write(.debug, Log.Category.application, "Building Agent Menu.")
         
         item.menu = agentMenu
@@ -152,7 +154,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         Log.write(.debug, Log.Category.application, "Agent Menu built.")
         
-        
+        // MARK: Loaner Information
         Log.write(.info, Log.Category.application, "Checking loaner information")
         if let startDate = Preferences.sharedInstance.startDate, let endDate = Preferences.sharedInstance.endDate {
             Log.write(.debug, Log.Category.application, "Start Date: \(startDate.toString(format: "MM/dd/yyyy")) ; End DateL \(endDate.toString(format: "MM/dd/yyyy"))")
@@ -188,13 +190,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         }
         
         Log.write(.info, Log.Category.application, "Enabling observer for notifications.")
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodChanged(_:)), name: NSNotification.Name.loanerPeriodChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodSet(_:)), name: NSNotification.Name.loanerPeriodSet, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodExpired(_:)), name: NSNotification.Name.loanerPeriodExpired, object: nil)
-        self.loanerManager.startPeriodChecker()
-        if self.loanerManager.loanStatus == .notSet {
+        // TODO: Switch this out for loan manager's new mech
+        LoanManager.sharedInstance.addCallback {
             self.sendUserNotification()
         }
+        self.loanerManager.startPeriodChecker()
         
         self.argParser.parse()
     }
@@ -207,9 +207,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         Log.write(.info, Log.Category.application, "Beginning initial setup.")
         //  Value Transformers for bindings
-        ValueTransformer.setValueTransformer(StatusTransformer(), forName: .statusTransformer)
-        ValueTransformer.setValueTransformer(TimerTransformer(), forName: .timerTransformer)
-        ValueTransformer.setValueTransformer(RemainingTransformer(), forName: .remainingTransformer)
         Log.write(.info, Log.Category.application, "Finished initial setup.")
     }
     

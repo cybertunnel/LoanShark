@@ -14,7 +14,6 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodSet, object: nil)
     }
 
     override var representedObject: Any? {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -95,44 +95,13 @@
                     <items>
                         <menuItem title="Status:" enabled="NO" id="1eb-i7-55V">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self" id="RGW-PI-y5Y">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loanStatus" id="rVp-yS-6dh">
-                                    <dictionary key="options">
-                                        <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                        <string key="NSValueTransformerName">StatusTransformer</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                         <menuItem title="Remaining:" enabled="NO" id="xak-Ah-ceE">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self" id="xaG-X9-CbN">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loanPeriod.remaining" id="7b4-97-Us5">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">RemainingTransformer</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                         <menuItem title="Request Extension" id="0ri-sD-RGq">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod.remaining" id="yOX-TU-4w5">
-                                    <dictionary key="options">
-                                        <integer key="NSNullPlaceholder" value="1"/>
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
                                 <segue destination="lRq-Sq-zZ6" kind="modal" id="npD-rZ-4Dd"/>
                             </connections>
                         </menuItem>
@@ -143,69 +112,15 @@
                                 <items>
                                     <menuItem title="Assigned User:" id="8R1-P1-SZm">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" previousBinding="vhd-Rl-O0N" id="FIY-gg-Phm">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanee" id="vhd-Rl-O0N">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loaneeName" id="Nad-JX-UMh"/>
-                                        </connections>
                                     </menuItem>
                                     <menuItem title="Email Address:" id="qFY-QA-wmt">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanee" id="UzJ-TO-gly">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" previousBinding="UzJ-TO-gly" id="h7W-nV-JIx">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loaneeEmail" id="rXo-oa-K6K">
-                                                <dictionary key="options">
-                                                    <string key="NSNullPlaceholder">Loanee's Email Address</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </menuItem>
                                     <menuItem title="Phone Number:" id="756-if-ig7">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" previousBinding="tmo-Ia-DdT" id="mDu-NO-mdF">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanee" id="tmo-Ia-DdT">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loaneePhone" id="Qhf-TI-jIf">
-                                                <dictionary key="options">
-                                                    <string key="NSNullPlaceholder">Loanee's Phone Number</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </menuItem>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" id="qoc-4w-wBb">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                         <menuItem title="Contact" id="6tG-0V-pGD" userLabel="Contact">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -213,45 +128,12 @@
                                 <items>
                                     <menuItem title="Email Address:" id="dDC-gA-FBf">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.tech" previousBinding="wbt-FZ-vbi" id="O8b-pd-xqQ">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.tech" id="wbt-FZ-vbi">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.techEmail" id="Iig-dc-rnD"/>
-                                        </connections>
                                     </menuItem>
                                     <menuItem title="Phone Number:" id="CJc-I9-tTV">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.tech" id="MX4-GM-TBN">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.tech" previousBinding="MX4-GM-TBN" id="cLp-hm-J6E">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.techPhone" id="duv-yj-ykz"/>
-                                        </connections>
                                     </menuItem>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.tech" id="KOu-P7-G6T">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                         <menuItem title="Administrator" id="LY3-Ct-XxW">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -260,22 +142,12 @@
                                     <menuItem title="Configure" id="CGc-d9-pUa">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod" id="Kbl-Kd-ch8">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNotNil</string>
-                                                </dictionary>
-                                            </binding>
                                             <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="bB6-3X-qhi"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extend" id="wv5-v9-Wbd">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod" id="6Sh-sP-6PJ">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
                                             <segue destination="B8D-0N-5wS" kind="modal" identifier="extend" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="6SY-2e-R2H"/>
                                         </connections>
                                     </menuItem>
@@ -327,6 +199,23 @@
                             </connections>
                         </menuItem>
                     </items>
+                    <connections>
+                        <outlet property="adminConfigure" destination="CGc-d9-pUa" id="AbG-IA-4j2"/>
+                        <outlet property="adminExtend" destination="wv5-v9-Wbd" id="iIu-uu-qeV"/>
+                        <outlet property="adminMenu" destination="ZZP-2v-gY2" id="XZL-Nc-0dY"/>
+                        <outlet property="assignedEmail" destination="qFY-QA-wmt" id="P36-DE-mkS"/>
+                        <outlet property="assignedPhone" destination="756-if-ig7" id="5jA-gj-XNC"/>
+                        <outlet property="assignedUser" destination="8R1-P1-SZm" id="V8h-Kl-fxE"/>
+                        <outlet property="loaneeMenu" destination="lkC-7m-rYR" id="ESb-Zy-2zh"/>
+                        <outlet property="loaneeTitle" destination="hAA-WT-oAc" id="hRH-Tp-Ijg"/>
+                        <outlet property="remainingTitle" destination="xak-Ah-ceE" id="oW3-U2-WJW"/>
+                        <outlet property="requestTitle" destination="0ri-sD-RGq" id="F33-Jd-hme"/>
+                        <outlet property="statusTitle" destination="1eb-i7-55V" id="azh-rN-b4J"/>
+                        <outlet property="techEmail" destination="dDC-gA-FBf" id="hOm-5H-JfO"/>
+                        <outlet property="techMenu" destination="PcE-15-Nu2" id="CPP-vq-OMe"/>
+                        <outlet property="techPhone" destination="CJc-I9-tTV" id="7y1-J3-AQD"/>
+                        <outlet property="techTitle" destination="6tG-0V-pGD" id="G9B-Pw-1Em"/>
+                    </connections>
                 </menu>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
