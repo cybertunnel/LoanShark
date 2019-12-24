@@ -13,35 +13,31 @@ class ExtensionRequestViewController: NSViewController {
     
     //  MARK:   IBOutlets
     @IBOutlet weak var requestOptions: NSPopUpButton!
-    
-    /// Options for the user to select.
-    @objc var options = Preferences.sharedInstance.extensionOptions ?? ["None Set"]
-    @objc var justification: String?
-    
-    @objc var errMsg: String? {
-        willSet {
-            self.willChangeValue(forKey: "errMsg")
-        }
-        didSet {
-            self.didChangeValue(forKey: "errMsg")
-        }
-    }
+    @IBOutlet weak var justificationField: NSTextField!
+    @IBOutlet weak var requestButton: NSButton!
+    @IBOutlet weak var errorMessage: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.requestOptions.removeAllItems()
+        guard let options = Preferences.sharedInstance.extensionOptions else {
+            self.requestOptions.addItem(withTitle: "Not Set")
+            return
+        }
+        
+        self.requestOptions.addItems(withTitles: options)
         
         // Do view setup here.
     }
     
     @IBAction func sendRequest(_ sender: NSButton) {
         
-        guard let justification = self.justification else {
-            self.errMsg = "Justification not provided."
-            return
-        }
+        let justification = self.justificationField.stringValue
         
         if justification.lengthOfBytes(using: .utf8) < 10 {
-            self.errMsg = "Justification is not valid, please enter a valid justification."
+            self.errorMessage.stringValue = "Justification is not valid, please enter a valid justification."
+            self.errorMessage.isHidden = false
             return
         }
         
@@ -51,7 +47,8 @@ class ExtensionRequestViewController: NSViewController {
         let service = NSSharingService(named: .composeEmail)
         
         guard let recipient = LoanManager.sharedInstance.tech?.emailAddr else {
-            self.errMsg = "Tech information is not set, unable to find who to request extension from."
+            self.errorMessage.stringValue = "Tech information is not set, unable to find who to request extension from."
+            self.errorMessage.isHidden = false
             return
         }
         

@@ -203,10 +203,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         self.argParser.parse()
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
     
     func loanPeriodExpired() {
         Log.write(.info, Log.Category.application, "Loan period expired, displaying lockout message")

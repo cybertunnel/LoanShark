@@ -557,9 +557,6 @@ DQ
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
-                                        <connections>
-                                            <binding destination="lRq-Sq-zZ6" name="contentValues" keyPath="self.options" id="zL5-au-GpP"/>
-                                        </connections>
                                     </popUpButton>
                                 </subviews>
                                 <constraints>
@@ -595,13 +592,6 @@ DQ
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <binding destination="lRq-Sq-zZ6" name="value" keyPath="self.justification" id="Nnx-0y-PSX">
-                                                <dictionary key="options">
-                                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <visibilityPriorities>
@@ -624,32 +614,15 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="sendRequest:" target="lRq-Sq-zZ6" id="57j-Ec-CY1"/>
-                                    <binding destination="lRq-Sq-zZ6" name="enabled" keyPath="self.justification" id="0TV-XX-12y">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNotNil</string>
-                                        </dictionary>
-                                    </binding>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bW-eL-u7d">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bW-eL-u7d">
                                 <rect key="frame" x="13" y="49" width="454" height="10"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="kkz-ZO-vsw">
                                     <font key="font" metaFont="system" size="8"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="lRq-Sq-zZ6" name="hidden" keyPath="self.errMsg" id="YwI-uP-aPD">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNil</string>
-                                        </dictionary>
-                                    </binding>
-                                    <binding destination="lRq-Sq-zZ6" name="value" keyPath="self.errMsg" id="qmZ-tQ-ZJ3">
-                                        <dictionary key="options">
-                                            <string key="NSNullPlaceholder">Error Message</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                         </subviews>
                         <constraints>
@@ -674,6 +647,9 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorMessage" destination="6bW-eL-u7d" id="64r-1r-g3j"/>
+                        <outlet property="justificationField" destination="KaG-Xm-BtI" id="OdW-RE-zI8"/>
+                        <outlet property="requestButton" destination="2Sw-si-nbj" id="TC5-Af-y6L"/>
                         <outlet property="requestOptions" destination="3il-7v-uHx" id="I9d-xx-pTv"/>
                     </connections>
                 </viewController>
