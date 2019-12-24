@@ -18,7 +18,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     @objc let enableDebugging = Preferences.sharedInstance.enableDebugging
     
     //  Don't Use
-    private let dontUse: Any? = initialSetup()
     private var lockoutWindow: LockoutWindowController!
     private var storyboard: NSStoryboard {
         return NSStoryboard(name: "Main", bundle: nil)
@@ -193,6 +192,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         // TODO: Switch this out for loan manager's new mech
         LoanManager.sharedInstance.addCallback {
             self.sendUserNotification()
+            
+            if LoanManager.sharedInstance.loanPeriod != nil {
+                if LoanManager.sharedInstance.loanPeriod?.remaining ?? 0 < 0 {
+                    self.loanPeriodExpired()
+                }
+            }
         }
         self.loanerManager.startPeriodChecker()
         
@@ -203,27 +208,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         // Insert code here to tear down your application
     }
     
-    private static func initialSetup() {
-        
-        Log.write(.info, Log.Category.application, "Beginning initial setup.")
-        //  Value Transformers for bindings
-        Log.write(.info, Log.Category.application, "Finished initial setup.")
-    }
-    
-    @objc func loanPeriodChanged(_ aNotification: Notification) {
-        Log.write(.debug, Log.Category.application, "Application detected a loan period change.")
-        self.willChangeValue(forKey: "loanerManager")
-        self.didChangeValue(forKey: "loanerManager")
-        self.sendUserNotification()
-    }
-    
-    @objc func loanPeriodSet(_ aNotification: Notification) {
-        Log.write(.debug, Log.Category.application, "Application detected loaner period being set.")
-        self.willChangeValue(forKey: "loanerManager")
-        self.didChangeValue(forKey: "loanerManager")
-    }
-    
-    @objc func loanPeriodExpired(_ aNotification: Notification) {
+    func loanPeriodExpired() {
         Log.write(.info, Log.Category.application, "Loan period expired, displaying lockout message")
         if #available(OSX 10.13, *) {
             guard let lockoutWC = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
