@@ -293,12 +293,6 @@
                                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                         </dictionary>
                                                     </binding>
-                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.username" id="6Pd-aK-U5S">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Username</string>
-                                                        </dictionary>
-                                                    </binding>
                                                 </connections>
                                             </textField>
                                             <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pAc-WU-fIS">
@@ -312,12 +306,6 @@
                                                     </allowedInputSourceLocales>
                                                 </secureTextFieldCell>
                                                 <connections>
-                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.password" id="v0s-99-4le">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Password</string>
-                                                        </dictionary>
-                                                    </binding>
                                                     <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="dTp-xp-zMe">
                                                         <dictionary key="options">
                                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
@@ -339,9 +327,6 @@
                                             <constraint firstAttribute="trailing" secondItem="pAc-WU-fIS" secondAttribute="trailing" constant="15" id="s9N-Tw-Gkn"/>
                                             <constraint firstItem="pAc-WU-fIS" firstAttribute="leading" secondItem="sZf-Ca-Wrn" secondAttribute="trailing" constant="8" id="swD-vn-osT"/>
                                         </constraints>
-                                        <connections>
-                                            <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.isSharedSecretEnabled" id="hbd-AX-lLJ"/>
-                                        </connections>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="G1w-eL-CW2">
                                         <rect key="frame" x="0.0" y="0.0" width="489" height="72"/>
@@ -370,12 +355,6 @@
                                                             <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                         </dictionary>
                                                     </binding>
-                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.sharedSecret" id="jKc-rc-eIo">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Password</string>
-                                                        </dictionary>
-                                                    </binding>
                                                 </connections>
                                             </secureTextField>
                                         </subviews>
@@ -388,13 +367,6 @@
                                             <constraint firstAttribute="trailing" secondItem="4YT-v9-0MB" secondAttribute="trailing" constant="15" id="l8I-E5-U8h"/>
                                             <constraint firstAttribute="trailing" secondItem="GO5-4r-FCg" secondAttribute="trailing" constant="15" id="rAP-ed-NTC"/>
                                         </constraints>
-                                        <connections>
-                                            <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.isSharedSecretEnabled" id="mWd-3L-2tF">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </customView>
                                 </subviews>
                                 <constraints>
@@ -412,7 +384,7 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-it-phG">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-it-phG">
                                 <rect key="frame" x="13" y="37" width="463" height="11"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="oTM-tF-M5B">
                                     <font key="font" metaFont="menu" size="9"/>
@@ -451,7 +423,7 @@ DQ
                                     <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.requirementsCompleted" id="ENB-Oo-9lA"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WNK-wj-AwT">
+                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WNK-wj-AwT">
                                 <rect key="frame" x="465" y="8" width="16" height="16"/>
                                 <connections>
                                     <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.performingAuthorization" id="915-9l-rpC">
@@ -485,6 +457,14 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="authenticateButton" destination="0OV-xL-jfF" id="j5p-qp-47u"/>
+                        <outlet property="authenticationIndicator" destination="WNK-wj-AwT" id="ilf-Oq-tn4"/>
+                        <outlet property="errorMessage" destination="xcy-it-phG" id="1Rl-lf-iaq"/>
+                        <outlet property="jamfAuthView" destination="9x0-KT-wg3" id="ObI-56-dh9"/>
+                        <outlet property="passphraseField" destination="4YT-v9-0MB" id="fue-Q0-w9r"/>
+                        <outlet property="passphraseView" destination="G1w-eL-CW2" id="mrh-WT-wpV"/>
+                        <outlet property="passwordField" destination="pAc-WU-fIS" id="qh3-FL-2Oo"/>
+                        <outlet property="usernameField" destination="sZf-Ca-Wrn" id="elc-CZ-48C"/>
                         <segue destination="20Z-7b-FQf" kind="modal" identifier="toExtension" id="mdw-5s-7aC"/>
                         <segue destination="DSB-g8-MKz" kind="modal" identifier="toConfiguration" id="Kzu-Rj-n2l"/>
                     </connections>
@@ -1298,8 +1278,8 @@ DQ
         <image name="NSLockLockedTemplate" width="10" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U5K-mc-5fC"/>
-        <segue reference="WxV-BK-mYs"/>
+        <segue reference="mdw-5s-7aC"/>
+        <segue reference="Kzu-Rj-n2l"/>
         <segue reference="npD-rZ-4Dd"/>
         <segue reference="6SY-2e-R2H"/>
     </inferredMetricsTieBreakers>
