@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+    Status for a loan period with a raw string value.
+ */
 enum LoanStatus: String {
     case active = "Active"
     case warning = "Warning"

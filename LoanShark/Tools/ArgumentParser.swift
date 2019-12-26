@@ -116,6 +116,9 @@ class ArgumentParser {
         self.arguments.append(arg)
     }
     
+    /**
+     Prints the usage of the provided arguments.
+     */
     private func printUsage() {
         for arg in self.arguments {
             print("\(arg.name ?? "") - \(arg.help ?? "")")

@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     
     //  MARK: Cocoa Binding Resources
-    @objc let loanerManager = LoanManager.sharedInstance
+    let loanerManager = LoanManager.sharedInstance
     @objc let enableDebugging = Preferences.sharedInstance.enableDebugging
     
     //  Don't Use
@@ -157,7 +157,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         Log.write(.info, Log.Category.application, "Checking loaner information")
         if let startDate = Preferences.sharedInstance.startDate, let endDate = Preferences.sharedInstance.endDate {
             Log.write(.debug, Log.Category.application, "Start Date: \(startDate.toString(format: "MM/dd/yyyy")) ; End DateL \(endDate.toString(format: "MM/dd/yyyy"))")
-            let period = LoanPeriod(startDate: startDate, endDate: endDate)
+            let period = Loan(startDate: startDate, endDate: endDate)
             Log.write(.debug, Log.Category.application, period.description)
             self.willChangeValue(forKey: "loanerManager")
             Log.write(.debug, Log.Category.application, "Application setting loaner period in loaner manager")
@@ -203,6 +203,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         self.argParser.parse()
     }
+
     
     func loanPeriodExpired() {
         Log.write(.info, Log.Category.application, "Loan period expired, displaying lockout message")

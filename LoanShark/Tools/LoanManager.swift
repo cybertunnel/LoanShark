@@ -132,7 +132,7 @@ import Foundation
         }
     }
     
-    @objc var loanPeriod: LoanPeriod? {
+    @objc var loanPeriod: Loan? {
         willSet {
             self.willChangeValue(forKey: "loanPeriod")
             self.willChangeValue(forKey: "loanStatus")
@@ -174,7 +174,7 @@ import Foundation
         Log.write(.debug, Log.Category.loanManager, "Calculated an end date of " + String(describing: endDate))
         Preferences.sharedInstance.endDate = endDate
         
-        self.loanPeriod = LoanPeriod(startDate: currentDate, endDate: endDate)
+        self.loanPeriod = Loan(startDate: currentDate, endDate: endDate)
         Log.write(.info, Log.Category.loanManager, "Successfully set loaning period ending on " + String(describing: endDate))
         Log.write(.debug, Log.Category.loanManager, "Alerting whole application loaner period has been set.")
     }
@@ -259,7 +259,7 @@ import Foundation
         guard let endDate = Calendar.current.date(byAdding: .day, value: totalDays, to: Date()) else {
             return
         }
-        let newPeriod = LoanPeriod(startDate: period.start, endDate: endDate)
+        let newPeriod = Loan(startDate: period.start, endDate: endDate)
         
         Preferences.sharedInstance.endDate = endDate
         self.loanPeriod = newPeriod
