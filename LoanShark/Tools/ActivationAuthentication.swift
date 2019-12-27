@@ -21,11 +21,13 @@ class ActivationAuthentication {
     
     //  MARK: Variables
     private var accessGroups: Array <String>?
+    
     //  MARK: Enumerations
     enum AuthenticationError: Error {
         case UnableToAuthenticate(String)
         case NoAccessGroups
         case NoSharedSecretStored
+        case UserDoesNotExist(String)
     }
     
     //  MARK: Functions
@@ -163,6 +165,98 @@ class ActivationAuthentication {
             sleep(1)
         }
         return authorized
+    }
+    
+    /**
+     Obtains information of the provided user using the Jamf Pro API
+     */
+    func getUserDetails(user: String, apiUser: String, apiPassword: String) throws -> Person? {
+        Log.write(.info, Log.Category.authenticator, "Attempting to authenticate \(user) using the JPS")
+        
+        let host = try self.getURI()
+        Log.write(.debug, Log.Category.authenticator, "The server attempting to perform authentication to is \(host)")
+        
+        //  Encodes login credentials to Base64
+        let loginData = String(format: "%@:%@", apiUser, apiPassword).data(using: String.Encoding.utf8)
+        let base64LoginData = loginData?.base64EncodedString()
+        
+        //  Creates the request
+        
+        let uri = host + "/JSSResource/users/name/\(user)"
+        
+        let url = URL(string: uri)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Basic \(base64LoginData!)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        //  Performs the request
+        var running = true
+        var authorized = false
+        var userObj: Person?
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                authorized = false
+                running = false
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse {
+                //  Checks status code returned by the http server.
+                if httpStatus.statusCode == 200 {
+                    Log.write(.info, Log.Category.authenticator, "\(user) has been successfully authenticated.")
+                    authorized = true
+                    do {
+                        guard let jsonObj = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {
+                            return
+                        }
+                        guard let userDetails = jsonObj["user"] as? [String:Any] else {
+                            return
+                        }
+                        
+                        guard let name = userDetails["full_name"] as? String else {
+                            return
+                        }
+                        guard let email = userDetails["email"] as? String else {
+                            return
+                        }
+                        guard let phone = userDetails["phone_number"] as? String else {
+                            return
+                        }
+                        
+                        var first = ""
+                        var last = ""
+                        if name.contains(",") {
+                            first = String(name.split(separator: ",")[1])
+                            last = String(name.split(separator: ",")[0])
+                        } else {
+                            first = String(name.split(separator: " ")[0])
+                            last = String(name.split(separator: " ")[1])
+                        }
+                        
+                        userObj = Person(first: first, last: last, emailAddress: email, phoneNumber: phone)
+                    }
+                    running = false
+                }
+                else {
+                    Log.write(.error, Log.Category.authenticator, "Unable to authenticate \(user), recieved status code of \(httpStatus.statusCode)")
+                    authorized = false
+                    running = false
+                }
+            }
+            else {
+                Log.write(.error, Log.Category.authenticator, "No response from web server.")
+                authorized = false
+                running = false
+            }
+            
+        }
+        task.resume()
+        while running {
+            sleep(1)
+        }
+        
+        return userObj
     }
     
     /**

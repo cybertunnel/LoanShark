@@ -11,6 +11,10 @@ import CommonCrypto
 
 extension String {
     
+    /**
+     Convert current string to a SHA256 hash.
+     - returns: SHA256 hash as String
+     */
     func sha256() -> String{
         if let stringData = self.data(using: String.Encoding.utf8) {
             return hexStringFromData(input: digest(input: stringData as NSData))

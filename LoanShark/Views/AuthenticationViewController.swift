@@ -35,6 +35,7 @@ class AuthenticationViewController: NSViewController {
     
     //  MARK: Variables
     public var destination: String?
+    private var authenticator: ActivationAuthentication?
     
     //  MARK: Functions
     
@@ -131,6 +132,7 @@ class AuthenticationViewController: NSViewController {
                         if access {
                             DispatchQueue.main.async {
                                 Log.write(.debug, Log.Category.authenticator, "Attempting to perform transition.")
+                                self.authenticator = authenticator
                                 self.performTransition()
                             }
                         }
@@ -196,6 +198,28 @@ class AuthenticationViewController: NSViewController {
             else if dest == "extend" {
                 self.view.window?.close()
                 self.performSegue(withIdentifier: "toExtension", sender: self)
+            }
+        }
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if let dest = self.destination {
+            if dest == "configure" {
+                //  Get user information
+                guard let authenticator = self.authenticator else {
+                    super.prepare(for: segue, sender: sender)
+                    return
+                }
+                
+                do {
+                 let results = try authenticator.getUserDetails(user: "tmorga212", apiUser: self.usernameField.stringValue, apiPassword: self.passwordField.stringValue)
+                    let destVC = segue.destinationController as! LoanerConfigurationViewController
+                    destVC.userObj = results
+                    
+                } catch {
+                    super.prepare(for: segue, sender: sender)
+                }
+                super.prepare(for: segue, sender: sender)
             }
         }
     }
