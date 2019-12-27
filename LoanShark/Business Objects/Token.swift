@@ -18,6 +18,7 @@ class Token {
     //  MARK: Enumerations
     enum TokenGenerationError: Error {
         case jsonParsingError(String)
+        case tokenExpired
     }
     
     //  MARK: Variables
@@ -77,6 +78,5 @@ class Token {
         self.token = token
         self.expires = expires
     }
-    
     
 }

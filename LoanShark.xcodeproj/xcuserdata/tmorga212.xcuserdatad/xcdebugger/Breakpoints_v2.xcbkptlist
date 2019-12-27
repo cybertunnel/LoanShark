@@ -7,32 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9C5D3296-965E-41C4-AD1E-E507171A390C"
+            uuid = "915172B6-E957-4AF0-8855-BBA1D44C23D6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LoanShark/Tools/ActivationAuthentication.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "authenticate(_:_:)"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "getUserDetails(user:apiUser:apiPassword:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CDF4C469-4E47-4FE4-B9E4-49DB2270668B"
+            uuid = "1D6D8CAE-65E5-4668-B8B9-63DF0BB114E9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LoanShark/Tools/ActivationAuthentication.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "authenticate(_:_:)"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "getUserDetails(user:apiUser:apiPassword:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
