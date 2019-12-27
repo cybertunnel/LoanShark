@@ -190,13 +190,6 @@
                                     </menuItem>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.enableDebugging" id="yQb-10-cGL">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                     </items>
                     <connections>
@@ -287,13 +280,6 @@
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="4DG-yo-6yN">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pAc-WU-fIS">
                                                 <rect key="frame" x="249" y="0.0" width="225" height="21"/>
@@ -305,13 +291,6 @@
                                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                                     </allowedInputSourceLocales>
                                                 </secureTextFieldCell>
-                                                <connections>
-                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="dTp-xp-zMe">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </secureTextField>
                                         </subviews>
                                         <constraints>
@@ -349,13 +328,6 @@
                                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                                     </allowedInputSourceLocales>
                                                 </secureTextFieldCell>
-                                                <connections>
-                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="vN2-bO-D8y">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </secureTextField>
                                         </subviews>
                                         <constraints>
@@ -391,14 +363,6 @@
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.errorMessage" id="WjG-A1-scn"/>
-                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.errorMessage" id="dqa-9r-lga">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNil</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0OV-xL-jfF">
                                 <rect key="frame" x="186" y="1" width="117" height="32"/>
@@ -411,28 +375,10 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="performAuthorization:" target="XfG-lQ-9wD" id="Uip-ez-yAv"/>
-                                    <binding destination="XfG-lQ-9wD" name="enabled2" keyPath="self.performingAuthorization" previousBinding="ENB-Oo-9lA" id="gNg-PM-ltP">
-                                        <dictionary key="options">
-                                            <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                            <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                            <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                            <integer key="NSNullPlaceholder" value="-1"/>
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
-                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.requirementsCompleted" id="ENB-Oo-9lA"/>
                                 </connections>
                             </button>
                             <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WNK-wj-AwT">
                                 <rect key="frame" x="465" y="8" width="16" height="16"/>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.performingAuthorization" id="915-9l-rpC">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
-                                    <binding destination="XfG-lQ-9wD" name="animate" keyPath="self.performingAuthorization" id="QYp-T4-cL8"/>
-                                </connections>
                             </progressIndicator>
                         </subviews>
                         <constraints>
