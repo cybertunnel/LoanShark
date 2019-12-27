@@ -57,7 +57,8 @@ class ExtensionRequestViewController: NSViewController {
             
             
             guard let recipient = LoanManager.sharedInstance.tech?.emailAddr else {
-                self.errMsg = "Tech information is not set, unable to find who to request extension from."
+                self.errorMessage.stringValue = "Tech information is not set, unable to find who to request extension from."
+                self.errorMessage.isHidden = false
                 return
             }
             
