@@ -10,72 +10,47 @@ import Cocoa
 
 class LoanerConfigurationViewController: NSViewController {
     
-    //  MARK: Cocoa Binding Resources
-    @objc var userFirst: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    @objc var userLast: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    @objc var userPhone: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    @objc var userEmail: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    
-    @objc var techFirst: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    @objc var techLast: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    @objc var techPhone: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    @objc var techEmail: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    
-    @objc var loanPeriod: NSNumber? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    
-    @objc var requiredCompleted: Bool = false
-    
+    // MARK: Outlets
+    @IBOutlet weak var periodLength: NSTextField!
+    @IBOutlet weak var userFirst: NSTextField!
+    @IBOutlet weak var userLast: NSTextField!
+    @IBOutlet weak var userPhone: NSTextField!
+    @IBOutlet weak var userEmail: NSTextField!
+    @IBOutlet weak var techFirst: NSTextField!
+    @IBOutlet weak var techLast: NSTextField!
+    @IBOutlet weak var techPhone: NSTextField!
+    @IBOutlet weak var techEmail: NSTextField!
+    @IBOutlet weak var assignButton: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        DispatchQueue.global(qos: .background).async {
+            while true {
+                DispatchQueue.main.async {
+                    self.checkRequirements()
+                }
+                sleep(1)
+            }
+        }
     }
     
     @IBAction func assignDevice(_ sender: NSButton) {
         Log.write(.debug, Log.Category.view, "Recieved request to configure loaner")
-        let loanee = Person(first: self.userFirst ?? "", last: self.userLast ?? "", emailAddress: self.userEmail ?? "", phoneNumber: self.userPhone ?? "")
-        let tech = Person(first: self.techFirst ?? "", last: self.techLast ?? "", emailAddress: self.techEmail ?? "", phoneNumber: self.techPhone ?? "")
+        let loanee = Person(first: self.userFirst.stringValue,
+                            last: self.userLast.stringValue,
+                            emailAddress: self.userEmail.stringValue,
+                            phoneNumber: self.userPhone.stringValue)
         
-        Log.write(.info, Log.Category.view, "Requested to provide loanee of " + loanee.description + " a loaner period of " + String(describing: self.loanPeriod) + " assigned by " + tech.description)
+        let tech = Person(first: self.techFirst.stringValue,
+                          last: self.techLast.stringValue,
+                          emailAddress: self.techEmail.stringValue,
+                          phoneNumber: self.techPhone.stringValue)
+        
+        Log.write(.info, Log.Category.view, "Requested to provide loanee of " + loanee.description + " a loaner period of " + String(describing: self.periodLength.intValue) + " assigned by " + tech.description)
         LoanManager.sharedInstance.setLoanee(loanee)
         LoanManager.sharedInstance.setTech(tech)
-        LoanManager.sharedInstance.setPeriod(Int(truncating: self.loanPeriod ?? 0))
+        LoanManager.sharedInstance.setPeriod(self.periodLength.integerValue)
         
         self.view.window?.close()
     }
@@ -84,30 +59,18 @@ class LoanerConfigurationViewController: NSViewController {
      Checks to see if all the required items are filled and not empty and sets the `requiredCompleted` to true
     */
     private func checkRequirements() {
-        if (
-            self.userFirst?.isEmpty ?? true ||
-            self.userLast?.isEmpty ?? true ||
-            self.userPhone?.isEmpty ?? true ||
-            self.userEmail?.isEmpty ?? true ||
-            self.techFirst?.isEmpty ?? true ||
-            self.techLast?.isEmpty ?? true ||
-            self.techPhone?.isEmpty ?? true ||
-            self.techEmail?.isEmpty ?? true ||
-            self.loanPeriod == nil
-        )
-        {
-            DispatchQueue.main.async {
-                self.willChangeValue(forKey: "requiredCompleted")
-                self.requiredCompleted = false
-                self.didChangeValue(forKey: "requiredCompleted")
-            }
-        }
-        else {
-            DispatchQueue.main.async {
-                self.willChangeValue(forKey: "requiredCompleted")
-                self.requiredCompleted = true
-                self.didChangeValue(forKey: "requiredCompleted")
-            }
+        if (self.techPhone.stringValue.isEmpty ||
+            self.techFirst.stringValue.isEmpty ||
+            self.techLast.stringValue.isEmpty ||
+            self.techEmail.stringValue.isEmpty ||
+            self.userFirst.stringValue.isEmpty ||
+            self.userLast.stringValue.isEmpty ||
+            self.userEmail.stringValue.isEmpty ||
+            self.userPhone.stringValue.isEmpty ||
+            self.periodLength.integerValue == 0) {
+            self.assignButton.isEnabled = false
+        } else {
+            self.assignButton.isEnabled = true
         }
     }
     

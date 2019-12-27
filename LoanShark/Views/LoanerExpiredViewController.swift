@@ -10,66 +10,35 @@ import Cocoa
 
 class LoanerExpiredViewController: NSViewController {
     
+    // MARK: Outlets
+    @IBOutlet weak var message: NSTextField!
+    @IBOutlet weak var timerText: NSTextField!
+    @IBOutlet weak var contactName: NSTextField!
+    @IBOutlet weak var contactPhone: NSTextField!
+    @IBOutlet weak var contactEmail: NSTextField!
     
-    //  MARK: Variables
-    
-    /**
-     The timer value from preferences
-    */
-    var timer = Preferences.sharedInstance.logoffTimer {
-        willSet {
-            self.willChangeValue(forKey: "timerString")
-        }
+    // MARK: Variables
+    private var timer = Preferences.sharedInstance.logoffTimer {
         didSet {
-            self.didChangeValue(forKey: "timerString")
-        }
-    }
-    
-    //  MARK: Cocoa Binding Resources
-    
-    
-    /**
-     String that the UI uses to display to the user.
-    */
-    @objc var timerString: String {
-        get {
-            return String(describing: self.timer)
-        }
-    }
-    
-    /**
-     The contact's full name pulled from the Preferences class.
-    */
-    @objc var contactName: String? {
-        get {
-            return Preferences.sharedInstance.contactDetails?.name
-        }
-    }
-    
-    /**
-     The contact's phone number pulled from the Preferences class.
-    */
-    @objc var contactPhone: String? {
-        get {
-            return Preferences.sharedInstance.contactDetails?.phoneNum
-        }
-    }
-    
-    /**
-     The contact's email address pulled from the Preferences class.
-    */
-    @objc var contactEmail: String? {
-        get {
-            return Preferences.sharedInstance.contactDetails?.emailAddr
-        }
-    }
-    
-    /**
-     The lockout message that is displayed to the end user. This is pulled from the Preferences class.
-    */
-    @objc var lockoutMessage: String? {
-        get {
-            return Preferences.sharedInstance.lockoutMessage
+            // Minutes
+            let minutes = floor(Double(self.timer) / Double(60))
+            let seconds = (self.timer - Int(minutes) * 60)
+            
+            var timerString = ""
+            if minutes >= 10 {
+                timerString = "\(String(minutes))"
+            } else {
+                timerString = "0\(String(minutes)):"
+            }
+            
+            if seconds >= 10 {
+                timerString += String(seconds)
+            } else {
+                timerString += "0\(String(seconds))"
+            }
+            DispatchQueue.main.async {
+                self.timerText.stringValue = timerString
+            }
         }
     }
     
@@ -81,6 +50,10 @@ class LoanerExpiredViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        self.message.stringValue =  Preferences.sharedInstance.lockoutMessage ?? "Please return this loaned device."
+        self.contactName.stringValue = LoanManager.sharedInstance.tech?.name ?? "Not Set"
+        self.contactPhone.stringValue = LoanManager.sharedInstance.techPhone ?? "Not Set"
+        contactEmail.stringValue = LoanManager.sharedInstance.techEmail ?? "Not Set"
         
         self.startTimerCountdown()
     }
@@ -101,12 +74,13 @@ class LoanerExpiredViewController: NSViewController {
      - Note: Runs in the background and updates timer on main thread.
     */
     private func startTimerCountdown () {
-        DispatchQueue(label: "TimerCountdown", qos: DispatchQoS.userInitiated, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency.workItem, target: nil).async {
-            while true {
+        DispatchQueue.global(qos: .userInitiated).async {
+            while self.timer > 0 {
                 sleep(1)
                 DispatchQueue.main.async {
                     self.timer -= 1
-                    if self.timer <= 0 {
+                    
+                    if self.timer < 0 {
                         Log.write(.info, Log.Category.application, "Logging user off")
                         LoginWindow.logoff()
                     }
