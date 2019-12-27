@@ -8,28 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		81239EDF226A68D700713960 /* ArgumentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81239EDE226A68D700713960 /* ArgumentParser.swift */; };
-		8149B7622216137300243E13 /* StatusTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8149B7612216137300243E13 /* StatusTransformer.swift */; };
 		815CDAFF225529DF0020A0D7 /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815CDAFE225529DF0020A0D7 /* String_Extension.swift */; };
-		815E7FFC221CB11F009E3CA2 /* RemainingTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */; };
+		8185988823B2525E00BF1A0E /* LoanStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185988723B2525E00BF1A0E /* LoanStatus.swift */; };
 		81898DED224E9CB900A70807 /* LoginWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81898DEC224E9CB900A70807 /* LoginWindow.swift */; };
 		81CAD2F92209D942003C5D32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD2F82209D942003C5D32 /* AppDelegate.swift */; };
-		81CAD2FB2209D942003C5D32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD2FA2209D942003C5D32 /* ViewController.swift */; };
 		81CAD2FD2209D942003C5D32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81CAD2FC2209D942003C5D32 /* Assets.xcassets */; };
 		81CAD3002209D942003C5D32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81CAD2FE2209D942003C5D32 /* Main.storyboard */; };
 		81CAD30C2209D942003C5D32 /* LoanSharkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD30B2209D942003C5D32 /* LoanSharkTests.swift */; };
 		81CAD3172209D942003C5D32 /* LoanSharkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD3162209D942003C5D32 /* LoanSharkUITests.swift */; };
-		81CAD3292209D9F1003C5D32 /* ActionOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD3282209D9F1003C5D32 /* ActionOptions.swift */; };
 		81CAD32B220A0ABE003C5D32 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD32A220A0ABE003C5D32 /* Person.swift */; };
 		81CAD32D220A0C68003C5D32 /* Date_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD32C220A0C68003C5D32 /* Date_Extension.swift */; };
 		81CAD32F220A0C85003C5D32 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD32E220A0C85003C5D32 /* Token.swift */; };
 		81CAD331220A0F9E003C5D32 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD330220A0F9E003C5D32 /* Preferences.swift */; };
 		81CAD333220A0FB2003C5D32 /* UserDefaults_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD332220A0FB2003C5D32 /* UserDefaults_Extension.swift */; };
-		81CAD335220A1379003C5D32 /* LoanPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD334220A1379003C5D32 /* LoanPeriod.swift */; };
-		81CAD337220A1409003C5D32 /* NotificationName_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD336220A1409003C5D32 /* NotificationName_Extension.swift */; };
+		81CAD335220A1379003C5D32 /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD334220A1379003C5D32 /* Loan.swift */; };
 		81CAD339220A1B50003C5D32 /* LoanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD338220A1B50003C5D32 /* LoanManager.swift */; };
 		81CAD33B220A1CB6003C5D32 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD33A220A1CB6003C5D32 /* Log.swift */; };
 		81CAD341220A3DB0003C5D32 /* LoanerExpiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD340220A3DB0003C5D32 /* LoanerExpiredViewController.swift */; };
-		81CAD343220A3ED4003C5D32 /* TimerTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD342220A3ED4003C5D32 /* TimerTransformer.swift */; };
 		81CAD345220B2AC3003C5D32 /* ActivationAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD344220B2AC3003C5D32 /* ActivationAuthentication.swift */; };
 		81CAD347220B3015003C5D32 /* LoanerConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD346220B3015003C5D32 /* LoanerConfigurationViewController.swift */; };
 		81CAD349220B4295003C5D32 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CAD348220B4295003C5D32 /* AuthenticationViewController.swift */; };
@@ -60,13 +55,11 @@
 
 /* Begin PBXFileReference section */
 		81239EDE226A68D700713960 /* ArgumentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentParser.swift; sourceTree = "<group>"; };
-		8149B7612216137300243E13 /* StatusTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTransformer.swift; sourceTree = "<group>"; };
 		815CDAFE225529DF0020A0D7 /* String_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
-		815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingTransformer.swift; sourceTree = "<group>"; };
+		8185988723B2525E00BF1A0E /* LoanStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanStatus.swift; sourceTree = "<group>"; };
 		81898DEC224E9CB900A70807 /* LoginWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWindow.swift; sourceTree = "<group>"; };
 		81CAD2F52209D942003C5D32 /* LoanShark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoanShark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CAD2F82209D942003C5D32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81CAD2FA2209D942003C5D32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		81CAD2FC2209D942003C5D32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81CAD2FF2209D942003C5D32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		81CAD3012209D942003C5D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,18 +70,15 @@
 		81CAD3122209D942003C5D32 /* LoanSharkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoanSharkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81CAD3162209D942003C5D32 /* LoanSharkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanSharkUITests.swift; sourceTree = "<group>"; };
 		81CAD3182209D942003C5D32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		81CAD3282209D9F1003C5D32 /* ActionOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionOptions.swift; sourceTree = "<group>"; };
 		81CAD32A220A0ABE003C5D32 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		81CAD32C220A0C68003C5D32 /* Date_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date_Extension.swift; sourceTree = "<group>"; };
 		81CAD32E220A0C85003C5D32 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		81CAD330220A0F9E003C5D32 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		81CAD332220A0FB2003C5D32 /* UserDefaults_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults_Extension.swift; sourceTree = "<group>"; };
-		81CAD334220A1379003C5D32 /* LoanPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanPeriod.swift; sourceTree = "<group>"; };
-		81CAD336220A1409003C5D32 /* NotificationName_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName_Extension.swift; sourceTree = "<group>"; };
+		81CAD334220A1379003C5D32 /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
 		81CAD338220A1B50003C5D32 /* LoanManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanManager.swift; sourceTree = "<group>"; };
 		81CAD33A220A1CB6003C5D32 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		81CAD340220A3DB0003C5D32 /* LoanerExpiredViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanerExpiredViewController.swift; sourceTree = "<group>"; };
-		81CAD342220A3ED4003C5D32 /* TimerTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTransformer.swift; sourceTree = "<group>"; };
 		81CAD344220B2AC3003C5D32 /* ActivationAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationAuthentication.swift; sourceTree = "<group>"; };
 		81CAD346220B3015003C5D32 /* LoanerConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanerConfigurationViewController.swift; sourceTree = "<group>"; };
 		81CAD348220B4295003C5D32 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +145,6 @@
 				81CAD3252209D99B003C5D32 /* Views */,
 				81CAD3242209D990003C5D32 /* Business Objects */,
 				81CAD2F82209D942003C5D32 /* AppDelegate.swift */,
-				81CAD2FA2209D942003C5D32 /* ViewController.swift */,
 				81CAD2FC2209D942003C5D32 /* Assets.xcassets */,
 				81CAD2FE2209D942003C5D32 /* Main.storyboard */,
 				81CAD3012209D942003C5D32 /* Info.plist */,
@@ -185,12 +174,11 @@
 		81CAD3242209D990003C5D32 /* Business Objects */ = {
 			isa = PBXGroup;
 			children = (
-				81CAD3282209D9F1003C5D32 /* ActionOptions.swift */,
+				8185988723B2525E00BF1A0E /* LoanStatus.swift */,
 				81CAD32A220A0ABE003C5D32 /* Person.swift */,
 				81CAD32C220A0C68003C5D32 /* Date_Extension.swift */,
 				81CAD32E220A0C85003C5D32 /* Token.swift */,
-				81CAD334220A1379003C5D32 /* LoanPeriod.swift */,
-				81CAD336220A1409003C5D32 /* NotificationName_Extension.swift */,
+				81CAD334220A1379003C5D32 /* Loan.swift */,
 			);
 			path = "Business Objects";
 			sourceTree = "<group>";
@@ -217,9 +205,6 @@
 				81CAD338220A1B50003C5D32 /* LoanManager.swift */,
 				81CAD33A220A1CB6003C5D32 /* Log.swift */,
 				81898DEC224E9CB900A70807 /* LoginWindow.swift */,
-				81CAD342220A3ED4003C5D32 /* TimerTransformer.swift */,
-				8149B7612216137300243E13 /* StatusTransformer.swift */,
-				815E7FFB221CB11F009E3CA2 /* RemainingTransformer.swift */,
 				81CAD344220B2AC3003C5D32 /* ActivationAuthentication.swift */,
 				815CDAFE225529DF0020A0D7 /* String_Extension.swift */,
 				81239EDE226A68D700713960 /* ArgumentParser.swift */,
@@ -389,15 +374,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				81CAD34B220B618D003C5D32 /* ExtensionRequestViewController.swift in Sources */,
-				81CAD3292209D9F1003C5D32 /* ActionOptions.swift in Sources */,
-				815E7FFC221CB11F009E3CA2 /* RemainingTransformer.swift in Sources */,
 				81CAD339220A1B50003C5D32 /* LoanManager.swift in Sources */,
 				815CDAFF225529DF0020A0D7 /* String_Extension.swift in Sources */,
-				8149B7622216137300243E13 /* StatusTransformer.swift in Sources */,
 				81CAD350220B6D7C003C5D32 /* AgentMenu.swift in Sources */,
 				81CAD33B220A1CB6003C5D32 /* Log.swift in Sources */,
 				81CAD349220B4295003C5D32 /* AuthenticationViewController.swift in Sources */,
 				81CAD331220A0F9E003C5D32 /* Preferences.swift in Sources */,
+				8185988823B2525E00BF1A0E /* LoanStatus.swift in Sources */,
 				81CAD353220B725D003C5D32 /* AgentMenuSegue.swift in Sources */,
 				81898DED224E9CB900A70807 /* LoginWindow.swift in Sources */,
 				81E486DA224BB6940001DE4B /* LockoutWindow.swift in Sources */,
@@ -405,15 +388,12 @@
 				81E486D8224BB5F20001DE4B /* LockoutWindowController.swift in Sources */,
 				81CAD333220A0FB2003C5D32 /* UserDefaults_Extension.swift in Sources */,
 				81CAD32D220A0C68003C5D32 /* Date_Extension.swift in Sources */,
-				81CAD2FB2209D942003C5D32 /* ViewController.swift in Sources */,
 				81CAD32F220A0C85003C5D32 /* Token.swift in Sources */,
 				81CAD341220A3DB0003C5D32 /* LoanerExpiredViewController.swift in Sources */,
-				81CAD343220A3ED4003C5D32 /* TimerTransformer.swift in Sources */,
 				81CAD345220B2AC3003C5D32 /* ActivationAuthentication.swift in Sources */,
-				81CAD337220A1409003C5D32 /* NotificationName_Extension.swift in Sources */,
 				81239EDF226A68D700713960 /* ArgumentParser.swift in Sources */,
 				81CAD34D220B63DC003C5D32 /* ExtensionViewController.swift in Sources */,
-				81CAD335220A1379003C5D32 /* LoanPeriod.swift in Sources */,
+				81CAD335220A1379003C5D32 /* Loan.swift in Sources */,
 				81CAD32B220A0ABE003C5D32 /* Person.swift in Sources */,
 				81CAD2F92209D942003C5D32 /* AppDelegate.swift in Sources */,
 			);
@@ -585,7 +565,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 55JHL22EU7;
+				DEVELOPMENT_TEAM = DAH86Q54R2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = LoanShark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -607,7 +587,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 55JHL22EU7;
+				DEVELOPMENT_TEAM = DAH86Q54R2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = LoanShark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

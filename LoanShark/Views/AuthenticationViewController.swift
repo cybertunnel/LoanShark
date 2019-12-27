@@ -10,42 +10,17 @@ import Cocoa
 
 class AuthenticationViewController: NSViewController {
 
-    //  MARK: Cocoa Binding Resources
-    @objc var username: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    @objc var password: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    @objc var performingAuthorization: Bool = false {
-        willSet {
-            self.willChangeValue(forKey: "performingAuthorization")
-        }
-        didSet {
-            self.didChangeValue(forKey: "performingAuthorization")
-        }
-    }
+    // MARK: Outlets
+    @IBOutlet weak var usernameField: NSTextField!
+    @IBOutlet weak var passwordField: NSTextField!
+    @IBOutlet weak var passphraseField: NSTextField!
+    @IBOutlet weak var errorMessage: NSTextField!
+    @IBOutlet weak var jamfAuthView: NSView!
+    @IBOutlet weak var passphraseView: NSView!
+    @IBOutlet weak var authenticateButton: NSButton!
+    @IBOutlet weak var authenticationIndicator: NSProgressIndicator!
     
-    @objc var requirementsCompleted: Bool = false
-    
-    @objc var errorMessage: String? {
-        willSet {
-            self.willChangeValue(forKey: "errorMessage")
-        }
-        didSet {
-            self.didChangeValue(forKey: "errorMessage")
-        }
-    }
-    @objc var sharedSecret: String? {
-        didSet {
-            self.checkRequirements()
-        }
-    }
-    @objc var isSharedSecretEnabled: Bool {
+    var isSharedSecretEnabled: Bool {
         guard let _ = Preferences.sharedInstance.sharedSecret else {
             return false
         }
@@ -60,6 +35,7 @@ class AuthenticationViewController: NSViewController {
     
     //  MARK: Variables
     public var destination: String?
+    private var authenticator: ActivationAuthentication?
     
     //  MARK: Functions
     
@@ -67,11 +43,44 @@ class AuthenticationViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        
+        if Preferences.sharedInstance.sharedSecretAuth {
+            self.jamfAuthView.isHidden = true
+            self.passphraseView.isHidden = false
+        } else {
+            self.jamfAuthView.isHidden = false
+            self.passphraseView.isHidden = true
+        }
+    }
+    
+    private func setEnabled(to enabled: Bool) {
+        
+        self.authenticationIndicator.isHidden = enabled
+        self.authenticationIndicator.startAnimation(self)
+        let jamfViews: Array <NSTextField> = [
+            self.usernameField,
+            self.passwordField
+        ]
+        
+        let passphraseViews: Array <NSTextField> = [
+            self.passphraseField
+        ]
+        
+        if Preferences.sharedInstance.sharedSecretAuth {
+            for view in passphraseViews {
+                view.isEnabled = enabled
+            }
+        } else {
+            for view in jamfViews {
+                view.isEnabled = enabled
+            }
+        }
     }
     
     @IBAction func performAuthorization(_ sender: NSButton) {
         DispatchQueue.main.async {
-            self.performingAuthorization = true
+            sender.isEnabled = false
+            self.setEnabled(to: false)
         }
         
         if self.isSharedSecretEnabled {
@@ -79,23 +88,27 @@ class AuthenticationViewController: NSViewController {
                 //  Shared Secret Authentication Process
                 let authenticator = ActivationAuthentication()
                 do {
-                    if try authenticator.authenticate(secret: self.sharedSecret ?? "") {
+                    if try authenticator.authenticate(secret: self.passphraseField.stringValue) {
                         DispatchQueue.main.async {
                             self.performTransition()
                         }
                     }
                     else {
                         DispatchQueue.main.async {
-                            self.errorMessage = "Sorry, you entered an invalid password."
-                            self.performingAuthorization = false
+                            self.errorMessage.stringValue = "Sorry, you entered an invalid password."
+                            self.errorMessage.isHidden = false
+                            sender.isEnabled = true
+                            self.setEnabled(to: true)
                         }
                     }
                 }
                 catch ActivationAuthentication.AuthenticationError.NoSharedSecretStored {
                     Log.write(.error, Log.Category.view, "No shared secret is stored.")
                     DispatchQueue.main.async {
-                        self.errorMessage = "There is no shared secret stored."
-                        self.performingAuthorization = false
+                        self.errorMessage.stringValue = "There is no shared secret stored."
+                        self.errorMessage.isHidden = false
+                        self.setEnabled(to: true)
+                        sender.isEnabled = true
                     }
                 }
                 catch {
@@ -107,35 +120,46 @@ class AuthenticationViewController: NSViewController {
             DispatchQueue.global(qos: .userInitiated).async {
                 //  Jamf Pro API Authentication Method
                 let authenticator = ActivationAuthentication()
+                var username = ""
+                var password = ""
+                DispatchQueue.main.sync {
+                    username = self.usernameField.stringValue
+                    password = self.passwordField.stringValue
+                }
                 do {
-                    
-                    if try authenticator.authenticate(self.username ?? "", self.password ?? "") {
+                    if try authenticator.authenticate(username, password) {
                         let access = try authenticator.doesHaveAccess()
                         if access {
                             DispatchQueue.main.async {
                                 Log.write(.debug, Log.Category.authenticator, "Attempting to perform transition.")
+                                self.authenticator = authenticator
                                 self.performTransition()
                             }
                         }
                         else {
                             DispatchQueue.main.async {
-                                self.errorMessage = "Sorry, you do not have access to perform this action!"
-                                self.performingAuthorization = false
+                                self.errorMessage.stringValue = "Sorry, you do not have access to perform this action!"
+                                self.errorMessage.isHidden = false
+                                self.setEnabled(to: true)
                             }
                         }
                     }
                     else {
                         DispatchQueue.main.async {
-                            self.errorMessage = "Unable to authenticate \(self.username ?? ""), invalid username or password."
-                            self.performingAuthorization = false
+                            self.errorMessage.stringValue = "Unable to authenticate \(self.usernameField.stringValue), invalid username or password."
+                            self.errorMessage.isHidden = false
+                            self.setEnabled(to: true)
+                            sender.isEnabled = true
                         }
                     }
                 }
                 catch ActivationAuthentication.AuthenticationError.UnableToAuthenticate(let message) {
                     Log.write(.error, Log.Category.view, "Recieved \(message) from authentication attempt.")
                     DispatchQueue.main.async {
-                        self.errorMessage = message
-                        self.performingAuthorization = false
+                        self.errorMessage.stringValue = message
+                        self.errorMessage.isHidden = false
+                        sender.isEnabled = true
+                        self.setEnabled(to: true)
                     }
                 }
                 catch {
@@ -149,28 +173,18 @@ class AuthenticationViewController: NSViewController {
         
         if self.isSharedSecretEnabled {
             // Non-Jamf Pro authentication check
-            if self.sharedSecret?.isEmpty ?? true {
-                self.willChangeValue(forKey: "requirementsCompleted")
-                self.requirementsCompleted = false
-                self.didChangeValue(forKey: "requirementsCompleted")
-            }
-            else {
-                self.willChangeValue(forKey: "requirementsCompleted")
-                self.requirementsCompleted = true
-                self.didChangeValue(forKey: "requirementsCompleted")
+            if !self.passphraseField.stringValue.isEmpty {
+                self.authenticateButton.isEnabled = true
+            } else {
+                self.authenticateButton.isEnabled = false
             }
         }
         else {
             //  Jamf Pro authentication check
-            if self.username?.isEmpty ?? true || self.password?.isEmpty ?? true {
-                self.willChangeValue(forKey: "requirementsCompleted")
-                self.requirementsCompleted = false
-                self.didChangeValue(forKey: "requirementsCompleted")
-            }
-            else {
-                self.willChangeValue(forKey: "requirementsCompleted")
-                self.requirementsCompleted = true
-                self.didChangeValue(forKey: "requirementsCompleted")
+            if !self.usernameField.stringValue.isEmpty && !self.passwordField.stringValue.isEmpty {
+                self.authenticateButton.isEnabled = true
+            } else {
+                self.authenticateButton.isEnabled = false
             }
         }
     }
@@ -184,6 +198,28 @@ class AuthenticationViewController: NSViewController {
             else if dest == "extend" {
                 self.view.window?.close()
                 self.performSegue(withIdentifier: "toExtension", sender: self)
+            }
+        }
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if let dest = self.destination {
+            if dest == "configure" {
+                //  Get user information
+                guard let authenticator = self.authenticator else {
+                    super.prepare(for: segue, sender: sender)
+                    return
+                }
+                
+                do {
+                 let results = try authenticator.getUserDetails(user: "tmorga212", apiUser: self.usernameField.stringValue, apiPassword: self.passwordField.stringValue)
+                    let destVC = segue.destinationController as! LoanerConfigurationViewController
+                    destVC.userObj = results
+                    
+                } catch {
+                    super.prepare(for: segue, sender: sender)
+                }
+                super.prepare(for: segue, sender: sender)
             }
         }
     }

@@ -8,10 +8,16 @@
 
 import Foundation
 
+/**
+    Handles the AppleEvents for the LoginWindow actions.
+ */
 class LoginWindow {
     
     
     //  MARK: Functions
+    /**
+        Logs off the current user using an AppleEvent code.
+     */
     static func logoff() {
         do {
             try self.sendEvent(eventCode: kAEReallyLogOut)
