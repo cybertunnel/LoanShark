@@ -213,8 +213,9 @@ class AuthenticationViewController: NSViewController {
                 
                 do {
                  let results = try authenticator.getUserDetails(user: "tmorga212", apiUser: self.usernameField.stringValue, apiPassword: self.passwordField.stringValue)
-                    let destVC = segue.destinationController as! LoanerConfigurationViewController
-                    destVC.userObj = results
+                    let destWC = segue.destinationController as! NSWindowController
+                    
+                    (destWC.window?.contentViewController as! LoanerConfigurationViewController).userObj = results
                     
                 } catch {
                     super.prepare(for: segue, sender: sender)
