@@ -23,6 +23,115 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         return NSStoryboard(name: "Main", bundle: nil)
     }
     
+    // MARK: Arguments
+    let arguements = [
+        /// Sets the loaner period to expired
+        Argument(
+            name: "--set-expired",
+            description: "Set loaner period to expired.",
+            isBool: true,
+            callback: { (_) in
+                Log.write(.info, Log.Category.application, "Set expiration argument sent, setting loaner period to expired.")
+                print("Setting Loan Period to expired!")
+                LoanManager.sharedInstance.setExpired()
+            }
+        ),
+        
+        /// Extends the loaner period
+        Argument(
+            name: "--extend",
+            description: "Extend loaner by set number of days.",
+            isBool: false,
+            callback: { (value) in
+                Log.write(.info, Log.Category.application, "Loaner extension argument passed, attempting to extend loaner")
+                
+                guard let passcode = value["--passcode"] else {
+                    Log.write(.fault, Log.Category.application, "--passcode was not passed, unable to authenticate.")
+                    throw ArgumentError.missingValue("Missing --passcode")
+                }
+                
+                guard let sharedSecret = Preferences.sharedInstance.sharedSecret else {
+                    Log.write(.fault, Log.Category.application, "Shared secret not configured, please ensure this is configured before attempting to extend loaner period via. Command Line")
+                    throw ArgumentError.unsupportedArgument("Missing Shared Secret in preferences for --passcode or --extend to work properly.")
+                }
+            }
+        ),
+        
+        /// Passcode used for assignment, and extension
+        Argument(
+            name: "--passcode",
+            description: "Passcode to properly authenticate you.",
+            isBool: false,
+            callback: { _ in
+                return
+            }
+        ),
+        
+        //  Gets the current status of the loan.
+        Argument(
+            name: "--status",
+            description: "Get the loaner period status",
+            isBool: true,
+            callback: { (_) in
+                Log.write(.info, Log.Category.application, "Requested to provide loaner period status")
+                print(LoanManager.sharedInstance.loanStatus.rawValue)
+                NSApp.terminate(self)
+                
+            }
+        ),
+        
+        /// Gets the current loanee details
+        Argument(
+            name: "--loanee-details",
+            description: "Get the loanee details",
+            isBool: true,
+            callback: { (_) in
+                Log.write(.info, Log.Category.application, "Requested to give loanee details, getting and providing loanee information")
+                print(LoanManager.sharedInstance.loanee?.description ?? "No Information to Provide")
+                NSApp.terminate(self)
+            }
+        ),
+        
+        /// DEBUG: Preferences
+        Argument(
+            name: "--prefs",
+            description: "Get the preferences LoanShark sees.",
+            isBool: true,
+            callback: { (_) in
+                Log.write(.info, Log.Category.application, "Requested to provide preference details, getting information and dumping it to standard out.")
+                
+                // Jamf URL
+                print("jamfURL:" + (Preferences.sharedInstance.jssURL ?? "Not Set"))
+                // Authorized Groups
+                if let authGroups = Preferences.sharedInstance.authorizedGroupIDs {
+                    print("authorizedGroupIds:" + String(describing: authGroups))
+                }
+                else {
+                    print("authorizedGroupIds:Not Set")
+                }
+                // Extension Options
+                if let extOpt = Preferences.sharedInstance.extensionOptions {
+                    print("extensionOptions:" + String(describing: extOpt))
+                }
+                else {
+                    print("extensionOptions:Not Set")
+                }
+                // Log Off Timer
+                print("logOffTimer:" + String(describing: Preferences.sharedInstance.logoffTimer))
+                // Lockout Message
+                print("lockoutMessage:" + (Preferences.sharedInstance.lockoutMessage ?? "Not Set"))
+                // Debugging
+                print("enableDebugging:" + String(describing: Preferences.sharedInstance.enableDebugging))
+                // Shared Secret
+                print("sharedSecret:" + (Preferences.sharedInstance.sharedSecret ?? "Not Set"))
+                // Shared Secret Auth
+                print("sharedSecretAuth:" + String(describing: Preferences.sharedInstance.sharedSecretAuth))
+                // Jamf Cloud
+                print("jamfCloud:" + String(describing: Preferences.sharedInstance.jamfCloud))
+            }
+        )
+    ]
+    
     
     //  MARK: IB Outlets
     
@@ -43,104 +152,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         // MARK: Argument Parsing
         Log.write(.debug, Log.Category.argumentParser, "Building argument parsing.")
         
-        //  Set Loan Period to Expired argument
-        argParser.addArgument(name: "--set-expired", description: "Set loaner period to expired.", isBool: true) { (value) in
-            Log.write(.info, Log.Category.application, "Set expiration argument sent, setting loaner period to expired.")
-            print("Setting Loan Period to expired!")
-            self.loanerManager.setExpired()
+        for argument in self.arguements {
+            argParser.addArgument(
+                name: argument.name,
+                description: argument.description,
+                isBool: argument.isBool,
+                callback: argument.callback
+            )
         }
-        
-        //  Perform extension argument
-        //  Requires --passcode parameter as well
-        argParser.addArgument(name: "--extend", description: "Extend loaner by set number of days.") { (value) in
-            Log.write(.info, Log.Category.application, "Loaner extension argument passed, attempting to extend loaner")
-            
-            guard let passcode = value["--passcode"] else {
-                Log.write(.fault, Log.Category.application, "--passcode was not passed, unable to authenticate.")
-                throw ArgumentError.missingValue("Missing --passcode")
-            }
-            
-            guard let sharedSecret = Preferences.sharedInstance.sharedSecret else {
-                Log.write(.fault, Log.Category.application, "Shared secret not configured, please ensure this is configured before attempting to extend loaner period via. Command Line")
-                throw ArgumentError.unsupportedArgument("Missing Shared Secret in preferences for --passcode or --extend to work properly.")
-            }
-            
-            if passcode.sha256() == sharedSecret {
-                Log.write(.info, Log.Category.application, "Provided passcode is correct, proceeding")
-                guard let daysRaw = value["--extend"] else {
-                    Log.write(.fault, Log.Category.application, "Unable to get extension amount.")
-                    throw ArgumentError.missingValue("--extend")
-                }
-                
-                guard let days = Int(daysRaw) else {
-                    Log.write(.fault, Log.Category.application, "Unable to get number of days from provided input")
-                    throw ArgumentError.invalidType(value: daysRaw, type: "Int", argument: "--extend")
-                }
-                
-                try self.loanerManager.extend(extensionOf: (days + 1))
-                print("Successfully extended loaner by \(String(describing: days)). Total loaning period remaining is now \(self.loanerManager.loanPeriod?.remaining ?? 0) days.")
-                NSApp.terminate(self)
-            }
-            else {
-                print("Invalid passcode provided, please try again.")
-                Log.write(.error, Log.Category.application, "Passcode provided is invalid")
-                NSApp.terminate(self)
-            }
-        }
-        
-        //  Authenticate using passcode
-        argParser.addArgument(name: "--passcode", description: "Passcode to properly authenticate you") { (value) in
-            
-        }
-        
-        //  Get Loaner Status
-        argParser.addArgument(name: "--status", description: "Get the loaner period status", isBool: true) { (_) in
-            Log.write(.info, Log.Category.application, "Requested to provide loaner period status")
-            print(self.loanerManager.loanStatus.rawValue)
-            NSApp.terminate(self)
-        }
-        
-        //  Get Loanee Details
-        argParser.addArgument(name: "--loanee-details", description: "Get the loanee details", isBool: true) { (_) in
-            Log.write(.info, Log.Category.application, "Requested to give loanee details, getting and providing loanee information")
-            print(self.loanerManager.loanee?.description ?? "No Information to Provide")
-            NSApp.terminate(self)
-        }
-        
-        //  DEBUG: Get Preferences
-        argParser.addArgument(name: "--prefs", description: "Get the preferences LoanShark sees", isBool: true) {(_) in
-            Log.write(.info, Log.Category.application, "Requested to provide preference details, getting information and dumping it to standard out.")
-            
-            // Jamf URL
-            print("jamfURL:" + (Preferences.sharedInstance.jssURL ?? "Not Set"))
-            // Authorized Groups
-            if let authGroups = Preferences.sharedInstance.authorizedGroupIDs {
-                print("authorizedGroupIds:" + String(describing: authGroups))
-            }
-            else {
-                print("authorizedGroupIds:Not Set")
-            }
-            // Extension Options
-            if let extOpt = Preferences.sharedInstance.extensionOptions {
-                print("extensionOptions:" + String(describing: extOpt))
-            }
-            else {
-                print("extensionOptions:Not Set")
-            }
-            // Log Off Timer
-            print("logOffTimer:" + String(describing: Preferences.sharedInstance.logoffTimer))
-            // Lockout Message
-            print("lockoutMessage:" + (Preferences.sharedInstance.lockoutMessage ?? "Not Set"))
-            // Debugging
-            print("enableDebugging:" + String(describing: Preferences.sharedInstance.enableDebugging))
-            // Shared Secret
-            print("sharedSecret:" + (Preferences.sharedInstance.sharedSecret ?? "Not Set"))
-            // Shared Secret Auth
-            print("sharedSecretAuth:" + String(describing: Preferences.sharedInstance.sharedSecretAuth))
-            // Jamf Cloud
-            print("jamfCloud:" + String(describing: Preferences.sharedInstance.jamfCloud))
-        }
-        
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

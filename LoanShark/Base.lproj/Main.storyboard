@@ -102,7 +102,7 @@
                         <menuItem title="Request Extension" id="0ri-sD-RGq">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <segue destination="lRq-Sq-zZ6" kind="modal" id="npD-rZ-4Dd"/>
+                                <segue destination="t7t-sB-qfQ" kind="show" id="gpr-Zs-2yR"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="yU3-Fy-LGb"/>
@@ -142,13 +142,13 @@
                                     <menuItem title="Configure" id="CGc-d9-pUa">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="bB6-3X-qhi"/>
+                                            <segue destination="B8D-0N-5wS" kind="show" identifier="configure" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="bB6-3X-qhi"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extend" id="wv5-v9-Wbd">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="extend" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="6SY-2e-R2H"/>
+                                            <segue destination="B8D-0N-5wS" kind="show" identifier="extend" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="6SY-2e-R2H"/>
                                         </connections>
                                     </menuItem>
                                 </items>
@@ -161,31 +161,31 @@
                                     <menuItem title="Authentication Screen" id="BZm-B8-YVo">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="B8D-0N-5wS" kind="modal" id="50v-MY-WNO"/>
+                                            <segue destination="B8D-0N-5wS" kind="show" id="4kF-RR-imq"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Loaner Expiration Screen" id="Fbm-Kz-IfR">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="NZG-5q-u8T" kind="modal" id="ouM-iB-5r6"/>
+                                            <segue destination="NZG-5q-u8T" kind="show" id="tUU-wa-g8i"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extension Request Screen" id="eXX-9h-xrq">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="lRq-Sq-zZ6" kind="modal" id="TFM-wG-cfn"/>
+                                            <segue destination="t7t-sB-qfQ" kind="show" id="P66-Wo-dKn"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Configuration Screen" id="hsq-E0-Udh">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="DSB-g8-MKz" kind="modal" id="WxV-BK-mYs"/>
+                                            <segue destination="smC-sj-ZbX" kind="show" id="Zyr-u8-GOf"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extension Screen" id="zda-pk-KKM">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="20Z-7b-FQf" kind="modal" id="U5K-mc-5fC"/>
+                                            <segue destination="c2Q-3e-TR7" kind="show" id="cv2-Yn-GSH"/>
                                         </connections>
                                     </menuItem>
                                 </items>
@@ -244,12 +244,12 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="LoanShark Authentication" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="AuthenticationViewController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="SH2-yM-fko">
-                        <rect key="frame" x="0.0" y="0.0" width="489" height="245"/>
+                    <view key="view" id="SH2-yM-fko">
+                        <rect key="frame" x="0.0" y="0.0" width="489" height="222"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zir-3K-NPk">
-                                <rect key="frame" x="13" y="201" width="463" height="35"/>
+                                <rect key="frame" x="13" y="179" width="463" height="35"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="LoanShark Configuration" id="gZ0-35-Zt9">
                                     <font key="font" metaFont="systemThin" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -257,16 +257,16 @@
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="QeL-sF-qoA">
-                                <rect key="frame" x="8" y="190" width="473" height="5"/>
+                                <rect key="frame" x="8" y="168" width="473" height="5"/>
                             </box>
                             <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EyI-T7-7hK">
-                                <rect key="frame" x="0.0" y="48" width="489" height="144"/>
+                                <rect key="frame" x="0.0" y="48" width="489" height="122"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="9x0-KT-wg3">
-                                        <rect key="frame" x="0.0" y="72" width="489" height="72"/>
+                                        <rect key="frame" x="0.0" y="53" width="489" height="69"/>
                                         <subviews>
                                             <textField autoresizesSubviews="NO" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1WA-cc-2nk">
-                                                <rect key="frame" x="13" y="29" width="463" height="35"/>
+                                                <rect key="frame" x="13" y="29" width="463" height="32"/>
                                                 <textFieldCell key="cell" selectable="YES" title="Please login below to authenticate. Once authenticated the loaner period can be configured." id="Nvb-cz-yKD">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -308,10 +308,10 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="G1w-eL-CW2">
-                                        <rect key="frame" x="0.0" y="0.0" width="489" height="72"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="489" height="53"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GO5-4r-FCg">
-                                                <rect key="frame" x="13" y="29" width="463" height="35"/>
+                                                <rect key="frame" x="13" y="29" width="463" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Please enter the password below to authenticate." id="hqa-Ft-mtx">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -411,14 +411,14 @@ DQ
                         <outlet property="passphraseView" destination="G1w-eL-CW2" id="mrh-WT-wpV"/>
                         <outlet property="passwordField" destination="pAc-WU-fIS" id="qh3-FL-2Oo"/>
                         <outlet property="usernameField" destination="sZf-Ca-Wrn" id="elc-CZ-48C"/>
-                        <segue destination="20Z-7b-FQf" kind="modal" identifier="toExtension" id="mdw-5s-7aC"/>
-                        <segue destination="DSB-g8-MKz" kind="modal" identifier="toConfiguration" id="Kzu-Rj-n2l"/>
+                        <segue destination="smC-sj-ZbX" kind="show" identifier="toConfiguration" id="5C6-2j-yWr"/>
+                        <segue destination="c2Q-3e-TR7" kind="show" identifier="toExtension" id="A81-m4-DaV"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="JhK-Ks-yo4"/>
             </objects>
-            <point key="canvasLocation" x="75" y="742"/>
+            <point key="canvasLocation" x="76" y="745"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="WDF-T0-nk8">
@@ -756,12 +756,12 @@ DQ
                 <customObject id="36K-Fo-VPY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="uNU-7g-Wke"/>
             </objects>
-            <point key="canvasLocation" x="631" y="903"/>
+            <point key="canvasLocation" x="631" y="902.5"/>
         </scene>
-        <!--Window Controller-->
+        <!--LoanShark Configuration Window-->
         <scene sceneID="D8L-RE-682">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="smC-sj-ZbX" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="smC-sj-ZbX" userLabel="LoanShark Configuration Window" sceneMemberID="viewController">
                     <window key="window" title="Loaner Configuration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Hc3-7w-f9b">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
@@ -1183,9 +1183,9 @@ DQ
         <image name="NSLockLockedTemplate" width="10" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mdw-5s-7aC"/>
-        <segue reference="Kzu-Rj-n2l"/>
-        <segue reference="npD-rZ-4Dd"/>
+        <segue reference="A81-m4-DaV"/>
+        <segue reference="5C6-2j-yWr"/>
+        <segue reference="gpr-Zs-2yR"/>
         <segue reference="6SY-2e-R2H"/>
     </inferredMetricsTieBreakers>
 </document>

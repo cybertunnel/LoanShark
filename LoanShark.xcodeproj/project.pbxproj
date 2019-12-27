@@ -303,6 +303,7 @@
 				TargetAttributes = {
 					81CAD2F42209D941003C5D32 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1130;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
 								enabled = 1;
@@ -314,10 +315,12 @@
 					};
 					81CAD3062209D942003C5D32 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = 81CAD2F42209D941003C5D32;
 					};
 					81CAD3112209D942003C5D32 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = 81CAD2F42209D941003C5D32;
 					};
 				};
@@ -565,6 +568,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 403;
 				DEVELOPMENT_TEAM = DAH86Q54R2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = LoanShark/Info.plist;
@@ -575,7 +579,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanShark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -587,6 +591,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 403;
 				DEVELOPMENT_TEAM = DAH86Q54R2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = LoanShark/Info.plist;
@@ -597,7 +602,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanShark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -617,7 +622,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanSharkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoanShark.app/Contents/MacOS/LoanShark";
 			};
 			name = Debug;
@@ -638,7 +643,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanSharkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoanShark.app/Contents/MacOS/LoanShark";
 			};
 			name = Release;
@@ -658,7 +663,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanSharkUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = LoanShark;
 			};
 			name = Debug;
@@ -678,7 +683,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.cybertunnel.LoanSharkUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = LoanShark;
 			};
 			name = Release;

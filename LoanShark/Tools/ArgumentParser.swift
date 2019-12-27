@@ -17,6 +17,12 @@ enum ArgumentError: Error {
     case unsupportedArgument(String)
 }
 
+struct Argument {
+    let name: String
+    let description: String
+    let isBool: Bool
+    let callback: ([String:String]) throws -> Void
+}
 /**
  Parses the arguments passed to the application and stores those values and settings.
  */

@@ -23,10 +23,23 @@ class LoanerConfigurationViewController: NSViewController {
     @IBOutlet weak var assignButton: NSButton!
     
     // MARK: Variables
-    public var userObj: Person?
+    public var userObj: Person? {
+        didSet {
+            guard let user = self.userObj else {
+                Log.write(.error, Log.Category.view, "User object not assigned!")
+                return
+            }
+            
+            self.techFirst.stringValue = user.first
+            self.techLast.stringValue = user.last
+            self.techEmail.stringValue = user.emailAddr
+            self.techPhone.stringValue = user.phoneNum
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do view setup here.
         DispatchQueue.global(qos: .background).async {
             while true {
@@ -36,17 +49,6 @@ class LoanerConfigurationViewController: NSViewController {
                 sleep(1)
             }
         }
-        
-        guard let user = self.userObj else {
-            Log.write(.error, Log.Category.view, "User object not assigned!")
-            return
-        }
-        
-        self.techFirst.stringValue = user.first
-        self.techLast.stringValue = user.last
-        self.techEmail.stringValue = user.emailAddr
-        self.techPhone.stringValue = user.phoneNum
-        
     }
     
     @IBAction func assignDevice(_ sender: NSButton) {
