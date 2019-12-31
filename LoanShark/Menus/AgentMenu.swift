@@ -29,9 +29,10 @@ class AgentMenu: NSMenu, NSUserNotificationCenterDelegate {
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
-        self.debugMenu.isHidden = Preferences.sharedInstance.enableDebugging
         LoanManager.sharedInstance.addCallback {
             DispatchQueue.main.async {
+                
+                self.debugMenu.isHidden = !Preferences.sharedInstance.enableDebugging
                 
                 // MARK: LoanPeriod Not Set Handling
                 if LoanManager.sharedInstance.loanPeriod == nil {
