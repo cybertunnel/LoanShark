@@ -25,18 +25,11 @@ class AgentMenu: NSMenu, NSUserNotificationCenterDelegate {
     @IBOutlet weak var adminMenu: NSMenu!
     @IBOutlet weak var adminConfigure: NSMenuItem!
     @IBOutlet weak var adminExtend: NSMenuItem!
-    
-    
-    
-    func startListening() {
-        Log.write(.debug, Log.Category.statusListener, "Listener has been started.")
-        //NotificationCenter.default.addObserver(self, selector: #selector(self.loanerPeriodDidChange(_:)), name: NSNotification.Name.loanerPeriodChanged, object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(self.loanerPeriodSet(_:)), name: NSNotification.Name.loanerPeriodSet, object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(self.loanerPeriodExpired(_:)), name: NSNotification.Name.loanerPeriodExpired, object: nil)
-    }
+    @IBOutlet weak var debugMenu: NSMenuItem!
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
+        self.debugMenu.isHidden = Preferences.sharedInstance.enableDebugging
         LoanManager.sharedInstance.addCallback {
             DispatchQueue.main.async {
                 
