@@ -169,6 +169,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         item.menu = agentMenu
         item.title = "LoanShark"
+        LoanManager.sharedInstance.addCallback {
+            DispatchQueue.main.async {
+                switch LoanManager.sharedInstance.loanStatus {
+                case .active:
+                    self.item.image = NSImage(named: NSImage.statusAvailableName)
+                case .warning:
+                    self.item.image = NSImage(named: NSImage.statusPartiallyAvailableName)
+                case .critical:
+                    self.item.image = NSImage(named: NSImage.statusUnavailableName)
+                case .notSet:
+                    self.item.image = NSImage(named: NSImage.statusNoneName)
+                default:
+                    self.item.image = NSImage(named: NSImage.statusNoneName)
+                }
+            }
+        }
         
         Log.write(.debug, Log.Category.application, "Agent Menu built.")
         
