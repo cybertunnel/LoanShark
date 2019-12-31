@@ -43,7 +43,7 @@ class ExtensionRequestViewController: NSViewController {
         
         if Preferences.sharedInstance.useGmail {
             
-            let urlString = "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=\(LoanManager.sharedInstance.techEmail)&su=\("Extension Request - Current End Date of \(LoanManager.sharedInstance.loanPeriod?.end.toString(format: "MM/dd/yyyy") ?? "UNKNOWN")")&body=\("Extension request is being made of \(self.requestOptions.titleOfSelectedItem ?? "UNKNOWN")\n With justification of \(justification)")"
+            let urlString = "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=\(String(describing: LoanManager.sharedInstance.techEmail))&su=\("Extension Request - Current End Date of \(LoanManager.sharedInstance.loanPeriod?.end.toString(format: "MM/dd/yyyy") ?? "UNKNOWN")")&body=\("Extension request is being made of \(self.requestOptions.titleOfSelectedItem ?? "UNKNOWN")\n With justification of \(justification)")"
             let url = URL(string: urlString)
             NSWorkspace.shared.open(url!)
           
