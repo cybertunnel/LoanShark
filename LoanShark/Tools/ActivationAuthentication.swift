@@ -192,11 +192,9 @@ class ActivationAuthentication {
         
         //  Performs the request
         var running = true
-        var authorized = false
         var userObj: Person?
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
-                authorized = false
                 running = false
                 return
             }
@@ -205,7 +203,6 @@ class ActivationAuthentication {
                 //  Checks status code returned by the http server.
                 if httpStatus.statusCode == 200 {
                     Log.write(.info, Log.Category.authenticator, "\(user) has been successfully authenticated.")
-                    authorized = true
                     do {
                         guard let jsonObj = try! JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {
                             return
@@ -240,13 +237,11 @@ class ActivationAuthentication {
                 }
                 else {
                     Log.write(.error, Log.Category.authenticator, "Unable to authenticate \(user), recieved status code of \(httpStatus.statusCode)")
-                    authorized = false
                     running = false
                 }
             }
             else {
                 Log.write(.error, Log.Category.authenticator, "No response from web server.")
-                authorized = false
                 running = false
             }
             
