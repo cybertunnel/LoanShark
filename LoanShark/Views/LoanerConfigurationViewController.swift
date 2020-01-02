@@ -21,6 +21,7 @@ class LoanerConfigurationViewController: NSViewController {
     @IBOutlet weak var techPhone: NSTextField!
     @IBOutlet weak var techEmail: NSTextField!
     @IBOutlet weak var assignButton: NSButton!
+    @IBOutlet weak var lengthModifier: NSPopUpButton!
     
     // MARK: Variables
     public var userObj: Person? {
@@ -66,7 +67,18 @@ class LoanerConfigurationViewController: NSViewController {
         Log.write(.info, Log.Category.view, "Requested to provide loanee of " + loanee.description + " a loaner period of " + String(describing: self.periodLength.intValue) + " assigned by " + tech.description)
         LoanManager.sharedInstance.setLoanee(loanee)
         LoanManager.sharedInstance.setTech(tech)
-        LoanManager.sharedInstance.setPeriod(self.periodLength.integerValue)
+        var length = self.periodLength.integerValue
+        switch self.lengthModifier.titleOfSelectedItem {
+        case "Day(s)":
+            break
+        case "Week(s)":
+            length *= 7
+        case "Month(s)":
+            length *= 30
+        default:
+            break
+        }
+        LoanManager.sharedInstance.setPeriod(length)
         
         self.view.window?.close()
     }
