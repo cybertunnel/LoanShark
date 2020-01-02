@@ -36,6 +36,7 @@ class AuthenticationViewController: NSViewController {
     //  MARK: Variables
     public var destination: String?
     private var authenticator: ActivationAuthentication?
+    private var userObj: Person?
     
     //  MARK: Functions
     
@@ -133,7 +134,20 @@ class AuthenticationViewController: NSViewController {
                             DispatchQueue.main.async {
                                 Log.write(.debug, Log.Category.authenticator, "Attempting to perform transition.")
                                 self.authenticator = authenticator
-                                self.performTransition()
+                                DispatchQueue.global(qos: .userInitiated).async {
+                                    do {
+                                        let results = try authenticator.getUserDetails(user: username, apiUser: username, apiPassword: password)
+                                        self.userObj = results
+                                        DispatchQueue.main.async {
+                                            self.performTransition()
+                                        }
+                                    }
+                                    catch {
+                                        DispatchQueue.main.async {
+                                            self.performTransition()
+                                        }
+                                    }
+                                }
                             }
                         }
                         else {
@@ -203,26 +217,17 @@ class AuthenticationViewController: NSViewController {
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if let dest = self.destination {
-            if dest == "configure" {
-                //  Get user information
-                guard let authenticator = self.authenticator else {
-                    super.prepare(for: segue, sender: sender)
-                    return
-                }
-                
-                do {
-                 let results = try authenticator.getUserDetails(user: "tmorga212", apiUser: self.usernameField.stringValue, apiPassword: self.passwordField.stringValue)
+        if let userObj = self.userObj {
+            
+            if let dest = self.destination {
+                if dest == "configure" {
                     let destWC = segue.destinationController as! NSWindowController
-                    
-                    (destWC.window?.contentViewController as! LoanerConfigurationViewController).userObj = results
-                    
-                } catch {
-                    super.prepare(for: segue, sender: sender)
+                    (destWC.window?.contentViewController as! LoanerConfigurationViewController).userObj = userObj
                 }
-                super.prepare(for: segue, sender: sender)
             }
         }
+        
+        super.prepare(for: segue, sender: sender)
     }
     
 }
