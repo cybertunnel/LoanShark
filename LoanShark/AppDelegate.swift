@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     //  MARK: Cocoa Binding Resources
     let loanerManager = LoanManager.sharedInstance
-    @objc let enableDebugging = Preferences.sharedInstance.enableDebugging
+    let enableDebugging = Preferences.sharedInstance.enableDebugging
     
     //  Don't Use
     private var lockoutWindow: LockoutWindowController!
@@ -234,7 +234,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 }
             }
         }
-        self.loanerManager.startPeriodChecker()
         
         self.argParser.parse()
     }

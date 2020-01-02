@@ -10,6 +10,7 @@ import Cocoa
 
 class AgentMenu: NSMenu, NSUserNotificationCenterDelegate {
     
+    // MARK: Outlets
     @IBOutlet weak var statusTitle: NSMenuItem!
     @IBOutlet weak var remainingTitle: NSMenuItem!
     @IBOutlet weak var requestTitle: NSMenuItem!
@@ -27,6 +28,7 @@ class AgentMenu: NSMenu, NSUserNotificationCenterDelegate {
     @IBOutlet weak var adminExtend: NSMenuItem!
     @IBOutlet weak var debugMenu: NSMenuItem!
     
+    // MARK: Functions
     required init(coder: NSCoder) {
         super.init(coder: coder)
         LoanManager.sharedInstance.addCallback {
@@ -34,7 +36,10 @@ class AgentMenu: NSMenu, NSUserNotificationCenterDelegate {
                 
                 self.debugMenu.isHidden = !Preferences.sharedInstance.enableDebugging
                 
-                // MARK: LoanPeriod Not Set Handling
+                // Status
+                self.statusTitle.title = "Status: \(LoanManager.sharedInstance.loanStatus.rawValue)"
+                
+                // Loan period not set
                 if LoanManager.sharedInstance.loanPeriod == nil {
                     self.loaneeTitle.isHidden = true
                     self.techTitle.isHidden = true
@@ -43,7 +48,9 @@ class AgentMenu: NSMenu, NSUserNotificationCenterDelegate {
                     self.adminExtend.isHidden = true
                     self.adminConfigure.isHidden = false
                 }
+                // Loan period set
                 else {
+                    
                     self.loaneeTitle.isHidden = false
                     self.techTitle.isHidden = false
                     self.remainingTitle.isHidden = false
@@ -59,8 +66,6 @@ class AgentMenu: NSMenu, NSUserNotificationCenterDelegate {
                     self.assignedEmail.title = LoanManager.sharedInstance.loaneeEmail ?? "UNKNOWN"
                     self.assignedPhone.title = LoanManager.sharedInstance.loaneePhone ?? "UNKNOWN"
                 }
-                // Status
-                self.statusTitle.title = "Status: \(LoanManager.sharedInstance.loanStatus.rawValue)"
             }
         }
     }
