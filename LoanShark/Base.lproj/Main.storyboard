@@ -199,6 +199,7 @@
                         <outlet property="assignedEmail" destination="qFY-QA-wmt" id="P36-DE-mkS"/>
                         <outlet property="assignedPhone" destination="756-if-ig7" id="5jA-gj-XNC"/>
                         <outlet property="assignedUser" destination="8R1-P1-SZm" id="V8h-Kl-fxE"/>
+                        <outlet property="debugMenu" destination="p9W-fB-YwB" id="R7a-5K-Tft"/>
                         <outlet property="loaneeMenu" destination="lkC-7m-rYR" id="ESb-Zy-2zh"/>
                         <outlet property="loaneeTitle" destination="hAA-WT-oAc" id="hRH-Tp-Ijg"/>
                         <outlet property="remainingTitle" destination="xak-Ah-ceE" id="oW3-U2-WJW"/>
