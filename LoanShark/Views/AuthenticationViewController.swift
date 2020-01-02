@@ -203,24 +203,27 @@ class AuthenticationViewController: NSViewController {
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if let dest = self.destination {
-            if dest == "configure" {
-                //  Get user information
-                guard let authenticator = self.authenticator else {
-                    super.prepare(for: segue, sender: sender)
-                    return
-                }
-                
-                do {
-                 let results = try authenticator.getUserDetails(user: "tmorga212", apiUser: self.usernameField.stringValue, apiPassword: self.passwordField.stringValue)
-                    let destWC = segue.destinationController as! NSWindowController
+        let user = self.usernameField.stringValue
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let dest = self.destination {
+                if dest == "configure" {
+                    //  Get user information
+                    guard let authenticator = self.authenticator else {
+                        super.prepare(for: segue, sender: sender)
+                        return
+                    }
                     
-                    (destWC.window?.contentViewController as! LoanerConfigurationViewController).userObj = results
-                    
-                } catch {
+                    do {
+                     let results = try authenticator.getUserDetails(user: user, apiUser: self.usernameField.stringValue, apiPassword: self.passwordField.stringValue)
+                        let destWC = segue.destinationController as! NSWindowController
+                        
+                        (destWC.window?.contentViewController as! LoanerConfigurationViewController).userObj = results
+                        
+                    } catch {
+                        super.prepare(for: segue, sender: sender)
+                    }
                     super.prepare(for: segue, sender: sender)
                 }
-                super.prepare(for: segue, sender: sender)
             }
         }
     }
