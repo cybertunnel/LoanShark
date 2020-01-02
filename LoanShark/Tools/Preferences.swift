@@ -16,8 +16,10 @@ class Preferences {
     
     //  MARK: Variables
     
-    static let sharedInstance = Preferences() //    Singleton
-    internal let userDefaults: UserDefaults
+    /// Singleton
+    static let sharedInstance = Preferences()
+    
+    private let userDefaults: UserDefaults
     
     public var startDate: Date? {
         get {
@@ -81,24 +83,6 @@ class Preferences {
             let data = NSKeyedArchiver.archivedData(withRootObject: newValue as Any)
             self.userDefaults.set(data, forKey: "contact")
             self.userDefaults.synchronize()
-        }
-    }
-    
-    public var runScriptOnChange: String? {
-        get {
-            return self.userDefaults.string(forKey: "scriptOnChange")
-        }
-    }
-    
-    public var runScriptOnSet: String? {
-        get {
-            return self.userDefaults.string(forKey: "scriptOnSet")
-        }
-    }
-    
-    public var runScriptOnExpire: String? {
-        get {
-            return self.userDefaults.string(forKey: "scriptOnExpire")
         }
     }
     
