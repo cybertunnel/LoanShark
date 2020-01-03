@@ -9,15 +9,15 @@
 ![Current LoanShark Version](https://img.shields.io/static/v1.svg?label=version&message=0.3&color=lightgrey)
 
 # LoanShark![LoanShark](https://user-images.githubusercontent.com/23121750/55338309-71916300-546e-11e9-8517-b3d5cbd4ffbd.png)
-LoanShark's goal is to provide a simple, yet effective management to your loaner fleet.
-This utility allows you to:
-- Lockout users after loaning period expires
-- Provide custom loaning durations
-- Enable users to remotely request loaning extensions
+LoanShark's goal is to provide a simple, yet effective management to your loaner fleet.  
+This utility allows you to:  
+* Lockout users after loaning period expires  
+* Provide custom loaning durations  
+* Enable users to remotely request loaning extensions  
 
 This currently supports Jamf Pro's interface for the Authentication piece.
 
-### In Action
+## In Action
 
 #### Notifications
 LoanShark has built in support to send notifications to the end user, is displays a notification like the ones below.
@@ -43,7 +43,7 @@ LoanShark also allows the ability to use a passphrase, also known as a shared se
 LoanShark has a complete loaning lifecycle which includes custom duration, tech information, loanee information, extension requests, extensions, and expirations.
 
 ##### Configuration
-After authenticating using Jamf Pro, or Shared Secret; the loaner is then able to be configured.
+After authenticating using Jamf Pro, or a Shared Secret; the loaner is then able to be configured.
 ![Configuration Screen](https://user-images.githubusercontent.com/23121750/66929287-c35f9c00-f000-11e9-801c-276163055b74.png)
 ![Configuration Screen - Filled](https://user-images.githubusercontent.com/23121750/66929288-c35f9c00-f000-11e9-893f-cdd9adc52cc3.png)
 
@@ -75,14 +75,14 @@ LoanShark also has an agent menu that provides valuable information and actions 
 The best way to start is the [Kickstart Guide](https://github.com/cybertunnel/LoanShark/wiki).
 
 ## Release History
-The release hisitory is available [here](https://github.com/cybertunnel/LoanShark/blob/master/CHANGELOG.md).
+The release history is available [here](https://github.com/cybertunnel/LoanShark/blob/master/CHANGELOG.md).
 
 LoanShark was made possible thanks to the work for the [following individuals](https://github.com/cybertunnel/LoanShark/blob/master/THANKS.md).
 
 ## Getting Help
-The best place to discuss LoanShark is to join the [#loanshark](https://macadmins.slack.com/messages/CHGFDDKST) channel on the [MacAdmins Slack](https://macadmins.herokuapp.com/)
+The best place to discuss LoanShark is to join the [#loanshark](https://macadmins.slack.com/messages/CHGFDDKST) channel on the [MacAdmins Slack](https://macadmins.org).
 
 ## Contributing
-I (cybertunnel) have been working on this project for over a year for the company I currently work for. I have spent these past few months making it more stable and esuring the availability for use for you guys.
+I [cybertunnel](https://github.com/cybertunnel) have been working on this project for over a year for the company I currently work for. I have spent these past few months making it more stable and esuring the availability for general use.
 
 Please feel free to fork and contribute.
