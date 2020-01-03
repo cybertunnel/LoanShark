@@ -6,7 +6,7 @@
 ![macOS Dark Mode](https://img.shields.io/static/v1.svg?label=Dark%20Mode&message=enabled&color=green&logo=apple)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-![Current LoanShark Version](https://img.shields.io/static/v1.svg?label=version&message=0.3&color=lightgrey)
+![Current LoanShark Version](https://img.shields.io/static/v1.svg?label=version&message=1.0&color=lightgrey)
 
 # LoanShark![LoanShark](https://user-images.githubusercontent.com/23121750/55338309-71916300-546e-11e9-8517-b3d5cbd4ffbd.png)
 LoanShark's goal is to provide a simple, yet effective management to your loaner fleet.
