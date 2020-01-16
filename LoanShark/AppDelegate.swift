@@ -34,6 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 Log.write(.info, Log.Category.application, "Set expiration argument sent, setting loaner period to expired.")
                 print("Setting Loan Period to expired!")
                 LoanManager.sharedInstance.setExpired()
+                exit(0)
             }
         ),
         
@@ -241,22 +242,24 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     func loanPeriodExpired() {
         Log.write(.info, Log.Category.application, "Loan period expired, displaying lockout message")
-        if #available(OSX 10.13, *) {
-            guard let lockoutWC = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
-                Log.write(.error, Log.Category.application, "Unable to get lockout window controller")
-                return
+        DispatchQueue.main.async {
+            if #available(OSX 10.13, *) {
+                guard let lockoutWC = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
+                    Log.write(.error, Log.Category.application, "Unable to get lockout window controller")
+                    return
+                }
+                self.lockoutWindow = lockoutWC
+            } else {
+                guard let lockoutWC = self.storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
+                    Log.write(.error, Log.Category.application, "Unable to get lockout window controller")
+                    return
+                }
+                self.lockoutWindow = lockoutWC
             }
-            self.lockoutWindow = lockoutWC
-        } else {
-            guard let lockoutWC = self.storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
-                Log.write(.error, Log.Category.application, "Unable to get lockout window controller")
-                return
-            }
-            self.lockoutWindow = lockoutWC
+            
+            self.lockoutWindow.loadWindow()
+            self.lockoutWindow.showWindow(self)
         }
-        
-        self.lockoutWindow.loadWindow()
-        self.lockoutWindow.showWindow(self)
     }
     
     private func sendUserNotification() {
