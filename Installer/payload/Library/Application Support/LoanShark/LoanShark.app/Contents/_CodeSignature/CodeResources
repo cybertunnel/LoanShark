@@ -10,55 +10,55 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		zj6PeaS9ygxg4S1VE9iNFADMH9o=
+		HR7AICQ41PNc6CfbMHxAomukXYM=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/20Z-7b-FQf-view-zCF-fv-Dwm.nib</key>
 		<data>
-		xcpGE6lqf3r7GMShJsmkU6iZ5W4=
+		g66kNdvTWTfqUtESx47AEdRlICk=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/DSB-g8-MKz-view-tZ7-t3-3n5.nib</key>
 		<data>
-		STWvEzZi5bL5Czyr43+Y6Sb1gw0=
+		2qmpQo6uWFeVRatfDCrYyUdfStk=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
-		BJ/Yv45xXoEG0u6uzuELILAZpZc=
+		by8wG3/Ohx9nHZtwzi2SQJHMF1o=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/MainMenu.nib</key>
 		<data>
-		IUDNEHlIleTcLAT5UC9ye3vMC+M=
+		TxiPXeeAKqwiA3gVCA57Ctolbzk=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/NSWindowController-c2Q-3e-TR7.nib</key>
 		<data>
-		fkQgVIlJ8sCDUZHVvCy4AhIKLng=
+		/MpzTplvgchA7AkAegD+zsm1zfQ=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/NSWindowController-smC-sj-ZbX.nib</key>
 		<data>
-		H9g7kWCLnQzLVgPijd0uFMUnxaE=
+		Sf1ft2YdiiszYSpoe/fRuH8+VBc=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/XfG-lQ-9wD-view-SH2-yM-fko.nib</key>
 		<data>
-		VuC4bjr6XEY0HHmcDXnQwMOFWtY=
+		w9gRrHoVDtOZjnekzkrzM3Qz7ms=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/authentication.nib</key>
 		<data>
-		tXsbfvT+uoF+0TogA1uvOscuwpU=
+		jXqgaIcfTlczEUsdpie+ObvWRIU=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/extensionRequest.nib</key>
 		<data>
-		8PO0+lYCi8YIIz96uilDyD1x2wk=
+		S8byuRqsnrx0mjAUXXmZxMS3LGE=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/gZa-NH-KiA-view-wv6-hf-89Z.nib</key>
 		<data>
-		Ny2xqMbu6uMfrvbTeDIUHvXZsNo=
+		pJuBNOc/U4tbPizVQwTDt/hIMmU=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/lRq-Sq-zZ6-view-IOZ-KI-u6s.nib</key>
 		<data>
-		kgoWHjQjb9T9E02Vs/u8WWp85KQ=
+		czXYzT9f+JNK0oEXYnJGqgqatnk=
 		</data>
 		<key>Resources/Base.lproj/Main.storyboardc/lockoutWindow.nib</key>
 		<data>
-		VpTBjwEUCvZvmkoOfJr7IXhahJ4=
+		qxNJ+M2EimPACmNm9x0KmBEnlkM=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -67,91 +67,91 @@
 		<dict>
 			<key>cdhash</key>
 			<data>
-			hnaOw5j96HWdKTccvaK8WTJRpt8=
+			DAB3tx5oe1BPe58m7BD+ymSfz50=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.apple.dt.runtime.swiftCore" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>identifier "com.apple.dt.runtime.swiftCore" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Frameworks/libswiftCoreFoundation.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			MuYhZEQbnnhTfEedig8ICYwOnGM=
+			cpLlFWoICj2wsQqFDQ5r2/staFU=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.apple.dt.runtime.swiftCoreFoundation" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>identifier "com.apple.dt.runtime.swiftCoreFoundation" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			zPuFM+SBbg6Bv82g5ZwlyqHmW84=
+			yZB3ug8lMsJZ20bSHtAyokf7A94=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.apple.dt.runtime.swiftCoreGraphics" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>identifier "com.apple.dt.runtime.swiftCoreGraphics" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			qQMEebqU9U1ZCXPwLC7HRRmQM1M=
+			kqtGe4XgH/+uXCz33IisAYNu8kU=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.apple.dt.runtime.swiftDarwin" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>identifier "com.apple.dt.runtime.swiftDarwin" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			2Hfo0P036FAfRz5dw1c1u33yCLY=
+			m4Jc2sDid4U0VLsG4PsZTm/ZY+k=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.apple.dt.runtime.swiftDispatch" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>identifier "com.apple.dt.runtime.swiftDispatch" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			C9IKrWAsmUx9cWOLBRq32Hb7uSU=
+			bW7FTLllQTXLUTGBkHpGUxft5QQ=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.apple.dt.runtime.swiftFoundation" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>identifier "com.apple.dt.runtime.swiftFoundation" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Frameworks/libswiftIOKit.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			l/7o8AIQZhfuHTa1+9hRsQFeVq0=
+			bgTFEmqjHa94p8qV12R+DQg4+Vk=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.apple.dt.runtime.swiftIOKit" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>identifier "com.apple.dt.runtime.swiftIOKit" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			7+S52BWh/MxmNfPaDPvJo00Buwg=
+			E/waPIAPDe4Idhxo1Ie9IYyTCu4=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.apple.dt.runtime.swiftObjectiveC" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>identifier "com.apple.dt.runtime.swiftObjectiveC" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Frameworks/libswiftXPC.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			Oxc7SRgLj1QyFIvc8z+Sc8qNjeY=
+			hl7Di0qPjXuVKNXi0UBO9Bg46R4=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.apple.dt.runtime.swiftXPC" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>identifier "com.apple.dt.runtime.swiftXPC" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Frameworks/libswiftos.dylib</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			WVyzwl0TbZRPoJD3X4YStCrBieo=
+			CWrktUR1DqA/82OJKbCWl8pfFTA=
 			</data>
 			<key>requirement</key>
-			<string>identifier "com.apple.dt.runtime.swiftos" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+			<string>identifier "com.apple.dt.runtime.swiftos" and anchor apple generic and certificate leaf[subject.CN] = "Mac Developer: tylermorgan210@gmail.com (SM8UP534NU)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
 		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>
@@ -164,91 +164,91 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Z0nbFbjjPvitCVyJyPuFoSPGUHBUsvFwvcVLsluBnw0=
+			Nwjay4qu5yIx5ORTnP1LFtMSTtwc4ytteJORX33dZE8=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/20Z-7b-FQf-view-zCF-fv-Dwm.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VukZR5FaztH35uQa2ts0UUm+KWN+N3vbyFmrf//SgP4=
+			VSeMTLLaeuaSV2ijUzfqCtac8hgT9TWp8nQ4AqRih5c=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/DSB-g8-MKz-view-tZ7-t3-3n5.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wCpSr/2YjXC4jco+oRisJp9Un/k2mxf35Dug3eEXVUU=
+			QZ6FpgGCJCINxbjgFpg4645JQFpFwDqe6alHFQJgNlU=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1QLdIQP1yJ4B2QrwIeixa1TNk7f/sqPO0oxSNRAcYH4=
+			Mh0a/xweb2Ww8MZ101NY26pkRl/KCPSJw8nclwfqtOk=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/MainMenu.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			F0gDgVBs7w7//n+7SX3dEA8Tis6qPrkWMrue8XHkrAs=
+			sjAf6Yu4ZgqhbHOq21vlyPNK+QQq2jyEE89GfJVPB6w=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/NSWindowController-c2Q-3e-TR7.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			E5h2fpnhLumMj89Xdj29tnRD2o8aCBY911E1Xb1s/cE=
+			kffyu+wELEf0+BJeema2Rq+Kk2Q7gEz9WAe7EiFhhJw=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/NSWindowController-smC-sj-ZbX.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hvpPgLsIjW0Ia0ZImObfw9vJt9D+26JSaM1gBDsVvk8=
+			nDHojjAdkkHSji5Dt322plohUuuKNX0wrO55HWNcqog=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/XfG-lQ-9wD-view-SH2-yM-fko.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PXffW5LGX8Z/kllAQFKygagerf4NEj3+YUObgC2dFio=
+			2dQ34OEq0nTAGOfvZLvA0Q4FhnA43pdD4OxiO4bjVZw=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/authentication.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k7Yrohg8YG8s3tJqv3QKiDDAJ/xgCYpbaS/sungGBWI=
+			VRctZQN+OomF6gaOuplzj6u1J2jXjPx0sdoZRs4m7CA=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/extensionRequest.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3LI6T9sZSREkNN/5YFnECqbtZqUseMTg4+nUU6P+tO0=
+			c3jHkRgBs5TQxV5+d+2yjHgrBnsiuW/5F69PNzXWAVI=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/gZa-NH-KiA-view-wv6-hf-89Z.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			blMyaPoka57aTbHLm9fsrDuOrWiQiGeS5BJKnjUF06E=
+			YNCoIXxzD3uR1jsnqrbXdZu/Cbj9PTjr87roXMg5AqU=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/lRq-Sq-zZ6-view-IOZ-KI-u6s.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lvXiSyIh2w6dGCJiniOnQkLf0cYsDr4yGbTeOJpeCtc=
+			XB4A0zbYbtS0870pmomjswyA0JfuDoud3h7WmjyLFIY=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/Main.storyboardc/lockoutWindow.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DRF/mUtcoA7KZtC5u4XdbR00i2GrN5NR8gNNCEE8O58=
+			Ndqf1Y0bpw45b/RTi1ZhCrV/FZwYXEjTfSeBLpvET78=
 			</data>
 		</dict>
 	</dict>

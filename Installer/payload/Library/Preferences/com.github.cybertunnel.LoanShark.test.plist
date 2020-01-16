@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>authorizedGroupIDs</key>
+	<array>
+		<!DNG Admins>
+		<integer>1</integer>
+		<!LoanShark Admins>
+		<integer>20</integer>
+	</array>
+	<key>extensionOptions</key>
+	<array>
+		<string>1 Day</string>
+		<string>3 Days</string>
+		<string>5 Days</string>
+		<string>7 Days</string>
+		<string>1 Week</string>
+		<string>2 Weeks</string>
+		<string>3 Weeks</string>
+		<string>1 Month</string>
+	</array>
+	<key>jamfURL</key>
+	<string>myjamfserver.domain.com</string>
+	<key>lockoutMessage</key>
+	<string>Your loan period has expired. Please return to DNG Engineering or the manager you received the compter from.</string>
+	<key>logoffTimer</key>
+	<integer>60</integer>
+	<dict>
+		<key>sharedSecret</key>
+		<string>---</string>
+		<key>sharedSecretAuth</key>
+		<false />
+	</dict>
+	<dict>
+		<key>enableDebugging</key>
+		<true/>
+	</dict>
+</dict>
+</plist>
