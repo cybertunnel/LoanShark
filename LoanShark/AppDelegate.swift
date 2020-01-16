@@ -48,12 +48,40 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 
                 guard let passcode = value["--passcode"] else {
                     Log.write(.fault, Log.Category.application, "--passcode was not passed, unable to authenticate.")
-                    throw ArgumentError.missingValue("Missing --passcode")
+                    print("Missing --passcode argument.")
+                    exit(1)
                 }
                 
                 guard let sharedSecret = Preferences.sharedInstance.sharedSecret else {
                     Log.write(.fault, Log.Category.application, "Shared secret not configured, please ensure this is configured before attempting to extend loaner period via. Command Line")
-                    throw ArgumentError.unsupportedArgument("Missing Shared Secret in preferences for --passcode or --extend to work properly.")
+                    
+                    print("Missing Shared Secret in preferences for --passcode or --extend to work properly.")
+                    exit(1)
+                }
+                
+                if passcode.sha256().lowercased() == sharedSecret.lowercased() {
+                    guard let length_string = value["--extend"] else {
+                        Log.write(.error, Log.Category.application, "Extension amount was not provided!.")
+                        exit(1)
+                    }
+                    
+                    guard let length = Int(length_string) else {
+                        Log.write(.error, Log.Category.application,"Unable to parse extension amount from provided \(length_string) length.")
+                        exit(1)
+                    }
+                    do {
+                        try LoanManager.sharedInstance.extend(extensionOf: length)
+                    }
+                    catch {
+                        Log.write(.fault, Log.Category.application, "Error occurred while extending loan period.")
+                        exit(1)
+                    }
+                    
+                    print("Successfully extended the loaner by \(length_string) days!")
+                    exit(0)
+                } else {
+                    Log.write(.error, Log.Category.application, "Passcode provided does not match stored passcode, unable to properly authenticate.")
+                    exit(1)
                 }
             }
         ),
