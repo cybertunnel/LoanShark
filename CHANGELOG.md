@@ -1,3 +1,26 @@
+# 1.0 Official Release
+New Features:
+- Fully 10.15 support
+- New selections during loaner configuration
+  - Days
+  - Weeks
+  - Months
+- Gmail support while requesting an extension
+- Loan status in UI menu bar
+- User information populated from Jamf Pro
+
+Changes:
+- Removed old functions
+- Restructured the code
+- Cleaner and sleek UI
+- Code converted to Swift 5
+
+Bugfixes:
+- Justification not included in email
+- Shared secret bug where it wasn't being properly cased
+- Authentication was being performed more than once
+- UI freezes during authentication
+
 # 0.3 Beta Release
 - Generic authentication supported now
   - Uses a shared secret using SHA256 hash comparison
