@@ -16,8 +16,10 @@ class Preferences {
     
     //  MARK: Variables
     
-    static let sharedInstance = Preferences() //    Singleton
-    internal let userDefaults: UserDefaults
+    /// Singleton
+    static let sharedInstance = Preferences()
+    
+    private let userDefaults: UserDefaults
     
     public var startDate: Date? {
         get {
@@ -84,24 +86,6 @@ class Preferences {
         }
     }
     
-    public var runScriptOnChange: String? {
-        get {
-            return self.userDefaults.string(forKey: "scriptOnChange")
-        }
-    }
-    
-    public var runScriptOnSet: String? {
-        get {
-            return self.userDefaults.string(forKey: "scriptOnSet")
-        }
-    }
-    
-    public var runScriptOnExpire: String? {
-        get {
-            return self.userDefaults.string(forKey: "scriptOnExpire")
-        }
-    }
-    
     public var logoffTimer: Int {
         get {
             let timerValue = self.userDefaults.integer(forKey: "logoffTimer")
@@ -159,6 +143,12 @@ class Preferences {
     public var jamfCloud: Bool {
         get {
             return self.userDefaults.bool(forKey: "jamfCloud")
+        }
+    }
+    
+    public var useGmail: Bool {
+        get {
+            return self.userDefaults.bool(forKey:"useGmail")
         }
     }
     

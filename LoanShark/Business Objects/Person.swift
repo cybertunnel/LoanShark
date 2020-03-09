@@ -10,11 +10,6 @@ import Foundation
 
 /**
  Object used while assigning device, and announcing who to contact.
- parameters:
- - first: First name of the person.
- - last: Last name of the person.
- - emailAddress: Email address of the person.
- - phoneNumber: Preferred phone number of the person.
  */
 class Person: NSObject, NSCoding {
     
@@ -34,6 +29,13 @@ class Person: NSObject, NSCoding {
     }
     
     //  MARK: Initializers
+    /**
+     - parameters:
+        - first: First name of the person.
+        - last: Last name of the person.
+        - emailAddress: Email address of the person.
+        - phoneNumber: Preferred phone number of the person.
+     */
     init(first fname: String, last lname: String, emailAddress emailAddr: String, phoneNumber phNum: String) {
         self.first = fname
         self.last = lname

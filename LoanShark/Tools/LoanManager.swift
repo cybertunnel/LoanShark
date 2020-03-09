@@ -8,43 +8,28 @@
 
 import Foundation
 
-@objc class LoanManager: NSObject {
+class LoanManager: NSObject {
     
     
     //  MARK: Enumerations
-    
-    
-    /**
-     Status of the loaner that the manager knows about.
-    */
-    @objc enum Status: UInt {
-        case active, warning, critical, expired, notSet
-        func toString() -> String {
-            switch self {
-            case .active:
-                return "Active"
-            case .warning:
-                return "Warning"
-            case .critical:
-                return "Critical"
-            case .expired:
-                return "Expired"
-            case .notSet:
-                return "Not Set"
-            }
-        }
-    }
     
     enum ExtensionError: Error {
         case LoanerPeriodIsNull
     }
     
-    
-    //  MARK: Variables
-    
+    // MARK: Variables
+    private var callbacks: Array <()-> Void> = [] {
+        didSet {
+            if self.loanPeriod == nil {
+                for callback in self.callbacks {
+                    callback()
+                }
+            }
+        }
+    }
     
     //  Current status of the loaning period
-    @objc var loanStatus: Status {
+    var loanStatus: LoanStatus {
         get {
             Log.write(.info, Log.Category.loanManager, "Loan Status requested")
             /// Checks if a loan period has been set.
@@ -69,16 +54,15 @@ import Foundation
                 return .critical
             default:
                 Log.write(.debug, Log.Category.loanManager, "Less than 0 days remaining on loaning period")
-                NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodExpired, object: nil)
                 return .expired
             }
         }
     }
     
-    @objc var loanee: Person?
-    @objc var tech: Person?
+    var loanee: Person?
+    var tech: Person?
     
-    @objc var loaneeName: String? {
+    var loaneeName: String? {
         get {
             guard let name = self.loanee?.name else {
                 return nil
@@ -87,7 +71,7 @@ import Foundation
         }
     }
     
-    @objc var loaneePhone: String? {
+    var loaneePhone: String? {
         get {
             guard let phone = self.loanee?.phoneNum else {
                 return nil
@@ -96,7 +80,7 @@ import Foundation
         }
     }
     
-    @objc var loaneeEmail: String? {
+    var loaneeEmail: String? {
         get {
             guard let email = self.loanee?.emailAddr else {
                 return nil
@@ -105,7 +89,7 @@ import Foundation
         }
     }
     
-    @objc var techEmail: String? {
+    var techEmail: String? {
         get {
             guard let email = self.tech?.emailAddr else {
                 return nil
@@ -114,7 +98,7 @@ import Foundation
         }
     }
     
-    @objc var techPhone: String? {
+    var techPhone: String? {
         get {
             guard let phone = self.tech?.phoneNum else {
                 return nil
@@ -123,7 +107,7 @@ import Foundation
         }
     }
     
-    @objc var loanPeriod: LoanPeriod? {
+    var loanPeriod: Loan? {
         willSet {
             self.willChangeValue(forKey: "loanPeriod")
             self.willChangeValue(forKey: "loanStatus")
@@ -136,12 +120,52 @@ import Foundation
     
     static let sharedInstance = LoanManager()
     
+    // MARK: Functions
+
     
+    override init() {
+        super.init()
+        self.startListener()
+    }
     
+    /**
+    Add a function that will be called upon when the loan period is set, changed, or otherwise modified.
+     - parameter callback: Function that will be called upon
+     */
+    func addCallback(_ callback: @escaping ()-> Void) {
+        self.callbacks.append(callback)
+    }
     
-    //  MARK: Functions
-    
-    
+    /**
+     Starts the loan period listener for changes to the loan period.
+     */
+    private func startListener() {
+        //  Start listening for loan period change
+        DispatchQueue.global(qos: .background).async {
+            
+            /// Previous loan period value
+            var previousLoanPeriod = self.loanPeriod
+            var delay = 1
+            while true {
+                sleep(UInt32(delay))
+                if previousLoanPeriod != self.loanPeriod {
+                    if previousLoanPeriod == nil {
+                        previousLoanPeriod = self.loanPeriod
+                        
+                        // Set delay to 30 minutes
+                        delay = 1800
+                        for callback in self.callbacks {
+                            callback()
+                        }
+                    } else if previousLoanPeriod?.remaining != self.loanPeriod?.remaining {
+                        for callback in self.callbacks {
+                            callback()
+                        }
+                    }
+                }
+            }
+        }
+    }
     /**
      Sets the period of the loaner.
      - Parameter length: How long the loaner period will be as Int
@@ -161,12 +185,9 @@ import Foundation
         Log.write(.debug, Log.Category.loanManager, "Calculated an end date of " + String(describing: endDate))
         Preferences.sharedInstance.endDate = endDate
         
-        self.loanPeriod = LoanPeriod(startDate: currentDate, endDate: endDate)
+        self.loanPeriod = Loan(startDate: currentDate, endDate: endDate)
         Log.write(.info, Log.Category.loanManager, "Successfully set loaning period ending on " + String(describing: endDate))
         Log.write(.debug, Log.Category.loanManager, "Alerting whole application loaner period has been set.")
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodSet, object: nil)
-        }
     }
     
     /**
@@ -249,43 +270,10 @@ import Foundation
         guard let endDate = Calendar.current.date(byAdding: .day, value: totalDays, to: Date()) else {
             return
         }
-        let newPeriod = LoanPeriod(startDate: period.start, endDate: endDate)
+        let newPeriod = Loan(startDate: period.start, endDate: endDate)
         
         Preferences.sharedInstance.endDate = endDate
         self.loanPeriod = newPeriod
-        
-        DispatchQueue.main.async {
-            NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodChanged, object: nil)
-        }
-    }
-    
-    /**
-     Checks every 30 minutes for a period change.
-    */
-    func checkPeriod(_ previousValue: Int) -> Int {
-        Log.write(.debug, Log.Category.loanManager, "Checking period using previous value of \(previousValue.description)")
-        if previousValue != self.loanPeriod?.remaining ?? 0 {
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodChanged, object: nil)
-            }
-            return self.loanPeriod?.remaining ?? 0
-        }
-        else {
-            return previousValue
-        }
-    }
-    
-    /**
-     Starts checking the loaning period remaining and alerts the application of a change.
-    */
-    func startPeriodChecker() {
-        DispatchQueue.global(qos: .background).async {
-            var currentRemaining = 0
-            while true {
-                currentRemaining = self.checkPeriod(currentRemaining)
-                sleep(6000)
-            }
-        }
     }
     
     /**
@@ -300,10 +288,6 @@ import Foundation
             let newDate = Calendar.current.date(byAdding: .day, value: -30, to: currDate)
             
             Preferences.sharedInstance.endDate = newDate
-            
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: NSNotification.Name.loanerPeriodExpired, object: nil)
-            }
         }
     }
 }

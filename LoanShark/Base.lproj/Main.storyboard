@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,6 +30,56 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="File" id="e8H-j4-vhs">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="File" id="Mgc-gU-EhJ">
+                                    <items>
+                                        <menuItem title="Close" keyEquivalent="w" id="AAv-1N-tak">
+                                            <connections>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="6h7-9j-551"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Edit" id="qlK-qz-7uR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Edit" id="FOS-XA-EgF">
+                                    <items>
+                                        <menuItem title="Undo" keyEquivalent="z" id="fnQ-YD-xeu">
+                                            <connections>
+                                                <action selector="undo:" target="Ady-hI-5gd" id="LBh-cc-e6K"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Redo" keyEquivalent="Z" id="DL5-PP-eCb">
+                                            <connections>
+                                                <action selector="redo:" target="Ady-hI-5gd" id="uR0-iK-Ija"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="lHN-Dr-IlZ"/>
+                                        <menuItem title="Cut" keyEquivalent="x" id="snr-ah-qXe">
+                                            <connections>
+                                                <action selector="cut:" target="Ady-hI-5gd" id="kVt-Ho-RNu"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="YhS-rr-mHT">
+                                            <connections>
+                                                <action selector="copy:" target="Ady-hI-5gd" id="MpT-xa-aRu"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste" keyEquivalent="v" id="kO7-87-boT">
+                                            <connections>
+                                                <action selector="paste:" target="Ady-hI-5gd" id="jqW-rL-f9h"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select All" keyEquivalent="a" id="Yc8-Vl-yct">
+                                            <connections>
+                                                <action selector="selectAll:" target="Ady-hI-5gd" id="UFP-gG-KQp"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>
@@ -45,45 +95,14 @@
                     <items>
                         <menuItem title="Status:" enabled="NO" id="1eb-i7-55V">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self" id="RGW-PI-y5Y">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loanStatus" id="rVp-yS-6dh">
-                                    <dictionary key="options">
-                                        <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                        <string key="NSValueTransformerName">StatusTransformer</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                         <menuItem title="Remaining:" enabled="NO" id="xak-Ah-ceE">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self" id="xaG-X9-CbN">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loanPeriod.remaining" id="7b4-97-Us5">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">RemainingTransformer</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                         <menuItem title="Request Extension" id="0ri-sD-RGq">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod.remaining" id="yOX-TU-4w5">
-                                    <dictionary key="options">
-                                        <integer key="NSNullPlaceholder" value="1"/>
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                                <segue destination="lRq-Sq-zZ6" kind="modal" id="npD-rZ-4Dd"/>
+                                <segue destination="t7t-sB-qfQ" kind="show" id="gpr-Zs-2yR"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="yU3-Fy-LGb"/>
@@ -93,69 +112,15 @@
                                 <items>
                                     <menuItem title="Assigned User:" id="8R1-P1-SZm">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" previousBinding="vhd-Rl-O0N" id="FIY-gg-Phm">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanee" id="vhd-Rl-O0N">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loaneeName" id="Nad-JX-UMh"/>
-                                        </connections>
                                     </menuItem>
                                     <menuItem title="Email Address:" id="qFY-QA-wmt">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanee" id="UzJ-TO-gly">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" previousBinding="UzJ-TO-gly" id="h7W-nV-JIx">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loaneeEmail" id="rXo-oa-K6K">
-                                                <dictionary key="options">
-                                                    <string key="NSNullPlaceholder">Loanee's Email Address</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </menuItem>
                                     <menuItem title="Phone Number:" id="756-if-ig7">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" previousBinding="tmo-Ia-DdT" id="mDu-NO-mdF">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.loanee" id="tmo-Ia-DdT">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.loaneePhone" id="Qhf-TI-jIf">
-                                                <dictionary key="options">
-                                                    <string key="NSNullPlaceholder">Loanee's Phone Number</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </menuItem>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanee" id="qoc-4w-wBb">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                         <menuItem title="Contact" id="6tG-0V-pGD" userLabel="Contact">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -163,45 +128,12 @@
                                 <items>
                                     <menuItem title="Email Address:" id="dDC-gA-FBf">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.tech" previousBinding="wbt-FZ-vbi" id="O8b-pd-xqQ">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.tech" id="wbt-FZ-vbi">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.techEmail" id="Iig-dc-rnD"/>
-                                        </connections>
                                     </menuItem>
                                     <menuItem title="Phone Number:" id="CJc-I9-tTV">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.loanerManager.tech" id="MX4-GM-TBN">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.tech" previousBinding="MX4-GM-TBN" id="cLp-hm-J6E">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="Voe-Tx-rLC" name="title" keyPath="self.loanerManager.techPhone" id="duv-yj-ykz"/>
-                                        </connections>
                                     </menuItem>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.tech" id="KOu-P7-G6T">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSIsNil</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                         <menuItem title="Administrator" id="LY3-Ct-XxW">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -210,73 +142,74 @@
                                     <menuItem title="Configure" id="CGc-d9-pUa">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod" id="Kbl-Kd-ch8">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNotNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="configure" id="bB6-3X-qhi"/>
+                                            <segue destination="B8D-0N-5wS" kind="show" identifier="configure" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="bB6-3X-qhi"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extend" id="wv5-v9-Wbd">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.loanerManager.loanPeriod" id="6Sh-sP-6PJ">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSIsNil</string>
-                                                </dictionary>
-                                            </binding>
-                                            <segue destination="B8D-0N-5wS" kind="modal" identifier="extend" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="6SY-2e-R2H"/>
+                                            <segue destination="B8D-0N-5wS" kind="show" identifier="extend" customClass="AgentMenuSegue" customModule="LoanShark" customModuleProvider="target" id="6SY-2e-R2H"/>
                                         </connections>
                                     </menuItem>
                                 </items>
                             </menu>
                         </menuItem>
-                        <menuItem title="Debug" id="p9W-fB-YwB" userLabel="Debugging Menu">
+                        <menuItem title="Debug" hidden="YES" id="p9W-fB-YwB" userLabel="Debugging Menu">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Debug" id="wE9-5O-FGy">
                                 <items>
                                     <menuItem title="Authentication Screen" id="BZm-B8-YVo">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="B8D-0N-5wS" kind="modal" id="50v-MY-WNO"/>
+                                            <segue destination="B8D-0N-5wS" kind="show" id="4kF-RR-imq"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Loaner Expiration Screen" id="Fbm-Kz-IfR">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="NZG-5q-u8T" kind="modal" id="ouM-iB-5r6"/>
+                                            <segue destination="NZG-5q-u8T" kind="show" id="tUU-wa-g8i"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extension Request Screen" id="eXX-9h-xrq">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="lRq-Sq-zZ6" kind="modal" id="TFM-wG-cfn"/>
+                                            <segue destination="t7t-sB-qfQ" kind="show" id="P66-Wo-dKn"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Configuration Screen" id="hsq-E0-Udh">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="DSB-g8-MKz" kind="modal" id="WxV-BK-mYs"/>
+                                            <segue destination="smC-sj-ZbX" kind="show" id="Zyr-u8-GOf"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem title="Extension Screen" id="zda-pk-KKM">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <segue destination="20Z-7b-FQf" kind="modal" id="U5K-mc-5fC"/>
+                                            <segue destination="c2Q-3e-TR7" kind="show" id="cv2-Yn-GSH"/>
                                         </connections>
                                     </menuItem>
                                 </items>
                             </menu>
-                            <connections>
-                                <binding destination="Voe-Tx-rLC" name="hidden" keyPath="self.enableDebugging" id="yQb-10-cGL">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
                         </menuItem>
                     </items>
+                    <connections>
+                        <outlet property="adminConfigure" destination="CGc-d9-pUa" id="AbG-IA-4j2"/>
+                        <outlet property="adminExtend" destination="wv5-v9-Wbd" id="iIu-uu-qeV"/>
+                        <outlet property="adminMenu" destination="ZZP-2v-gY2" id="XZL-Nc-0dY"/>
+                        <outlet property="assignedEmail" destination="qFY-QA-wmt" id="P36-DE-mkS"/>
+                        <outlet property="assignedPhone" destination="756-if-ig7" id="5jA-gj-XNC"/>
+                        <outlet property="assignedUser" destination="8R1-P1-SZm" id="V8h-Kl-fxE"/>
+                        <outlet property="debugMenu" destination="p9W-fB-YwB" id="R7a-5K-Tft"/>
+                        <outlet property="loaneeMenu" destination="lkC-7m-rYR" id="ESb-Zy-2zh"/>
+                        <outlet property="loaneeTitle" destination="hAA-WT-oAc" id="hRH-Tp-Ijg"/>
+                        <outlet property="remainingTitle" destination="xak-Ah-ceE" id="oW3-U2-WJW"/>
+                        <outlet property="requestTitle" destination="0ri-sD-RGq" id="F33-Jd-hme"/>
+                        <outlet property="statusTitle" destination="1eb-i7-55V" id="azh-rN-b4J"/>
+                        <outlet property="techEmail" destination="dDC-gA-FBf" id="hOm-5H-JfO"/>
+                        <outlet property="techMenu" destination="PcE-15-Nu2" id="CPP-vq-OMe"/>
+                        <outlet property="techPhone" destination="CJc-I9-tTV" id="7y1-J3-AQD"/>
+                        <outlet property="techTitle" destination="6tG-0V-pGD" id="G9B-Pw-1Em"/>
+                    </connections>
                 </menu>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -312,12 +245,12 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="LoanShark Authentication" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="AuthenticationViewController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="SH2-yM-fko">
-                        <rect key="frame" x="0.0" y="0.0" width="489" height="245"/>
+                    <view key="view" id="SH2-yM-fko">
+                        <rect key="frame" x="0.0" y="0.0" width="489" height="222"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zir-3K-NPk">
-                                <rect key="frame" x="13" y="201" width="463" height="35"/>
+                                <rect key="frame" x="13" y="179" width="463" height="35"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="LoanShark Configuration" id="gZ0-35-Zt9">
                                     <font key="font" metaFont="systemThin" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -325,16 +258,16 @@
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="QeL-sF-qoA">
-                                <rect key="frame" x="8" y="190" width="473" height="5"/>
+                                <rect key="frame" x="8" y="168" width="473" height="5"/>
                             </box>
                             <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EyI-T7-7hK">
-                                <rect key="frame" x="0.0" y="48" width="489" height="144"/>
+                                <rect key="frame" x="0.0" y="48" width="489" height="122"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="9x0-KT-wg3">
-                                        <rect key="frame" x="0.0" y="72" width="489" height="72"/>
+                                        <rect key="frame" x="0.0" y="53" width="489" height="69"/>
                                         <subviews>
                                             <textField autoresizesSubviews="NO" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1WA-cc-2nk">
-                                                <rect key="frame" x="13" y="29" width="463" height="35"/>
+                                                <rect key="frame" x="13" y="29" width="463" height="32"/>
                                                 <textFieldCell key="cell" selectable="YES" title="Please login below to authenticate. Once authenticated the loaner period can be configured." id="Nvb-cz-yKD">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -348,19 +281,6 @@
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="4DG-yo-6yN">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.username" id="6Pd-aK-U5S">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Username</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pAc-WU-fIS">
                                                 <rect key="frame" x="249" y="0.0" width="225" height="21"/>
@@ -372,19 +292,6 @@
                                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                                     </allowedInputSourceLocales>
                                                 </secureTextFieldCell>
-                                                <connections>
-                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.password" id="v0s-99-4le">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Password</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="dTp-xp-zMe">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </secureTextField>
                                         </subviews>
                                         <constraints>
@@ -400,15 +307,12 @@
                                             <constraint firstAttribute="trailing" secondItem="pAc-WU-fIS" secondAttribute="trailing" constant="15" id="s9N-Tw-Gkn"/>
                                             <constraint firstItem="pAc-WU-fIS" firstAttribute="leading" secondItem="sZf-Ca-Wrn" secondAttribute="trailing" constant="8" id="swD-vn-osT"/>
                                         </constraints>
-                                        <connections>
-                                            <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.isSharedSecretEnabled" id="hbd-AX-lLJ"/>
-                                        </connections>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="G1w-eL-CW2">
-                                        <rect key="frame" x="0.0" y="0.0" width="489" height="72"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="489" height="53"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GO5-4r-FCg">
-                                                <rect key="frame" x="13" y="29" width="463" height="35"/>
+                                                <rect key="frame" x="13" y="29" width="463" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Please enter the password below to authenticate." id="hqa-Ft-mtx">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -425,19 +329,6 @@
                                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                                     </allowedInputSourceLocales>
                                                 </secureTextFieldCell>
-                                                <connections>
-                                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.performingAuthorization" id="vN2-bO-D8y">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.sharedSecret" id="jKc-rc-eIo">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Password</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </secureTextField>
                                         </subviews>
                                         <constraints>
@@ -449,13 +340,6 @@
                                             <constraint firstAttribute="trailing" secondItem="4YT-v9-0MB" secondAttribute="trailing" constant="15" id="l8I-E5-U8h"/>
                                             <constraint firstAttribute="trailing" secondItem="GO5-4r-FCg" secondAttribute="trailing" constant="15" id="rAP-ed-NTC"/>
                                         </constraints>
-                                        <connections>
-                                            <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.isSharedSecretEnabled" id="mWd-3L-2tF">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </customView>
                                 </subviews>
                                 <constraints>
@@ -473,21 +357,13 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-it-phG">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-it-phG">
                                 <rect key="frame" x="13" y="37" width="463" height="11"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="oTM-tF-M5B">
-                                    <font key="font" metaFont="miniSystem"/>
+                                    <font key="font" metaFont="label" size="9"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.errorMessage" id="WjG-A1-scn"/>
-                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.errorMessage" id="dqa-9r-lga">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNil</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0OV-xL-jfF">
                                 <rect key="frame" x="186" y="1" width="117" height="32"/>
@@ -500,19 +376,10 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="performAuthorization:" target="XfG-lQ-9wD" id="Uip-ez-yAv"/>
-                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.requirementsCompleted" id="ENB-Oo-9lA"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WNK-wj-AwT">
+                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WNK-wj-AwT">
                                 <rect key="frame" x="465" y="8" width="16" height="16"/>
-                                <connections>
-                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.performingAuthorization" id="915-9l-rpC">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
-                                    <binding destination="XfG-lQ-9wD" name="animate" keyPath="self.performingAuthorization" id="QYp-T4-cL8"/>
-                                </connections>
                             </progressIndicator>
                         </subviews>
                         <constraints>
@@ -537,14 +404,22 @@ DQ
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="20Z-7b-FQf" kind="modal" identifier="toExtension" id="mdw-5s-7aC"/>
-                        <segue destination="DSB-g8-MKz" kind="modal" identifier="toConfiguration" id="Kzu-Rj-n2l"/>
+                        <outlet property="authenticateButton" destination="0OV-xL-jfF" id="j5p-qp-47u"/>
+                        <outlet property="authenticationIndicator" destination="WNK-wj-AwT" id="ilf-Oq-tn4"/>
+                        <outlet property="errorMessage" destination="xcy-it-phG" id="1Rl-lf-iaq"/>
+                        <outlet property="jamfAuthView" destination="9x0-KT-wg3" id="ObI-56-dh9"/>
+                        <outlet property="passphraseField" destination="4YT-v9-0MB" id="fue-Q0-w9r"/>
+                        <outlet property="passphraseView" destination="G1w-eL-CW2" id="mrh-WT-wpV"/>
+                        <outlet property="passwordField" destination="pAc-WU-fIS" id="qh3-FL-2Oo"/>
+                        <outlet property="usernameField" destination="sZf-Ca-Wrn" id="elc-CZ-48C"/>
+                        <segue destination="smC-sj-ZbX" kind="show" identifier="toConfiguration" id="5C6-2j-yWr"/>
+                        <segue destination="c2Q-3e-TR7" kind="show" identifier="toExtension" id="A81-m4-DaV"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="JhK-Ks-yo4"/>
             </objects>
-            <point key="canvasLocation" x="75" y="742"/>
+            <point key="canvasLocation" x="76" y="745"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="WDF-T0-nk8">
@@ -619,7 +494,7 @@ DQ
                                         <rect key="frame" x="120" y="-3" width="333" height="24"/>
                                         <popUpButtonCell key="cell" type="push" title="Option 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ml1-z2-Pk3" id="vXH-Qt-2fc">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
+                                            <font key="font" metaFont="system"/>
                                             <menu key="menu" id="9eI-c4-ukQ">
                                                 <items>
                                                     <menuItem title="Option 1" state="on" id="ml1-z2-Pk3"/>
@@ -629,9 +504,6 @@ DQ
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
-                                        <connections>
-                                            <binding destination="lRq-Sq-zZ6" name="contentValues" keyPath="self.options" id="zL5-au-GpP"/>
-                                        </connections>
                                     </popUpButton>
                                 </subviews>
                                 <constraints>
@@ -667,13 +539,6 @@ DQ
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <binding destination="lRq-Sq-zZ6" name="value" keyPath="self.justification" id="Nnx-0y-PSX">
-                                                <dictionary key="options">
-                                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <visibilityPriorities>
@@ -696,32 +561,15 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="sendRequest:" target="lRq-Sq-zZ6" id="57j-Ec-CY1"/>
-                                    <binding destination="lRq-Sq-zZ6" name="enabled" keyPath="self.justification" id="0TV-XX-12y">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNotNil</string>
-                                        </dictionary>
-                                    </binding>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bW-eL-u7d">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bW-eL-u7d">
                                 <rect key="frame" x="13" y="49" width="454" height="10"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="kkz-ZO-vsw">
                                     <font key="font" metaFont="system" size="8"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="lRq-Sq-zZ6" name="hidden" keyPath="self.errMsg" id="YwI-uP-aPD">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNil</string>
-                                        </dictionary>
-                                    </binding>
-                                    <binding destination="lRq-Sq-zZ6" name="value" keyPath="self.errMsg" id="qmZ-tQ-ZJ3">
-                                        <dictionary key="options">
-                                            <string key="NSNullPlaceholder">Error Message</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                         </subviews>
                         <constraints>
@@ -746,6 +594,9 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="errorMessage" destination="6bW-eL-u7d" id="64r-1r-g3j"/>
+                        <outlet property="justificationField" destination="KaG-Xm-BtI" id="OdW-RE-zI8"/>
+                        <outlet property="requestButton" destination="2Sw-si-nbj" id="TC5-Af-y6L"/>
                         <outlet property="requestOptions" destination="3il-7v-uHx" id="I9d-xx-pTv"/>
                     </connections>
                 </viewController>
@@ -788,13 +639,6 @@ DQ
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="gZa-NH-KiA" name="value" keyPath="self.lockoutMessage" id="oVC-s9-55c">
-                                        <dictionary key="options">
-                                            <string key="NSNullPlaceholder">Message that is displayed to the end user.</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SZ8-CY-92R">
                                 <rect key="frame" x="13" y="91" width="454" height="19"/>
@@ -822,13 +666,6 @@ DQ
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="gZa-NH-KiA" name="value" keyPath="self.timerString" id="zkZ-1V-5Zz">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">TimerTransformer</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                             <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93C-4B-UcM">
                                 <rect key="frame" x="15" y="42" width="450" height="32"/>
@@ -840,13 +677,6 @@ DQ
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <binding destination="gZa-NH-KiA" name="value" keyPath="self.contactName" id="daf-tn-ZkJ">
-                                                <dictionary key="options">
-                                                    <string key="NSNullPlaceholder">Contact Name</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tyI-vk-iCV">
                                         <rect key="frame" x="127" y="8" width="146" height="16"/>
@@ -855,13 +685,6 @@ DQ
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <binding destination="gZa-NH-KiA" name="value" keyPath="self.contactPhone" id="4Lv-dp-uZl">
-                                                <dictionary key="options">
-                                                    <string key="NSNullPlaceholder">Contact Phone Number</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UsC-gd-NAa">
                                         <rect key="frame" x="310" y="8" width="142" height="16"/>
@@ -870,13 +693,6 @@ DQ
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <binding destination="gZa-NH-KiA" name="value" keyPath="self.contactEmail" id="OrF-Gg-QbS">
-                                                <dictionary key="options">
-                                                    <string key="NSNullPlaceholder">Contact Email Address</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -930,16 +746,23 @@ DQ
                             <constraint firstItem="93C-4B-UcM" firstAttribute="leading" secondItem="wv6-hf-89Z" secondAttribute="leading" constant="15" id="y8K-bu-5HC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contactEmail" destination="UsC-gd-NAa" id="3eJ-a6-dww"/>
+                        <outlet property="contactName" destination="rjd-zf-aL9" id="mJW-1U-lgy"/>
+                        <outlet property="contactPhone" destination="tyI-vk-iCV" id="YzS-l8-mOz"/>
+                        <outlet property="message" destination="2cr-qg-vmS" id="lLP-TK-WDn"/>
+                        <outlet property="timerText" destination="V6F-0T-91z" id="99Z-uo-ugO"/>
+                    </connections>
                 </viewController>
                 <customObject id="36K-Fo-VPY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="uNU-7g-Wke"/>
             </objects>
-            <point key="canvasLocation" x="631" y="903"/>
+            <point key="canvasLocation" x="631" y="902.5"/>
         </scene>
-        <!--Window Controller-->
+        <!--LoanShark Configuration Window-->
         <scene sceneID="D8L-RE-682">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="smC-sj-ZbX" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="smC-sj-ZbX" userLabel="LoanShark Configuration Window" sceneMemberID="viewController">
                     <window key="window" title="Loaner Configuration" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="Hc3-7w-f9b">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <rect key="contentRect" x="425" y="461" width="480" height="270"/>
@@ -961,11 +784,11 @@ DQ
             <objects>
                 <viewController title="LoanShark Loan Period Configuration" showSeguePresentationStyle="single" id="DSB-g8-MKz" customClass="LoanerConfigurationViewController" customModule="LoanShark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="tZ7-t3-3n5">
-                        <rect key="frame" x="0.0" y="0.0" width="523" height="335"/>
+                        <rect key="frame" x="0.0" y="0.0" width="620" height="335"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JEO-c4-CLc">
-                                <rect key="frame" x="13" y="280" width="497" height="35"/>
+                                <rect key="frame" x="13" y="280" width="594" height="35"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Loan Period Configuration" id="lwO-xe-PNE">
                                     <font key="font" metaFont="systemThin" size="30"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -973,10 +796,10 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fQH-vT-zrD">
-                                <rect key="frame" x="8" y="269" width="507" height="5"/>
+                                <rect key="frame" x="8" y="269" width="604" height="5"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YBx-d3-usM">
-                                <rect key="frame" x="13" y="247" width="497" height="16"/>
+                                <rect key="frame" x="13" y="247" width="594" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Please fill out the information below to assign the loaner to the user." id="VoN-FG-sBV">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -984,7 +807,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PJ-xp-So7">
-                                <rect key="frame" x="15" y="207" width="493" height="32"/>
+                                <rect key="frame" x="15" y="207" width="590" height="32"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2jq-eN-Sz8">
                                         <rect key="frame" x="-2" y="16" width="80" height="16"/>
@@ -996,22 +819,33 @@ DQ
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjG-Gq-52I">
                                         <rect key="frame" x="84" y="11" width="409" height="21"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="BzW-ti-nyH">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Length as #" drawsBackground="YES" id="BzW-ti-nyH">
                                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="rgK-iU-oKe"/>
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <connections>
-                                            <binding destination="DSB-g8-MKz" name="value" keyPath="self.loanPeriod" id="ITa-hs-Ljj">
-                                                <dictionary key="options">
-                                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                    <string key="NSNullPlaceholder">Period in Days</string>
-                                                    <bool key="NSValidatesImmediately" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
                                     </textField>
+                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yhA-AW-oSs">
+                                        <rect key="frame" x="499" y="8" width="94" height="25"/>
+                                        <popUpButtonCell key="cell" type="push" title="Day(s)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="SwF-ci-8XN" id="66Z-ZI-Ua3">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <menu key="menu" id="KkE-40-UiZ">
+                                                <items>
+                                                    <menuItem title="Day(s)" state="on" id="SwF-ci-8XN" userLabel="Day(s)">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Week(s)" id="z8F-35-atX" userLabel="Week(s)">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                    <menuItem title="Month(s)" id="WS2-As-QoS" userLabel="Month(s)">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                    </popUpButton>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="7gu-ik-WT4"/>
@@ -1019,21 +853,23 @@ DQ
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                             <splitView arrangesAllSubviews="NO" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgz-x1-xfE">
-                                <rect key="frame" x="8" y="37" width="507" height="162"/>
+                                <rect key="frame" x="8" y="37" width="604" height="162"/>
                                 <subviews>
                                     <customView id="2Ne-u5-EZ1">
-                                        <rect key="frame" x="0.0" y="0.0" width="298" height="162"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="356" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mVp-9r-1xF">
-                                                <rect key="frame" x="96" y="138" width="106" height="16"/>
+                                                <rect key="frame" x="125" y="138" width="106" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="User Information" id="df2-IB-qDK">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1041,68 +877,36 @@ DQ
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aRN-hE-DzM">
-                                                <rect key="frame" x="7" y="102" width="284" height="21"/>
+                                                <rect key="frame" x="7" y="102" width="342" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="First Name" drawsBackground="YES" id="iTc-SP-ZvY">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.userFirst" id="mjx-7A-3xd">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">First Name</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ehu-Rc-AfU">
-                                                <rect key="frame" x="7" y="44" width="284" height="21"/>
+                                                <rect key="frame" x="7" y="44" width="342" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Phone" drawsBackground="YES" id="YD6-CT-RSO">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.userPhone" id="yeA-62-4Fc">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Phone Number</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h0h-Yj-MMn">
-                                                <rect key="frame" x="7" y="15" width="284" height="21"/>
+                                                <rect key="frame" x="7" y="15" width="342" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Email" drawsBackground="YES" id="vc1-Q5-HDj">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.userEmail" id="zhZ-UT-HhH">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Email Address</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ARu-Tz-NF9">
-                                                <rect key="frame" x="7" y="73" width="284" height="21"/>
+                                                <rect key="frame" x="7" y="73" width="342" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Last Name" drawsBackground="YES" id="eWP-Jo-LsN">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.userLast" id="6ck-0f-naH">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Last Name</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -1124,11 +928,11 @@ DQ
                                         </constraints>
                                     </customView>
                                     <customView id="K8L-NE-sxT">
-                                        <rect key="frame" x="308" y="0.0" width="199" height="162"/>
+                                        <rect key="frame" x="366" y="0.0" width="238" height="162"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QU2-fc-l4M">
-                                                <rect key="frame" x="21" y="138" width="158" height="16"/>
+                                                <rect key="frame" x="40" y="138" width="158" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Tech Contact Information" id="cpg-bv-lYE">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1136,68 +940,36 @@ DQ
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9lw-c6-txK" userLabel="First Name">
-                                                <rect key="frame" x="7" y="102" width="185" height="21"/>
+                                                <rect key="frame" x="7" y="102" width="224" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="First Name" drawsBackground="YES" id="2M6-aS-awA">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.techFirst" id="KJc-U9-fhU">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">First Name</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vzg-ph-nwm" userLabel="Last Name">
-                                                <rect key="frame" x="7" y="73" width="185" height="21"/>
+                                                <rect key="frame" x="7" y="73" width="224" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Last Name" drawsBackground="YES" id="QTL-GC-8c3">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.techLast" id="CG1-pJ-RH3">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Last Name</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wYy-RR-2r8" userLabel="Phone Number">
-                                                <rect key="frame" x="7" y="44" width="185" height="21"/>
+                                                <rect key="frame" x="7" y="44" width="224" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Phone" drawsBackground="YES" id="ROl-ds-zsP">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.techPhone" id="xKp-O1-vog">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Phone Number</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TGF-Gg-LpP" userLabel="Email Address">
-                                                <rect key="frame" x="7" y="15" width="185" height="21"/>
+                                                <rect key="frame" x="7" y="15" width="224" height="21"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Email" drawsBackground="YES" id="UhC-JF-Bwu">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
-                                                <connections>
-                                                    <binding destination="DSB-g8-MKz" name="value" keyPath="self.techEmail" id="ms9-C5-YcV">
-                                                        <dictionary key="options">
-                                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                            <string key="NSNullPlaceholder">Email Address</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -1225,7 +997,7 @@ DQ
                                 </holdingPriorities>
                             </splitView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aWa-86-QBy">
-                                <rect key="frame" x="221" y="1" width="81" height="32"/>
+                                <rect key="frame" x="270" y="1" width="81" height="32"/>
                                 <buttonCell key="cell" type="push" title="Assign" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qE1-Pc-fap">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1235,7 +1007,6 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="assignDevice:" target="DSB-g8-MKz" id="Tsy-Kh-dGf"/>
-                                    <binding destination="DSB-g8-MKz" name="enabled" keyPath="self.requiredCompleted" id="fnm-8j-Uxf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1260,10 +1031,23 @@ DQ
                             <constraint firstItem="0PJ-xp-So7" firstAttribute="leading" secondItem="tZ7-t3-3n5" secondAttribute="leading" constant="15" id="zlO-z8-tHm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="assignButton" destination="aWa-86-QBy" id="BFf-qr-Ped"/>
+                        <outlet property="lengthModifier" destination="yhA-AW-oSs" id="pGX-FO-nZU"/>
+                        <outlet property="periodLength" destination="ZjG-Gq-52I" id="ghB-NQ-Z6T"/>
+                        <outlet property="techEmail" destination="TGF-Gg-LpP" id="USn-FC-H5o"/>
+                        <outlet property="techFirst" destination="9lw-c6-txK" id="ppR-TL-GYa"/>
+                        <outlet property="techLast" destination="vzg-ph-nwm" id="oIJ-Fc-cdi"/>
+                        <outlet property="techPhone" destination="wYy-RR-2r8" id="xCC-LB-Pdc"/>
+                        <outlet property="userEmail" destination="h0h-Yj-MMn" id="rcj-0k-wuw"/>
+                        <outlet property="userFirst" destination="aRN-hE-DzM" id="SrA-G0-oXG"/>
+                        <outlet property="userLast" destination="ARu-Tz-NF9" id="scb-Et-BfS"/>
+                        <outlet property="userPhone" destination="Ehu-Rc-AfU" id="NQO-PH-OPe"/>
+                    </connections>
                 </viewController>
                 <customObject id="abv-ZQ-FZZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697.5" y="673.5"/>
+            <point key="canvasLocation" x="1726" y="658"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="eCg-ab-Ar0">
@@ -1320,13 +1104,6 @@ DQ
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="20Z-7b-FQf" name="value" keyPath="self.extensionAmount" id="kp2-Wd-uTE">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ql0-BB-QiJ">
                                 <rect key="frame" x="13" y="94" width="161" height="16"/>
@@ -1351,17 +1128,10 @@ DQ
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="20Z-7b-FQf" name="value" keyPath="self.extenderEmailAddr" id="S6l-4G-gFZ">
-                                        <dictionary key="options">
-                                            <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="G0B-tz-taH">
                                 <rect key="frame" x="199" y="8" width="82" height="32"/>
-                                <buttonCell key="cell" type="push" title="Extend" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uOd-lM-gTg">
+                                <buttonCell key="cell" type="push" title="Extend" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uOd-lM-gTg">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
@@ -1370,7 +1140,6 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="extend:" target="20Z-7b-FQf" id="SlB-il-OiP"/>
-                                    <binding destination="20Z-7b-FQf" name="enabled" keyPath="self.requirementsMet" id="gpV-Ns-pPs"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BLg-kf-uEZ">
@@ -1381,21 +1150,13 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Mv-vw-dCb">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Mv-vw-dCb">
                                 <rect key="frame" x="13" y="44" width="454" height="10"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Error Message" id="adq-Oh-ody">
                                     <font key="font" metaFont="system" size="8"/>
                                     <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="20Z-7b-FQf" name="hidden" keyPath="self.errMsg" id="c3m-Dg-Avm">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNil</string>
-                                        </dictionary>
-                                    </binding>
-                                    <binding destination="20Z-7b-FQf" name="value" keyPath="self.errMsg" id="c6Q-MQ-yFH"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <constraints>
@@ -1429,6 +1190,12 @@ DQ
                             <constraint firstItem="ql0-BB-QiJ" firstAttribute="width" secondItem="HLO-Ag-DaG" secondAttribute="width" id="zCj-QQ-zmV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="errorMessage" destination="5Mv-vw-dCb" id="f4d-ls-4ms"/>
+                        <outlet property="extensionAmount" destination="xua-8n-aZT" id="Js0-5q-JUX"/>
+                        <outlet property="extensionButton" destination="G0B-tz-taH" id="5al-Fo-pgA"/>
+                        <outlet property="extensionUser" destination="lyJ-Ow-hQZ" id="F6E-CJ-qFZ"/>
+                    </connections>
                 </viewController>
                 <customObject id="DLm-0z-y7p" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="A7O-wQ-bUH"/>
@@ -1440,9 +1207,9 @@ DQ
         <image name="NSLockLockedTemplate" width="10" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KW1-v4-3D0"/>
-        <segue reference="6dd-QE-Xvt"/>
-        <segue reference="Kzt-8Q-PxN"/>
+        <segue reference="A81-m4-DaV"/>
+        <segue reference="5C6-2j-yWr"/>
+        <segue reference="gpr-Zs-2yR"/>
         <segue reference="6SY-2e-R2H"/>
     </inferredMetricsTieBreakers>
 </document>

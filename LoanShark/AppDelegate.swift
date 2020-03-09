@@ -14,15 +14,152 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     
     //  MARK: Cocoa Binding Resources
-    @objc let loanerManager = LoanManager.sharedInstance
-    @objc let enableDebugging = Preferences.sharedInstance.enableDebugging
+    let loanerManager = LoanManager.sharedInstance
+    let enableDebugging = Preferences.sharedInstance.enableDebugging
     
     //  Don't Use
-    private let dontUse: Any? = initialSetup()
     private var lockoutWindow: LockoutWindowController!
     private var storyboard: NSStoryboard {
         return NSStoryboard(name: "Main", bundle: nil)
     }
+    
+    // MARK: Arguments
+    let arguements = [
+        /// Sets the loaner period to expired
+        Argument(
+            name: "--set-expired",
+            description: "Set loaner period to expired.",
+            isBool: true,
+            callback: { (_) in
+                Log.write(.info, Log.Category.application, "Set expiration argument sent, setting loaner period to expired.")
+                print("Setting Loan Period to expired!")
+                LoanManager.sharedInstance.setExpired()
+                exit(0)
+            }
+        ),
+        
+        /// Extends the loaner period
+        Argument(
+            name: "--extend",
+            description: "Extend loaner by set number of days.",
+            isBool: false,
+            callback: { (value) in
+                Log.write(.info, Log.Category.application, "Loaner extension argument passed, attempting to extend loaner")
+                
+                guard let passcode = value["--passcode"] else {
+                    Log.write(.fault, Log.Category.application, "--passcode was not passed, unable to authenticate.")
+                    print("Missing --passcode argument.")
+                    exit(1)
+                }
+                
+                guard let sharedSecret = Preferences.sharedInstance.sharedSecret else {
+                    Log.write(.fault, Log.Category.application, "Shared secret not configured, please ensure this is configured before attempting to extend loaner period via. Command Line")
+                    
+                    print("Missing Shared Secret in preferences for --passcode or --extend to work properly.")
+                    exit(1)
+                }
+                
+                if passcode.sha256().lowercased() == sharedSecret.lowercased() {
+                    guard let length_string = value["--extend"] else {
+                        Log.write(.error, Log.Category.application, "Extension amount was not provided!.")
+                        exit(1)
+                    }
+                    
+                    guard let length = Int(length_string) else {
+                        Log.write(.error, Log.Category.application,"Unable to parse extension amount from provided \(length_string) length.")
+                        exit(1)
+                    }
+                    do {
+                        try LoanManager.sharedInstance.extend(extensionOf: length)
+                    }
+                    catch {
+                        Log.write(.fault, Log.Category.application, "Error occurred while extending loan period.")
+                        exit(1)
+                    }
+                    
+                    print("Successfully extended the loaner by \(length_string) days!")
+                    exit(0)
+                } else {
+                    Log.write(.error, Log.Category.application, "Passcode provided does not match stored passcode, unable to properly authenticate.")
+                    exit(1)
+                }
+            }
+        ),
+        
+        /// Passcode used for assignment, and extension
+        Argument(
+            name: "--passcode",
+            description: "Passcode to properly authenticate you.",
+            isBool: false,
+            callback: { _ in
+                return
+            }
+        ),
+        
+        //  Gets the current status of the loan.
+        Argument(
+            name: "--status",
+            description: "Get the loaner period status",
+            isBool: true,
+            callback: { (_) in
+                Log.write(.info, Log.Category.application, "Requested to provide loaner period status")
+                print(LoanManager.sharedInstance.loanStatus.rawValue)
+                NSApp.terminate(self)
+                
+            }
+        ),
+        
+        /// Gets the current loanee details
+        Argument(
+            name: "--loanee-details",
+            description: "Get the loanee details",
+            isBool: true,
+            callback: { (_) in
+                Log.write(.info, Log.Category.application, "Requested to give loanee details, getting and providing loanee information")
+                print(LoanManager.sharedInstance.loanee?.description ?? "No Information to Provide")
+                NSApp.terminate(self)
+            }
+        ),
+        
+        /// DEBUG: Preferences
+        Argument(
+            name: "--prefs",
+            description: "Get the preferences LoanShark sees.",
+            isBool: true,
+            callback: { (_) in
+                Log.write(.info, Log.Category.application, "Requested to provide preference details, getting information and dumping it to standard out.")
+                
+                // Jamf URL
+                print("jamfURL:" + (Preferences.sharedInstance.jssURL ?? "Not Set"))
+                // Authorized Groups
+                if let authGroups = Preferences.sharedInstance.authorizedGroupIDs {
+                    print("authorizedGroupIds:" + String(describing: authGroups))
+                }
+                else {
+                    print("authorizedGroupIds:Not Set")
+                }
+                // Extension Options
+                if let extOpt = Preferences.sharedInstance.extensionOptions {
+                    print("extensionOptions:" + String(describing: extOpt))
+                }
+                else {
+                    print("extensionOptions:Not Set")
+                }
+                // Log Off Timer
+                print("logOffTimer:" + String(describing: Preferences.sharedInstance.logoffTimer))
+                // Lockout Message
+                print("lockoutMessage:" + (Preferences.sharedInstance.lockoutMessage ?? "Not Set"))
+                // Debugging
+                print("enableDebugging:" + String(describing: Preferences.sharedInstance.enableDebugging))
+                // Shared Secret
+                print("sharedSecret:" + (Preferences.sharedInstance.sharedSecret ?? "Not Set"))
+                // Shared Secret Auth
+                print("sharedSecretAuth:" + String(describing: Preferences.sharedInstance.sharedSecretAuth))
+                // Jamf Cloud
+                print("jamfCloud:" + String(describing: Preferences.sharedInstance.jamfCloud))
+            }
+        )
+    ]
     
     
     //  MARK: IB Outlets
@@ -41,122 +178,50 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         
+        // MARK: Argument Parsing
         Log.write(.debug, Log.Category.argumentParser, "Building argument parsing.")
         
-        //  Set Loan Period to Expired argument
-        argParser.addArgument(name: "--set-expired", description: "Set loaner period to expired.", isBool: true) { (value) in
-            Log.write(.info, Log.Category.application, "Set expiration argument sent, setting loaner period to expired.")
-            print("Setting Loan Period to expired!")
-            self.loanerManager.setExpired()
+        for argument in self.arguements {
+            argParser.addArgument(
+                name: argument.name,
+                description: argument.description,
+                isBool: argument.isBool,
+                callback: argument.callback
+            )
         }
-        
-        //  Perform extension argument
-        //  Requires --passcode parameter as well
-        argParser.addArgument(name: "--extend", description: "Extend loaner by set number of days.") { (value) in
-            Log.write(.info, Log.Category.application, "Loaner extension argument passed, attempting to extend loaner")
-            
-            guard let passcode = value["--passcode"] else {
-                Log.write(.fault, Log.Category.application, "--passcode was not passed, unable to authenticate.")
-                throw ArgumentError.missingValue("Missing --passcode")
-            }
-            
-            guard let sharedSecret = Preferences.sharedInstance.sharedSecret else {
-                Log.write(.fault, Log.Category.application, "Shared secret not configured, please ensure this is configured before attempting to extend loaner period via. Command Line")
-                throw ArgumentError.unsupportedArgument("Missing Shared Secret in preferences for --passcode or --extend to work properly.")
-            }
-            
-            if passcode.sha256() == sharedSecret {
-                Log.write(.info, Log.Category.application, "Provided passcode is correct, proceeding")
-                guard let daysRaw = value["--extend"] else {
-                    Log.write(.fault, Log.Category.application, "Unable to get extension amount.")
-                    throw ArgumentError.missingValue("--extend")
-                }
-                
-                guard let days = Int(daysRaw) else {
-                    Log.write(.fault, Log.Category.application, "Unable to get number of days from provided input")
-                    throw ArgumentError.invalidType(value: daysRaw, type: "Int", argument: "--extend")
-                }
-                
-                try self.loanerManager.extend(extensionOf: (days + 1))
-                print("Successfully extended loaner by \(String(describing: days)). Total loaning period remaining is now \(self.loanerManager.loanPeriod?.remaining ?? 0) days.")
-                NSApp.terminate(self)
-            }
-            else {
-                print("Invalid passcode provided, please try again.")
-                Log.write(.error, Log.Category.application, "Passcode provided is invalid")
-                NSApp.terminate(self)
-            }
-        }
-        
-        //  Authenticate using passcode
-        argParser.addArgument(name: "--passcode", description: "Passcode to properly authenticate you") { (value) in
-            
-        }
-        
-        //  Get Loaner Status
-        argParser.addArgument(name: "--status", description: "Get the loaner period status", isBool: true) { (_) in
-            Log.write(.info, Log.Category.application, "Requested to provide loaner period status")
-            print(self.loanerManager.loanStatus.toString())
-            NSApp.terminate(self)
-        }
-        
-        //  Get Loanee Details
-        argParser.addArgument(name: "--loanee-details", description: "Get the loanee details", isBool: true) { (_) in
-            Log.write(.info, Log.Category.application, "Requested to give loanee details, getting and providing loanee information")
-            print(self.loanerManager.loanee?.description ?? "No Information to Provide")
-            NSApp.terminate(self)
-        }
-        
-        //  DEBUG: Get Preferences
-        argParser.addArgument(name: "--prefs", description: "Get the preferences LoanShark sees", isBool: true) {(_) in
-            Log.write(.info, Log.Category.application, "Requested to provide preference details, getting information and dumping it to standard out.")
-            
-            // Jamf URL
-            print("jamfURL:" + (Preferences.sharedInstance.jssURL ?? "Not Set"))
-            // Authorized Groups
-            if let authGroups = Preferences.sharedInstance.authorizedGroupIDs {
-                print("authorizedGroupIds:" + String(describing: authGroups))
-            }
-            else {
-                print("authorizedGroupIds:Not Set")
-            }
-            // Extension Options
-            if let extOpt = Preferences.sharedInstance.extensionOptions {
-                print("extensionOptions:" + String(describing: extOpt))
-            }
-            else {
-                print("extensionOptions:Not Set")
-            }
-            // Log Off Timer
-            print("logOffTimer:" + String(describing: Preferences.sharedInstance.logoffTimer))
-            // Lockout Message
-            print("lockoutMessage:" + (Preferences.sharedInstance.lockoutMessage ?? "Not Set"))
-            // Debugging
-            print("enableDebugging:" + String(describing: Preferences.sharedInstance.enableDebugging))
-            // Shared Secret
-            print("sharedSecret:" + (Preferences.sharedInstance.sharedSecret ?? "Not Set"))
-            // Shared Secret Auth
-            print("sharedSecretAuth:" + String(describing: Preferences.sharedInstance.sharedSecretAuth))
-            // Jamf Cloud
-            print("jamfCloud:" + String(describing: Preferences.sharedInstance.jamfCloud))
-        }
-        
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        // MARK: Agent Menu
         Log.write(.debug, Log.Category.application, "Building Agent Menu.")
         
         item.menu = agentMenu
         item.title = "LoanShark"
+        LoanManager.sharedInstance.addCallback {
+            DispatchQueue.main.async {
+                switch LoanManager.sharedInstance.loanStatus {
+                case .active:
+                    self.item.image = NSImage(named: NSImage.statusAvailableName)
+                case .warning:
+                    self.item.image = NSImage(named: NSImage.statusPartiallyAvailableName)
+                case .critical:
+                    self.item.image = NSImage(named: NSImage.statusUnavailableName)
+                case .notSet:
+                    self.item.image = NSImage(named: NSImage.statusNoneName)
+                default:
+                    self.item.image = NSImage(named: NSImage.statusNoneName)
+                }
+            }
+        }
         
         Log.write(.debug, Log.Category.application, "Agent Menu built.")
         
-        
+        // MARK: Loaner Information
         Log.write(.info, Log.Category.application, "Checking loaner information")
         if let startDate = Preferences.sharedInstance.startDate, let endDate = Preferences.sharedInstance.endDate {
             Log.write(.debug, Log.Category.application, "Start Date: \(startDate.toString(format: "MM/dd/yyyy")) ; End DateL \(endDate.toString(format: "MM/dd/yyyy"))")
-            let period = LoanPeriod(startDate: startDate, endDate: endDate)
+            let period = Loan(startDate: startDate, endDate: endDate)
             Log.write(.debug, Log.Category.application, period.description)
             self.willChangeValue(forKey: "loanerManager")
             Log.write(.debug, Log.Category.application, "Application setting loaner period in loaner manager")
@@ -188,62 +253,41 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         }
         
         Log.write(.info, Log.Category.application, "Enabling observer for notifications.")
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodChanged(_:)), name: NSNotification.Name.loanerPeriodChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodSet(_:)), name: NSNotification.Name.loanerPeriodSet, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loanPeriodExpired(_:)), name: NSNotification.Name.loanerPeriodExpired, object: nil)
-        self.loanerManager.startPeriodChecker()
-        if self.loanerManager.loanStatus == .notSet {
+        // TODO: Switch this out for loan manager's new mech
+        LoanManager.sharedInstance.addCallback {
             self.sendUserNotification()
+            
+            if LoanManager.sharedInstance.loanPeriod != nil {
+                if LoanManager.sharedInstance.loanPeriod?.remaining ?? 0 < 0 {
+                    self.loanPeriodExpired()
+                }
+            }
         }
         
         self.argParser.parse()
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
     
-    private static func initialSetup() {
-        
-        Log.write(.info, Log.Category.application, "Beginning initial setup.")
-        //  Value Transformers for bindings
-        ValueTransformer.setValueTransformer(StatusTransformer(), forName: .statusTransformer)
-        ValueTransformer.setValueTransformer(TimerTransformer(), forName: .timerTransformer)
-        ValueTransformer.setValueTransformer(RemainingTransformer(), forName: .remainingTransformer)
-        Log.write(.info, Log.Category.application, "Finished initial setup.")
-    }
-    
-    @objc func loanPeriodChanged(_ aNotification: Notification) {
-        Log.write(.debug, Log.Category.application, "Application detected a loan period change.")
-        self.willChangeValue(forKey: "loanerManager")
-        self.didChangeValue(forKey: "loanerManager")
-        self.sendUserNotification()
-    }
-    
-    @objc func loanPeriodSet(_ aNotification: Notification) {
-        Log.write(.debug, Log.Category.application, "Application detected loaner period being set.")
-        self.willChangeValue(forKey: "loanerManager")
-        self.didChangeValue(forKey: "loanerManager")
-    }
-    
-    @objc func loanPeriodExpired(_ aNotification: Notification) {
+    func loanPeriodExpired() {
         Log.write(.info, Log.Category.application, "Loan period expired, displaying lockout message")
-        if #available(OSX 10.13, *) {
-            guard let lockoutWC = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
-                Log.write(.error, Log.Category.application, "Unable to get lockout window controller")
-                return
+        DispatchQueue.main.async {
+            if #available(OSX 10.13, *) {
+                guard let lockoutWC = NSStoryboard.main?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
+                    Log.write(.error, Log.Category.application, "Unable to get lockout window controller")
+                    return
+                }
+                self.lockoutWindow = lockoutWC
+            } else {
+                guard let lockoutWC = self.storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
+                    Log.write(.error, Log.Category.application, "Unable to get lockout window controller")
+                    return
+                }
+                self.lockoutWindow = lockoutWC
             }
-            self.lockoutWindow = lockoutWC
-        } else {
-            guard let lockoutWC = self.storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(stringLiteral: "lockoutWindow")) as? LockoutWindowController else {
-                Log.write(.error, Log.Category.application, "Unable to get lockout window controller")
-                return
-            }
-            self.lockoutWindow = lockoutWC
+            
+            self.lockoutWindow.loadWindow()
+            self.lockoutWindow.showWindow(self)
         }
-        
-        self.lockoutWindow.loadWindow()
-        self.lockoutWindow.showWindow(self)
     }
     
     private func sendUserNotification() {
